@@ -1,4 +1,4 @@
-package io.nexters.goal;
+package com.nexters.goal;
 
 import com.reactnativenavigation.NavigationActivity;
 
