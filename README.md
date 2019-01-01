@@ -6,10 +6,6 @@
 - decorator를 쓰기위한
    - https://github.com/facebook/react-native/issues/21320#issuecomment-431884199
 
-### Graphql
-- apollo link
-  - https://github.com/graphql/swapi-graphql
-
 ### Navigation
 - https://wix.github.io/react-native-navigation/v2/#/docs/Installing
 
@@ -23,6 +19,7 @@
 - https://github.com/infinitered/reactotron/blob/master/docs/plugin-storybook.md
 
 ## TODO
+- react-native-tab-view, recompose, firebase, 
 - dev, production 구분 ex) reactotron 설정
 - AppState 관리
 - [splash 화면 설정](https://github.com/crazycodeboy/react-native-splash-screen)
