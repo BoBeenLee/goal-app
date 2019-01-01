@@ -70,3 +70,9 @@ coverage/
 .vs
 
 android/app/src/main/assets/index\.android\.bundle
+
+android/goal-prod
+
+android/app/release/app-release\.apk
+
+android/app/release/output\.json
