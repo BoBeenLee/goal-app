@@ -6,7 +6,9 @@
     "start": "node node_modules/react-native/local-cli/cli.js start - --reset-cache",
     "storybook": "storybook start -p 7007",
     "ios": "react-native run-ios --simulator='iPhone 6'",
-    "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug",
+    "ios:release": "REACT_ENV=production react-native run-ios --configuration Release",
+    "android": "react-native run-android",
+    "android:release": "REACT_ENV=production react-native run-android --variant=release && open ./android/app/build/outputs/apk",
     "test": "jest",
     "tsc": "tsc"
   },
