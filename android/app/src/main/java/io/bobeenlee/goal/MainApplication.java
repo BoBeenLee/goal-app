@@ -1,7 +1,8 @@
-package com.myapp;
+package io.bobeenlee.goal;
 
 import android.app.Application;
 
+import com.facebook.react.BuildConfig;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.babisoft.ReactNativeLocalization.ReactNativeLocalizationPackage;

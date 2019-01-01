@@ -1,4 +1,4 @@
-package com.myapp;
+package io.bobeenlee.goal;
 
 import com.reactnativenavigation.NavigationActivity;
 
