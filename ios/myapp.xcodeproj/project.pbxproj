@@ -1463,7 +1463,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.bobeenlee.goal;
+				PRODUCT_BUNDLE_IDENTIFIER = io.nexters.goal;
 				PRODUCT_NAME = myapp;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1489,7 +1489,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.bobeenlee.goal;
+				PRODUCT_BUNDLE_IDENTIFIER = io.nexters.goal;
 				PRODUCT_NAME = myapp;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

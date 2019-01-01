@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "node node_modules/react-native/local-cli/cli.js start - --reset-cache",
     "storybook": "storybook start -p 7007",
     "ios": "react-native run-ios --simulator='iPhone 6'",
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug",
@@ -35,7 +35,7 @@
     "yup": "^0.26.6"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-decorators": "^7.1.6",
+    "@babel/plugin-proposal-decorators": "^7.2.3",
     "@storybook/addon-actions": "^4.0.8",
     "@storybook/addon-links": "^4.0.8",
     "@storybook/addons": "^4.0.8",

@@ -1,4 +1,4 @@
-package io.bobeenlee.goal;
+package io.nexters.goal;
 
 import com.reactnativenavigation.NavigationActivity;
 
