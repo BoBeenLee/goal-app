@@ -5,10 +5,10 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start - --reset-cache",
     "storybook": "storybook start -p 7007",
-    "ios": "react-native run-ios --simulator='iPhone 6'",
-    "ios:release": "REACT_ENV=production react-native run-ios --configuration Release",
-    "android": "react-native run-android",
-    "android:release": "REACT_ENV=production react-native run-android --variant=release && open ./android/app/build/outputs/apk",
+    "ios": "node node_modules/react-native/local-cli/cli.js run-ios --simulator='iPhone 6'",
+    "ios:release": "REACT_ENV=production node node_modules/react-native/local-cli/cli.js run-ios --configuration Release",
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
+    "android:release": "REACT_ENV=production node node_modules/react-native/local-cli/cli.js run-android --variant=release && open ./android/app/build/outputs/apk",
     "test": "jest",
     "tsc": "tsc"
   },
@@ -23,7 +23,7 @@
     "mobx-state-tree": "^3.8.1",
     "moment": "^2.22.2",
     "react": "16.6.3",
-    "react-native": "0.57.8",
+    "react-native": "0.57.2",
     "react-native-localization": "^2.0.1",
     "react-native-navigation": "^2.4.0",
     "react-native-orientation": "^3.1.3",
