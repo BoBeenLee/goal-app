@@ -68,3 +68,5 @@ coverage/
 
 # live share
 .vs
+
+android/app/src/main/assets/index\.android\.bundle

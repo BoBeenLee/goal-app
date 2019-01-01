@@ -15,6 +15,7 @@ import com.reactnativenavigation.react.ReactGateway;
 
 import java.util.Arrays;
 import java.util.List;
+import com.nozbe.watermelondb.WatermelonDBPackage;
 
 public class MainApplication extends NavigationApplication {
 
@@ -38,8 +39,10 @@ public class MainApplication extends NavigationApplication {
         // Add additional packages you require here
         // No need to add RnnPackage and MainReactPackage
         return Arrays.<ReactPackage>asList(
-                new VectorIconsPackage(), new OrientationPackage(),
-                new ReactNativeLocalizationPackage()
+                new VectorIconsPackage(),
+                new OrientationPackage(),
+                new ReactNativeLocalizationPackage(),
+                new WatermelonDBPackage()
         );
     }
 
