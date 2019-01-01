@@ -1,0 +1,31 @@
+{
+    "presets": [
+        "module:metro-react-native-babel-preset"
+    ],
+    "plugins": [
+        [
+            "import",
+            {
+                "libraryName": "antd-mobile-rn"
+            }
+        ],
+        [
+            "module-resolver",
+            {
+                "cwd": "babelrc",
+                "root": [
+                    "./goal-app"
+                ],
+                "alias": {
+                    "assets-json": "./assets/json"
+                }
+            }
+        ],
+        [
+            "@babel/plugin-proposal-decorators",
+            {
+                "legacy": true
+            }
+        ]
+    ]
+}
