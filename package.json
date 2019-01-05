@@ -25,6 +25,7 @@
     "moment": "^2.22.2",
     "react": "16.6.3",
     "react-native": "0.57.2",
+    "react-native-firebase": "^5.1.1",
     "react-native-localization": "^2.0.1",
     "react-native-navigation": "^2.4.0",
     "react-native-orientation": "^3.1.3",
