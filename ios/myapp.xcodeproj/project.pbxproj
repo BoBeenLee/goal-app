@@ -31,6 +31,7 @@
 		2749DE4021DB4D4F0087BBC9 /* libWatermelonDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2749DE3F21DB4D240087BBC9 /* libWatermelonDB.a */; };
 		2749DE4321DB4FF00087BBC9 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2749DE4221DB4FEF0087BBC9 /* Empty.swift */; };
 		276BEB2821A5970D00086EFA /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 276BEB2421A596ED00086EFA /* libReactNativeNavigation.a */; };
+		27B081EE21E111A10012030A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27B081C221E111A10012030A /* GoogleService-Info.plist */; };
 		2C2FA2A1554E1A40308ECE5F /* Pods_myappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D845BA9A244AEC1EE97A2FB /* Pods_myappTests.framework */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -410,6 +411,7 @@
 		2749DE4121DB4FEF0087BBC9 /* myapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		2749DE4221DB4FEF0087BBC9 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		276BEAF721A596ED00086EFA /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/lib/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
+		27B081C221E111A10012030A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* myapp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "myapp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* myapp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "myapp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D0F3DF949174D86A3E98BFA /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
@@ -598,6 +600,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
+				27B081C221E111A10012030A /* GoogleService-Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = myapp;
@@ -1345,6 +1348,7 @@
 				D0163ACEC3AA4CC7A4628BC7 /* Foundation.ttf in Resources */,
 				AAB3B7AC303147F58AC9666B /* Ionicons.ttf in Resources */,
 				E1274929D08444979B5A2472 /* MaterialCommunityIcons.ttf in Resources */,
+				27B081EE21E111A10012030A /* GoogleService-Info.plist in Resources */,
 				60580AC0FE344E3B8DF40B6F /* MaterialIcons.ttf in Resources */,
 				7BD300844C364E688572EA86 /* Octicons.ttf in Resources */,
 				5FA22B85F33F4120B86CFDA6 /* SimpleLineIcons.ttf in Resources */,

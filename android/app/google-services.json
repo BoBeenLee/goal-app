@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "845726651065",
+    "firebase_url": "https://goal-app-798dc.firebaseio.com",
+    "project_id": "goal-app-798dc",
+    "storage_bucket": "goal-app-798dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845726651065:android:39777d688c6f8950",
+        "android_client_info": {
+          "package_name": "com.nexters.goal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845726651065-ijqa67mlmiaeitmrl1fdetoh0r69inm7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzW8GCSv5WFP9YnaOGOZ19U6KPT0ojy7M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
