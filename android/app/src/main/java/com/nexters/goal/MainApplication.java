@@ -2,6 +2,8 @@ package com.nexters.goal;
 
 import android.app.Application;
 
+
+import io.invertase.firebase.RNFirebasePackage;
 import com.facebook.react.BuildConfig;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.github.yamill.orientation.OrientationPackage;
@@ -42,7 +44,8 @@ public class MainApplication extends NavigationApplication {
                 new VectorIconsPackage(),
                 new OrientationPackage(),
                 new ReactNativeLocalizationPackage(),
-                new WatermelonDBPackage()
+                new WatermelonDBPackage(),
+                new RNFirebasePackage()
         );
     }
 
