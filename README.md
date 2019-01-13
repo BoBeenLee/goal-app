@@ -26,6 +26,11 @@
 - Navigator 상태 관리
 - font family를 적용하기 위한 Text 커스마이징
 
+## Reference
+- Drawer ( https://wix.github.io/react-native-navigation/v2/#/docs/layout-types?id=sidemenu )
+- Carousel ( https://github.com/archriss/react-native-snap-carousel )
+
+
 ## Pitfall
 ### babel7 issue
 - export, export default 
