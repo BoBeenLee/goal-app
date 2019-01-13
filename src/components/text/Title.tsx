@@ -2,12 +2,14 @@ import React, { SFC } from "react";
 import { TextStyle } from "react-native";
 import styled from "styled-components/native";
 
+import GText from "./GText";
+
 interface IProps {
   style?: TextStyle;
   children: string | JSX.Element;
 }
 
-const Container = styled.Text`
+const Container = styled(GText)`
   font-size: 25px;
   font-weight: bold;
   padding-vertical: 15px;

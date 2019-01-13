@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from "styled-components/native";
 
-const Text = styled.Text`
+import GText from "./GText";
+
+const Text = styled(GText)`
     font-size: 12px;
     font-weight: 100;
 `;
