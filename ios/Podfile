@@ -6,7 +6,8 @@ target 'myapp' do
   use_frameworks!
 
   pod 'Firebase/Core', '~> 5.11.0'
-
+  pod 'react-native-video', :path => '../node_modules/react-native-video'
+  
   # Pods for myapp
 
   target 'myapp-tvOSTests' do
