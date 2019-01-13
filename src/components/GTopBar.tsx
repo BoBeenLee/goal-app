@@ -5,7 +5,7 @@ import styled from "styled-components/native";
 import { GText } from "./text";
 
 interface IProps {
-    style: ViewStyle;
+    style?: ViewStyle;
     title?: string;
     HeaderComponent?: JSX.Element;
     HeaderRightComponent?: JSX.Element;
@@ -31,10 +31,10 @@ class GTopBar extends Component<IProps> {
         HeaderRightComponent: null,
     }
     public render() {
-        const { title, HeaderComponent, HeaderRightComponent } = this.props;
+        const { style, title, HeaderComponent, HeaderRightComponent } = this.props;
 
         return (
-            <Container>
+            <Container style={style}>
                 <HeaderView>
                     {HeaderComponent ? HeaderComponent : <GText>{title}</GText>}
                 </HeaderView>
