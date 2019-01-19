@@ -4,7 +4,6 @@ import android.app.Application;
 
 
 import io.invertase.firebase.RNFirebasePackage;
-import com.facebook.react.BuildConfig;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.babisoft.ReactNativeLocalization.ReactNativeLocalizationPackage;
