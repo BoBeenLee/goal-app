@@ -116,6 +116,7 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        multiDexEnabled true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -169,6 +170,7 @@ dependencies {
     implementation 'com.android.support:design:25.4.0'
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation 'com.facebook.react:react-native:+'
+    implementation 'com.android.support:multidex:1.0.3'
     // From node_modules
     implementation project(':react-native-navigation')
     implementation project(':watermelondb')
