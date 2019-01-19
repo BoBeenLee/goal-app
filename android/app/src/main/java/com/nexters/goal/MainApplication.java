@@ -15,6 +15,7 @@ import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
 import com.brentvatne.react.ReactVideoPackage;
+import com.airbnb.android.react.lottie.LottiePackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -47,7 +48,8 @@ public class MainApplication extends NavigationApplication {
                 new ReactNativeLocalizationPackage(),
                 new WatermelonDBPackage(),
                 new RNFirebasePackage(),
-                new ReactVideoPackage()
+                new ReactVideoPackage(),
+                new LottiePackage()
         );
     }
 

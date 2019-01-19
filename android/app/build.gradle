@@ -162,12 +162,13 @@ configurations.all {
 }
 
 dependencies {
+    implementation project(':lottie-react-native')
     implementation project(':react-native-video')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-orientation')
     implementation project(':react-native-localization')
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:design:25.4.0'
+    implementation 'com.android.support:design:27.1.1'
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation 'com.facebook.react:react-native:+'
     implementation 'com.android.support:multidex:1.0.3'

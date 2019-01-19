@@ -1,9 +1,12 @@
+import assetsJson from "assets-json";
 import React, { Component } from "react";
 import { Navigation } from "react-native-navigation";
 import styled from "styled-components/native";
+import LottieView from 'lottie-react-native';
 
 import { pushTransition } from "./styles/animation";
 import { SCREEN_IDS } from "./constant";
+
 
 interface IProps {
   componentId: string;
@@ -23,6 +26,11 @@ class AppScreen extends Component<IProps> {
         <NavigateButton title="Todo" onPress={this.navigateTodo} />
         <NavigateButton title="Swapi List" onPress={this.navigateSwapi} />
         <NavigateButton title="Throw Error" onPress={this.navigateThrowError} />
+        <LottieView
+          source={assetsJson.success}
+          autoPlay={true}
+          loop={true}
+        />
       </Container>
     );
   }
