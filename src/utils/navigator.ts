@@ -1,6 +1,11 @@
 import { Navigation } from "react-native-navigation";
+
 import { pushTransition } from "../screens/styles/animation";
 import { SCREEN_IDS } from "../screens/constant";
+import { delay } from "./common";
+import topbars from "../screens/styles/topbar";
+
+let isLoading = false;
 
 const start = () => {
     Navigation.setDefaultOptions({
@@ -12,9 +17,7 @@ const start = () => {
             backgroundColor: "white",
             style: "dark"
         },
-        topBar: {
-            visible: false
-        }
+        topBar: topbars.emptyTopBar()
     });
 
     Navigation.setRoot({
@@ -23,7 +26,7 @@ const start = () => {
                 children: [
                     {
                         component: {
-                            name: SCREEN_IDS.ProjectScreen
+                            name: SCREEN_IDS.TutorialScreen
                         }
                     }
                 ]
@@ -32,8 +35,16 @@ const start = () => {
     });
 };
 
+const protectedMultiClick = (func: any) => async (...args) => {
+    if (!isLoading) {
+        isLoading = true;
+    }
+    func(...args);
+    await delay(300);
+    isLoading = false;
+}
 
-const setStackRoot = (componentId: string, nextComponentId: string, params?: object) => {
+const setStackRoot = protectedMultiClick((componentId: string, nextComponentId: string, params?: object) => {
     Navigation.setStackRoot(componentId, {
         component: {
             name: nextComponentId,
@@ -43,10 +54,10 @@ const setStackRoot = (componentId: string, nextComponentId: string, params?: obj
             passProps: params
         }
     });
-};
+});
 
 
-const push = (componentId: string, nextComponentId: string, params?: object) => {
+const push = protectedMultiClick(async (componentId: string, nextComponentId: string, params?: object) => {
     Navigation.push(componentId, {
         component: {
             name: nextComponentId,
@@ -56,7 +67,7 @@ const push = (componentId: string, nextComponentId: string, params?: object) => 
             passProps: params
         }
     });
-};
+});
 
 
 export { start, setStackRoot, push };
