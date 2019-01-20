@@ -1,11 +1,11 @@
 const SCREEN_IDS = {
   AppScreen: "AppScreen",
-  TodoScreen: "TodoScreen",
-  SwapiScreen: "SwapiScreen",
   ErrorScreen: "ErrorScreen",
   ProjectRegisterScreen: "app.ProjectRegisterScreen",
   TemplateRegisterScreen: "app.TemplateRegisterScreen",
-  TutorialScreen: "app.TutorialScreen"
+  MotivationRegisterScreen: "app.MotivationRegisterScreen",
+  TutorialScreen: "app.TutorialScreen",
+  ProjectScreen: "app.ProjectScreen"
 };
 
 export { SCREEN_IDS };

@@ -2,12 +2,12 @@ import _ from "lodash";
 import { Navigation } from "react-native-navigation";
 
 import AppScreen from "./AppScreen";
-import TodoScreen from "./TodoScreen";
-import SwapiScreen from "./SwapiScreen";
 import ErrorScreen from "./ErrorScreen";
 import TutorialScreen from "./TutorialScreen";
 import ProjectRegisterScreen from "./register/ProjectRegisterScreen";
 import TemplateRegisterScreen from "./register/TemplateRegisterScreen";
+import MotivationRegisterScreen from "./register/MotivationRegisterScreen";
+import ProjectScreen from "./ProjectScreen";
 import withStore from "../hoc/withStore";
 import { SCREEN_IDS } from "./constant";
 import { withOverlay } from "../../ReactotronConfig";
@@ -24,14 +24,6 @@ const REGISTER_SCREENS: IRegisterScreenProps[] = [
     Component: AppScreen
   },
   {
-    id: SCREEN_IDS.TodoScreen,
-    Component: TodoScreen
-  },
-  {
-    id: SCREEN_IDS.SwapiScreen,
-    Component: SwapiScreen
-  },
-  {
     id: SCREEN_IDS.ErrorScreen,
     Component: ErrorScreen
   },
@@ -46,6 +38,14 @@ const REGISTER_SCREENS: IRegisterScreenProps[] = [
   {
     id: SCREEN_IDS.TutorialScreen,
     Component: TutorialScreen
+  },
+  {
+    id: SCREEN_IDS.MotivationRegisterScreen,
+    Component: MotivationRegisterScreen
+  },
+  {
+    id: SCREEN_IDS.ProjectScreen,
+    Component: ProjectScreen
   }
 ]
 

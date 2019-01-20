@@ -1,19 +1,31 @@
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 
-import { GText } from "../../components";
+import { GButton, Title } from "../../components";
+import { push } from '../../utils/navigator';
+import { SCREEN_IDS } from "../constant";
+
+interface IProps {
+    componentId: string;
+}
 
 const Container = styled.View``;
 
-const Text = styled(GText)``;
+const TitleView = styled(Title)``;
 
-class ProjectRegisterScreen extends Component {
-    render() {
+class ProjectRegisterScreen extends Component<IProps> {
+    public render() {
         return (
             <Container>
-                <Text>ProjectRegister</Text>
+                <TitleView>작심삼십일의 목표를 설정해주세요</TitleView>
+                <GButton type="default" onPress={this.next}>다음</GButton>
             </Container>
         );
+    }
+
+    private next = () => {
+        const { componentId } = this.props;
+        push(componentId, SCREEN_IDS.MotivationRegisterScreen);
     }
 }
 

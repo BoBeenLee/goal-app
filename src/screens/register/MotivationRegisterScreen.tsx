@@ -2,31 +2,33 @@ import React, { Component } from 'react';
 import styled from "styled-components/native";
 
 import { GButton, Title } from "../../components";
-import { setStackRoot } from '../../utils/navigator';
+import { push } from '../../utils/navigator';
 import { SCREEN_IDS } from '../constant';
 
 interface IProps {
     componentId: string;
 }
 
-const Container = styled.View``;
+const Container = styled.View`
+    
+`;
 
 const TitleView = styled(Title)``;
 
-class TemplateRegisterScreen extends Component<IProps> {
+class MotivationRegisterScreen extends Component<IProps> {
     public render() {
         return (
             <Container>
-                <TitleView>목표에 활용할 탬플릿을 선택해주세요.</TitleView>
-                <GButton type="default" onPress={this.next}>완료</GButton>
+                <TitleView>작심삼십일의 동기를 설정해주세요</TitleView>
+                <GButton type="default" onPress={this.next}>다음</GButton>
             </Container>
         );
     }
 
     private next = () => {
         const { componentId } = this.props;
-        setStackRoot(componentId, SCREEN_IDS.ProjectScreen);
+        push(componentId, SCREEN_IDS.TemplateRegisterScreen);
     }
 }
 
-export default TemplateRegisterScreen;
+export default MotivationRegisterScreen;
