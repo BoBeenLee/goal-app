@@ -4,12 +4,6 @@
     ],
     "plugins": [
         [
-            "import",
-            {
-                "libraryName": "antd-mobile-rn"
-            }
-        ],
-        [
             "module-resolver",
             {
                 "cwd": "babelrc",
