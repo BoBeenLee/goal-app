@@ -4,25 +4,36 @@ import styled from "styled-components/native";
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
-import { PhraseCard } from "../../src/components";
+import { DayCard, PhraseCard } from "../../src/components";
 
 const Container = styled.View`
   flex: 1;
 `;
 
-const film = {
-  id: "ZmlsbXM6MQ==",
-  title: "A New Hope",
-  episodeID: 4,
-  created: "2014-12-10T14:23:31.880Z",
-  openingCrawl:
-    "It is a period of civil war.\r\nRebel spaceships, striking\r\nfrom a hidden base, have won\r\ntheir first victory against\r\nthe evil Galactic Empire.\r\n\r\nDuring the battle, Rebel\r\nspies managed to steal secret\r\nplans to the Empire's\r\nultimate weapon, the DEATH\r\nSTAR, an armored space\r\nstation with enough power\r\nto destroy an entire planet.\r\n\r\nPursued by the Empire's\r\nsinister agents, Princess\r\nLeia races home aboard her\r\nstarship, custodian of the\r\nstolen plans that can save her\r\npeople and restore\r\nfreedom to the galaxy....",
-  director: "George Lucas",
-  producers: ["Gary Kurtz", "Rick McCallum"]
-};
+const DayView = styled.View`
+  flex-direction: row;
+`;
+
+const ActiveDayView = styled(DayCard)`
+  margin-horizontal: 25px;
+`;
 
 storiesOf("Card", module)
   .addDecorator((getStory: any) => <Container>{getStory()}</Container>)
+  .add("DayCard", () => (
+    <DayView>
+      <DayCard
+        day="26"
+      />
+      <ActiveDayView
+        isActive={true}
+        day="27"
+      />
+      <DayCard
+        day="28"
+      />
+    </DayView>
+  ))
   .add("PhraseCard", () => (
     <PhraseCard
       title={"“내 어플이 사용되는 모습을 보고싶어”"}

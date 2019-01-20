@@ -5,3 +5,4 @@ export * from "./text";
 export * from "./input";
 export * from "./carousel";
 export * from "./button";
+export * from "./template";

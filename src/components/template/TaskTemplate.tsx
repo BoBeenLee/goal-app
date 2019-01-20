@@ -7,7 +7,7 @@ const Container = styled.View``;
 
 const TaskText = styled(GText)``;
 
-class TaskCheckBox extends Component {
+class TaskTemplate extends Component {
     public render() {
         return (
             <Container>
@@ -17,4 +17,4 @@ class TaskCheckBox extends Component {
     }
 }
 
-export default TaskCheckBox;
+export default TaskTemplate;
