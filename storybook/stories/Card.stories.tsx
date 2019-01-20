@@ -1,11 +1,10 @@
 import React from "react";
-import moment from "moment";
 import styled from "styled-components/native";
 
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
-import { FilmCard, TodoCard } from "../../src/components";
+import { PhraseCard } from "../../src/components";
 
 const Container = styled.View`
   flex: 1;
@@ -24,17 +23,8 @@ const film = {
 
 storiesOf("Card", module)
   .addDecorator((getStory: any) => <Container>{getStory()}</Container>)
-  .add("FilmCard", () => (
-    <FilmCard
-      title={film.title}
-      created={moment(film.created).format("YYYY-MM-DD")}
-      openingCrawl={film.openingCrawl}
+  .add("PhraseCard", () => (
+    <PhraseCard
+      title={"“내 어플이 사용되는 모습을 보고싶어”"}
     />
-  ))
-  .add("TodoCard", () => (
-    <React.Fragment>
-      <TodoCard order={1} content={"First"} />
-      <TodoCard order={2} content={"Second"} />
-      <TodoCard order={3} content={"Third"} />
-    </React.Fragment>
   ));

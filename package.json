@@ -10,7 +10,7 @@
     "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "android:release": "REACT_ENV=production node node_modules/react-native/local-cli/cli.js run-android --variant=release && open ./android/app/build/outputs/apk",
     "test": "jest",
-    "tsc": "tsc"
+    "build": "tsc"
   },
   "dependencies": {
     "@nozbe/watermelondb": "^0.10.0",

@@ -23,7 +23,6 @@ class AppScreen extends Component<IProps> {
   public render() {
     return (
       <Container>
-        <NavigateButton title="Throw Error" onPress={this.navigateThrowError} />
         <Text>Hello World</Text>
         <LottieView
           style={{
@@ -36,18 +35,6 @@ class AppScreen extends Component<IProps> {
         />
       </Container>
     );
-  }
-
-  private navigateThrowError = () => {
-    const { componentId } = this.props;
-    Navigation.push(componentId, {
-      component: {
-        name: "ErrorScreen",
-        options: {
-          animations: pushTransition as any
-        }
-      }
-    });
   }
 }
 

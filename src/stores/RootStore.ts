@@ -6,7 +6,7 @@ import SwapiStore from "./SwapiStore";
 const RootStore = types.model("RootStore", {
   todoStore: types.optional(TodoStore, {}),
   swapiStore: types.optional(SwapiStore, {})
-}).actions(self => {
+}).actions(__ => {
   const sendError = () => {
     throw new Error("Hello World");
   };

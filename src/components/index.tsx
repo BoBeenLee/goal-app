@@ -1,7 +1,6 @@
 export { default as ContainerWithStatusBar } from "./ContainerWithStatusBar";
-export { default as FilmCard } from "./card/FilmCard";
-export { default as TodoCard } from "./card/TodoCard";
 export { default as GTopBar } from "./GTopBar";
+export * from "./card";
 export * from "./text";
 export * from "./input";
 export * from "./carousel";

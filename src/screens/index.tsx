@@ -2,7 +2,6 @@ import _ from "lodash";
 import { Navigation } from "react-native-navigation";
 
 import AppScreen from "./AppScreen";
-import ErrorScreen from "./ErrorScreen";
 import TutorialScreen from "./TutorialScreen";
 import ProjectRegisterScreen from "./register/ProjectRegisterScreen";
 import TemplateRegisterScreen from "./register/TemplateRegisterScreen";
@@ -22,10 +21,6 @@ const REGISTER_SCREENS: IRegisterScreenProps[] = [
   {
     id: SCREEN_IDS.AppScreen,
     Component: AppScreen
-  },
-  {
-    id: SCREEN_IDS.ErrorScreen,
-    Component: ErrorScreen
   },
   {
     id: SCREEN_IDS.ProjectRegisterScreen,

@@ -4,7 +4,10 @@ import styled from "styled-components/native";
 import { ContainerWithStatusBar, GText } from '../components';
 
 const TitleView = styled.View`
-    padding-bottom: 13px;
+    margin-horizontal: 22px;
+    padding-vertical: 13px;
+    border-bottom-width: 1px;
+    border-bottom-color: #000;
 `;
 const Title = styled(GText)`
     font-size: 18px;
