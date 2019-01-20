@@ -6,3 +6,4 @@ export * from "./input";
 export * from "./carousel";
 export * from "./button";
 export * from "./template";
+export * from "./slider";
