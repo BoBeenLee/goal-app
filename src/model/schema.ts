@@ -16,6 +16,15 @@ export const mySchema = appSchema({
                 { name: 'created_at', type: 'number' },
                 { name: 'updated_at', type: 'number' }
             ]
+        }),
+        tableSchema({
+            name: 'project_day',
+            columns: [
+                { name: 'project_id', type: 'string', isIndexed: true },
+                { name: 'day', type: 'string' },
+                { name: 'templates_json', type: 'string', isOptional: true },
+                { name: 'created_at', type: 'number' }
+            ]
         })
     ]
 });
