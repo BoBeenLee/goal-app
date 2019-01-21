@@ -8,6 +8,7 @@ import TemplateRegisterScreen from "./register/TemplateRegisterScreen";
 import MotivationRegisterScreen from "./register/MotivationRegisterScreen";
 import ProjectScreen from "./ProjectScreen";
 import withStore from "../hoc/withStore";
+import withDatabase from "../hoc/withDatabase";
 import { SCREEN_IDS } from "./constant";
 import { withOverlay } from "../../ReactotronConfig";
 
@@ -46,6 +47,7 @@ const REGISTER_SCREENS: IRegisterScreenProps[] = [
 
 function registerScreens(store) {
   const withStoreAndOverlay = _.flow([
+    withDatabase,
     _.partial(withStore, _, store),
     withOverlay
   ]);
