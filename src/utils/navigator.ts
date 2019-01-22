@@ -1,4 +1,5 @@
 import { Navigation } from "react-native-navigation";
+import firebase from "react-native-firebase";
 
 import { pushTransition } from "../screens/styles/animation";
 import { SCREEN_IDS } from "../screens/constant";
@@ -6,6 +7,7 @@ import { delay } from "./common";
 import topbars from "../screens/styles/topbar";
 
 let isLoading = false;
+let currentComponentId: string | null = null;
 
 const start = () => {
     Navigation.setDefaultOptions({
@@ -26,7 +28,7 @@ const start = () => {
                 children: [
                     {
                         component: {
-                            name: SCREEN_IDS.TutorialScreen
+                            name: SCREEN_IDS.CrashScreen
                         }
                     }
                 ]
@@ -34,6 +36,15 @@ const start = () => {
         }
     });
 };
+
+const setCurrentComponent = (componentId: string, componentName: string) => {
+    currentComponentId = componentId;
+    firebase.analytics().setCurrentScreen(componentName);
+};
+
+const getCurrentComponent = () => {
+    return currentComponentId;
+}
 
 const protectedMultiClick = (func: any) => async (...args) => {
     if (!isLoading) {
@@ -44,7 +55,7 @@ const protectedMultiClick = (func: any) => async (...args) => {
     isLoading = false;
 }
 
-const setStackRoot = protectedMultiClick((componentId: string, nextComponentId: string, params?: object) => {
+const setStackRoot = (componentId: string, nextComponentId: string, params?: object) => protectedMultiClick(() => {
     Navigation.setStackRoot(componentId, {
         component: {
             name: nextComponentId,
@@ -54,10 +65,10 @@ const setStackRoot = protectedMultiClick((componentId: string, nextComponentId: 
             passProps: params
         }
     });
-});
+})(componentId, nextComponentId, params);
 
 
-const push = protectedMultiClick(async (componentId: string, nextComponentId: string, params?: object) => {
+const push = async (componentId: string, nextComponentId: string, params?: object) => await protectedMultiClick(async () => {
     Navigation.push(componentId, {
         component: {
             name: nextComponentId,
@@ -67,7 +78,11 @@ const push = protectedMultiClick(async (componentId: string, nextComponentId: st
             passProps: params
         }
     });
-});
+})(componentId, nextComponentId, params);
+
+const pop = (componentId: string) => {
+    Navigation.pop(componentId);
+}
 
 
-export { start, setStackRoot, push };
+export { setCurrentComponent, start, setStackRoot, getCurrentComponent, push, pop };

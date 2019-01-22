@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 apply plugin: 'kotlin-android'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: "io.fabric"
 
 import com.android.build.OutputFile
 
@@ -176,6 +177,9 @@ dependencies {
     implementation project(':react-native-navigation')
     implementation project(':watermelondb')
     implementation project(':react-native-firebase')
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') {
+        transitive = true
+    }
 
     // Firebase dependencies
     implementation "com.google.android.gms:play-services-base:16.0.1"

@@ -15,6 +15,7 @@ import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
 import com.brentvatne.react.ReactVideoPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
+import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +49,8 @@ public class MainApplication extends NavigationApplication {
                 new WatermelonDBPackage(),
                 new RNFirebasePackage(),
                 new ReactVideoPackage(),
-                new LottiePackage()
+                new LottiePackage(),
+                new RNFirebaseCrashlyticsPackage()
         );
     }
 

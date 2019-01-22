@@ -7,6 +7,7 @@ import ProjectRegisterScreen from "./register/ProjectRegisterScreen";
 import TemplateRegisterScreen from "./register/TemplateRegisterScreen";
 import MotivationRegisterScreen from "./register/MotivationRegisterScreen";
 import ProjectScreen from "./ProjectScreen";
+import CrashScreen from "./CrashScreen";
 import withStore from "../hoc/withStore";
 import withDatabase from "../hoc/withDatabase";
 import { SCREEN_IDS } from "./constant";
@@ -42,6 +43,10 @@ const REGISTER_SCREENS: IRegisterScreenProps[] = [
   {
     id: SCREEN_IDS.ProjectScreen,
     Component: ProjectScreen
+  },
+  {
+    id: SCREEN_IDS.CrashScreen,
+    Component: CrashScreen
   }
 ]
 
