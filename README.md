@@ -1,6 +1,11 @@
 ## Goal App
+골인
 
-### Library
-package.json
-
-
+### Stack
+- React
+- React Native
+- Lottie React Native
+- Storybook
+- Styled-Component
+- WatermelonDB
+- Typescript
