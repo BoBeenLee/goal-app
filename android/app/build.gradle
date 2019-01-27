@@ -177,9 +177,7 @@ dependencies {
     implementation project(':react-native-navigation')
     implementation project(':watermelondb')
     implementation project(':react-native-firebase')
-    implementation('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') {
-        transitive = true
-    }
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.7'
 
     // Firebase dependencies
     implementation "com.google.android.gms:play-services-base:16.0.1"
