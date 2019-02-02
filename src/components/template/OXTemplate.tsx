@@ -44,7 +44,6 @@ class OXTemplate extends Component {
             <Container>
                 <Header>
                     <Title>체크하기</Title>
-                    <EditButton type="default">수정</EditButton>
                 </Header>
                 <Content>
                     <OXTouchabledView>

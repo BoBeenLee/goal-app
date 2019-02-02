@@ -15,6 +15,9 @@ interface IProps {
 const TouchabledContainer = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  background-color: #eee;
+  border-radius: 10px;
 `;
 
 const Container = styled(GText)``;

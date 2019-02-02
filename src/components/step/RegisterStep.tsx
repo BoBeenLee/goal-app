@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import styled from "styled-components/native";
-import { GText } from '../text';
 import _ from 'lodash';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
+import { ViewProps } from 'react-native';
+
+import { GText } from '../text';
 
 interface IProps {
+    style?: ViewProps["style"];
     totalStep: number;
     currentStep: number;
 }
@@ -14,9 +16,13 @@ interface IStates {
     height: number;
 }
 
+const ContainerOutterView = styled.View`
+    padding: 30px;
+`;
+
 const Container = styled.View`
-    flex-direction: row;
     width: 100%;
+    flex-direction: row;
 `;
 
 const StepsView = styled.View`
@@ -69,41 +75,33 @@ class RegisterStep extends Component<IProps, IStates> {
     }
 
     public render() {
-        const { totalStep, currentStep } = this.props;
+        const { style, totalStep, currentStep } = this.props;
         return (
-            <Container onLayout={this.onStepLayout}>
-                <StepBarsView>
-                    <ActiveStepBar
-                        style={{
-                            flex: (currentStep - 1)
-                        }}
-                    />
-                    <InActiveStepBar
-                        style={{
-                            flex: (totalStep - 1) - (currentStep - 1)
-                        }}
-                    />
-                </StepBarsView>
-                <StepsView>
-                    {_.times(totalStep, stepIndex => {
-                        const isActive = stepIndex <= (currentStep - 1);
-                        return (<StepView key={`step${stepIndex}`} isActive={isActive} >
-                            <StepName>{stepIndex + 1}</StepName>
-                        </StepView>);
-                    })}
-                </StepsView>
-            </Container>
+            <ContainerOutterView style={style} >
+                <Container onLayout={this.onStepLayout}>
+                    <StepBarsView>
+                        <ActiveStepBar
+                            style={{
+                                flex: (currentStep - 1)
+                            }}
+                        />
+                        <InActiveStepBar
+                            style={{
+                                flex: (totalStep - 1) - (currentStep - 1)
+                            }}
+                        />
+                    </StepBarsView>
+                    <StepsView>
+                        {_.times(totalStep, stepIndex => {
+                            const isActive = stepIndex <= (currentStep - 1);
+                            return (<StepView key={`step${stepIndex}`} isActive={isActive} >
+                                <StepName>{stepIndex + 1}</StepName>
+                            </StepView>);
+                        })}
+                    </StepsView>
+                </Container>
+            </ContainerOutterView>
         );
-    }
-
-    private getStepWidthByStepIndex = (index: number) => {
-        const totalStepWidth = this.state.width;
-        if (!totalStepWidth) {
-            return;
-        }
-        const { totalStep } = this.props;
-        console.log(index, totalStepWidth * (index / totalStep), totalStepWidth);
-        return totalStepWidth * (index / totalStep);
     }
 
     private onStepLayout = (event: any) => {

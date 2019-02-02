@@ -12,6 +12,8 @@ import withStore from "../hoc/withStore";
 import withDatabase from "../hoc/withDatabase";
 import { SCREEN_IDS } from "./constant";
 import { withOverlay } from "../../ReactotronConfig";
+import StartScreen from "./register/StartScreen";
+import CompleteScreen from "./register/CompleteScreen";
 
 interface IRegisterScreenProps {
   id: string;
@@ -47,6 +49,14 @@ const REGISTER_SCREENS: IRegisterScreenProps[] = [
   {
     id: SCREEN_IDS.CrashScreen,
     Component: CrashScreen
+  },
+  {
+    id: SCREEN_IDS.StartScreen,
+    Component: StartScreen
+  },
+  {
+    id: SCREEN_IDS.CompleteScreen,
+    Component: CompleteScreen
   }
 ]
 
