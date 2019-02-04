@@ -13,6 +13,7 @@
       android:theme="@style/AppTheme">
       <activity
         android:name="com.nexters.goal.MainActivity"
+          android:launchMode="singleTask"
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
           android:screenOrientation="portrait"
@@ -21,6 +22,13 @@
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
+      <intent-filter>
+          <action android:name="android.intent.action.VIEW"/>
+          <category android:name="android.intent.category.DEFAULT"/>
+          <category android:name="android.intent.category.BROWSABLE"/>
+          <data android:host="goalnexters.page.link" android:scheme="http"/>
+          <data android:host="goalnexters.page.link" android:scheme="https"/>
+      </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     </application>

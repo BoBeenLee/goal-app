@@ -8,6 +8,7 @@ target 'myapp' do
   pod 'Fabric', '~> 1.7.13'
   pod 'Crashlytics', '~> 3.10.7'
   pod 'Firebase/Core', '~> 5.11.0'
+  pod 'Firebase/DynamicLinks', '~> 5.11.0'
   pod 'GoogleAppMeasurement', '5.3'
 
   # Pods for myapp
