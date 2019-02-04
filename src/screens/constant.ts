@@ -1,5 +1,6 @@
 const SCREEN_IDS = {
-  AppScreen: "AppScreen",
+  AppScreen: "app.AppScreen",
+  DynamicLinkScreen: "app.DynamicLinkScreen",
   ProjectRegisterScreen: "app.ProjectRegisterScreen",
   TemplateRegisterScreen: "app.TemplateRegisterScreen",
   MotivationRegisterScreen: "app.MotivationRegisterScreen",

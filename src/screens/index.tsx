@@ -14,6 +14,7 @@ import { SCREEN_IDS } from "./constant";
 import { withOverlay } from "../../ReactotronConfig";
 import StartScreen from "./register/StartScreen";
 import CompleteScreen from "./register/CompleteScreen";
+import DynamicLinkScreen from "./DynamicLinkScreen";
 
 interface IRegisterScreenProps {
   id: string;
@@ -57,6 +58,10 @@ const REGISTER_SCREENS: IRegisterScreenProps[] = [
   {
     id: SCREEN_IDS.CompleteScreen,
     Component: CompleteScreen
+  },
+  {
+    id: SCREEN_IDS.DynamicLinkScreen,
+    Component: DynamicLinkScreen
   }
 ]
 
