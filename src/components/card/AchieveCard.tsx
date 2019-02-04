@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
 import styled from "styled-components/native";
+import { ViewProps } from 'react-native';
 
 import { Title, Date, GText } from "../text";
+import { GButton } from '../button';
+
+interface IProps {
+    style?: ViewProps["style"];
+}
 
 const Container = styled.TouchableOpacity`
-    flex: 1;
     background-color: #E2E2E2;
     justify-content: space-between;
-    padding-vertical: 54px; 
     padding-horizontal: 30px;
     border-radius: 19px;
 `;
 
-const Header = styled.View`
-    
-`;
+const Header = styled.View``;
 
 const AchieveTitle = styled(Title)`
     padding-horizontal: 0;
 `;
 
-const AchieveDate = styled(Date)``;
+const Content = styled.View`
+    flex-direction: row;
+`;
 
 const AchievePercentView = styled.View``;
 
@@ -39,18 +43,32 @@ const AchievePercentSign = styled(GText)`
     color: #656565;
 `;
 
-class AchieveCard extends Component {
-    render() {
+const ContentRightView = styled.View`
+    flex: 1;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+`;
+
+const AlarmButton = styled(GButton)``;
+const MidTermAbandonButton = styled(GButton)``;
+
+class AchieveCard extends Component<IProps> {
+    public render() {
+        const { style } = this.props;
         return (
-            <Container>
-                <Header>
-                    <AchieveTitle>하루에 10분간 책 읽기</AchieveTitle>
-                    <AchieveDate>2018.10.12 ~ 11.10</AchieveDate>
-                </Header>
-                <AchievePercentView>
-                    <AchievePercentName>달성률</AchievePercentName>
-                    <AchievePercent>90<AchievePercentSign>%</AchievePercentSign></AchievePercent>
-                </AchievePercentView>
+            <Container style={style}>
+                <Content>
+                    <AchieveTitle>지금의 목표</AchieveTitle>
+                    <AchievePercentView>
+                        <AchievePercentName>달성률</AchievePercentName>
+                        <AchievePercent>90<AchievePercentSign>%</AchievePercentSign></AchievePercent>
+                    </AchievePercentView>
+                    <ContentRightView>
+                        <AlarmButton type="default">알람</AlarmButton>
+                        <MidTermAbandonButton type="default">중도포기</MidTermAbandonButton>
+                    </ContentRightView>
+                </Content>
             </Container>
         );
     }

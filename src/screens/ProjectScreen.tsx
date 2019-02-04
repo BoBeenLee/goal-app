@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 
-import { CommentTemplate, ContainerWithStatusBar, DayCard, GText, PhraseCard, OXTemplate } from '../components';
+import { CommentTemplate, ContainerWithStatusBar, DayCard, GText, PhraseCard, OXTemplate, AchieveCard } from '../components';
 
 const Container = styled(ContainerWithStatusBar)`
     flex: 1;
@@ -18,19 +18,8 @@ const Title = styled(GText)`
     font-weight: bold;
 `;
 
-const DayView = styled.View`
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 25px;
-`;
-
-const ActiveDayView = styled(DayCard)`
-  margin-horizontal: 25px;
-`;
-
-const PhraseView = styled(PhraseCard)`
-  margin-vertical: 22px;
-  margin-horizontal: 46px;
+const AchiveCardView = styled(AchieveCard)`
+    height: 176px;
 `;
 
 const TemplateView = styled.View`
@@ -52,23 +41,7 @@ class ProjectScreen extends Component {
                 <TitleView>
                     <Title>하루에 30분씩 홀트</Title>
                 </TitleView>
-                <DayView>
-                    <DayCard
-                        day="26"
-                    />
-                    <ActiveDayView
-                        isActive={true}
-                        day="27"
-                    />
-                    <DayCard
-                        day="28"
-                    />
-                </DayView>
-                <PhraseView title="“내 어플이 사용되는 모습을 보고싶어”" />
-                <TemplateView>
-                    <OXTemplate />
-                    <CommentView />
-                </TemplateView>
+                <AchiveCardView />
             </Container>
         );
     }
