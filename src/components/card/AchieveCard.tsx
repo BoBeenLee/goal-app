@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import styled from "styled-components/native";
 import { ViewProps } from 'react-native';
 
-import { Title, Date, GText } from "../text";
+import { Title, GText } from "../text";
 import { GButton } from '../button';
 
 interface IProps {
     style?: ViewProps["style"];
+    title: string;
+    onAchievePress: () => void;
 }
 
 const Container = styled.TouchableOpacity`
@@ -33,17 +35,17 @@ const Content = styled.View`
 const AchievePercentView = styled.View``;
 
 const AchievePercentName = styled(GText)`
-    font-size: 20px;
+    font-size: 12px;
     color: #606060;
 `;
 
 const AchievePercent = styled(GText)`
-    font-size: 72px;
+    font-size: 40px;
     color: #606060;
 `;
 
 const AchievePercentSign = styled(GText)`
-    font-size: 30px;
+    font-size: 16px;
     color: #656565;
 `;
 
@@ -67,10 +69,10 @@ const MidTermAbandonButton = styled(CommonButtonStyled)``;
 
 class AchieveCard extends Component<IProps> {
     public render() {
-        const { style } = this.props;
+        const { style, title, onAchievePress } = this.props;
         return (
-            <Container style={style}>
-                <AchieveTitle>지금의 목표</AchieveTitle>
+            <Container style={style} onPress={onAchievePress}>
+                <AchieveTitle>{title}</AchieveTitle>
                 <Content>
 
                     <AchievePercentView>

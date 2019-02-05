@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
-import { AchieveCard, DayCard, PhraseCard } from "../../src/components";
+import { AchieveCard, AchieveHistoryCard, DayCard, PhraseCard } from "../../src/components";
 
 const Container = styled.View`
   flex: 1;
@@ -26,6 +26,15 @@ storiesOf("Card", module)
   .addDecorator((getStory: any) => <Container>{getStory()}</Container>)
   .add("AchieveCard", () => (
     <AchieveCardView
+      title={`어플 완성하고
+런칭하기`}
+      onAchievePress={action("onAchievePress")}
+    />
+  ))
+  .add("AchieveHistoryCard", () => (
+    <AchieveHistoryCard
+      title={`어플 완성하고
+런칭하기`}
     />
   ))
   .add("DayCard", () => (
