@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 
-import { GButton } from "../components";
+import { GButton, ContainerWithStatusBar } from "../components";
 
-const Container = styled.View``;
+const Container = styled(ContainerWithStatusBar)``;
 
 const LinkButton = styled(GButton)``;
 

@@ -84,5 +84,31 @@ const pop = (componentId: string) => {
     Navigation.pop(componentId);
 }
 
+const navigateDynamicLink = () => {
+    Navigation.setDefaultOptions({
+        layout: {
+            backgroundColor: "#fff",
+            orientation: ["portrait"]
+        },
+        statusBar: {
+            backgroundColor: "white",
+            style: "dark"
+        },
+        topBar: topbars.emptyTopBar()
+    });
 
-export { setCurrentComponent, start, setStackRoot, getCurrentComponent, push, pop };
+    Navigation.setRoot({
+        root: {
+            stack: {
+                children: [
+                    {
+                        component: {
+                            name: SCREEN_IDS.DynamicLinkScreen
+                        }
+                    }
+                ]
+            }
+        }
+    });
+};
+export { setCurrentComponent, start, setStackRoot, getCurrentComponent, push, pop, navigateDynamicLink };
