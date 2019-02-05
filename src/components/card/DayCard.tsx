@@ -11,28 +11,34 @@ interface IProps {
 }
 
 const ActiveCSS = css`
-    padding: 23px;
-    border-radius: 50px;
-    background-color: #eee;
+    background-color: #787878;
+`;
+
+const InActiveCSS = css`
+    border-width: 1px;
+    border-color: #eee;
 `;
 
 const InActiveTextCSS = css`
-    font-size: 40px;
-    color: #eee;
-`;
-
-const ActiveTextCSS = css`
-    font-size: 54px;
     color: #000;
 `;
 
+const ActiveTextCSS = css`
+    color: #fff;
+`;
+
 const Container = styled.TouchableHighlight.attrs<{ isActive?: boolean }>({})`
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
     justify-content: center;
     align-items: center;
-    ${({ isActive }) => isActive ? ActiveCSS : ''}
+    background-color: #fff;
+    ${({ isActive }) => isActive ? ActiveCSS : InActiveCSS}
 `;
 
 const DayText = styled(GText).attrs<{ isActive?: boolean }>({})`
+    font-size: 27px;
     ${({ isActive }) => isActive ? ActiveTextCSS : InActiveTextCSS}
 `;
 
