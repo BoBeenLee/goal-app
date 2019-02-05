@@ -10,6 +10,10 @@ const Container = styled.View`
   flex: 1;
 `;
 
+const AchieveCardView = styled(AchieveCard)`
+  height: 200px;
+`;
+
 const DayView = styled.View`
   flex-direction: row;
 `;
@@ -21,7 +25,7 @@ const ActiveDayView = styled(DayCard)`
 storiesOf("Card", module)
   .addDecorator((getStory: any) => <Container>{getStory()}</Container>)
   .add("AchieveCard", () => (
-    <AchieveCard
+    <AchieveCardView
     />
   ))
   .add("DayCard", () => (

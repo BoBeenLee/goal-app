@@ -10,10 +10,14 @@ interface IProps {
 }
 
 const Container = styled.TouchableOpacity`
-    background-color: #E2E2E2;
+    background-color: #fff;
     justify-content: space-between;
     padding-horizontal: 30px;
     border-radius: 19px;
+    shadow-color: #330000;
+    shadow-offset: 0px 1px;
+    shadow-opacity: 0.4;
+    shadow-radius: 2;
 `;
 
 const Header = styled.View``;
@@ -50,16 +54,25 @@ const ContentRightView = styled.View`
     align-items: center;
 `;
 
-const AlarmButton = styled(GButton)``;
-const MidTermAbandonButton = styled(GButton)``;
+
+const CommonButtonStyled = styled(GButton).attrs({
+    textStyle: {
+        color: "#E0B8B8"
+    }
+})`
+    background-color: transparent;
+`;
+const AlarmButton = styled(CommonButtonStyled)``;
+const MidTermAbandonButton = styled(CommonButtonStyled)``;
 
 class AchieveCard extends Component<IProps> {
     public render() {
         const { style } = this.props;
         return (
             <Container style={style}>
+                <AchieveTitle>지금의 목표</AchieveTitle>
                 <Content>
-                    <AchieveTitle>지금의 목표</AchieveTitle>
+
                     <AchievePercentView>
                         <AchievePercentName>달성률</AchievePercentName>
                         <AchievePercent>90<AchievePercentSign>%</AchievePercentSign></AchievePercent>
