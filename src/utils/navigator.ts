@@ -28,7 +28,7 @@ const start = () => {
                 children: [
                     {
                         component: {
-                            name: SCREEN_IDS.ProjectScreen
+                            name: SCREEN_IDS.ProjectDaysScreen
                         }
                     }
                 ]

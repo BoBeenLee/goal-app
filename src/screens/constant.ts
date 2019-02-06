@@ -7,6 +7,7 @@ const SCREEN_IDS = {
   TutorialScreen: "app.TutorialScreen",
   ProjectScreen: "app.ProjectScreen",
   ProjectDaysScreen: "app.ProjectDaysScreen",
+  ProjectDayDetailScreen: "app.ProjectDayDetailScreen",
   CrashScreen: "app.CrashScreen",
   StartScreen: "app.StartScreen",
   CompleteScreen: "app.CompleteScreen"

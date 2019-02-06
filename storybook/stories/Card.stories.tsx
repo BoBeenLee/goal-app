@@ -3,7 +3,6 @@ import styled from "styled-components/native";
 
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
-import { linkTo } from "@storybook/addon-links";
 import { AchieveCard, AchieveHistoryCard, DayCard, PhraseCard, DaysCard } from "../../src/components";
 
 const Container = styled.View`
@@ -15,7 +14,7 @@ const AchieveCardView = styled(AchieveCard)`
 `;
 
 const DayView = styled.View`
-  flex-direction: row;
+  flex: 1;
 `;
 
 const ActiveDayView = styled(DayCard)`
@@ -39,7 +38,18 @@ storiesOf("Card", module)
   ))
   .add("DaysCard", () => (
     <DayView>
-      <DaysCard />
+      <DaysCard verticalType="left" DayCards={<React.Fragment>
+        <DayCard day={"1"} />
+        <DayCard day={"2"} />
+        <DayCard day={"3"} /></React.Fragment>} />
+      <DaysCard verticalType="right" DayCards={<React.Fragment>
+        <DayCard day={"1"} />
+        <DayCard day={"2"} />
+        <DayCard day={"3"} /></React.Fragment>} />
+      <DaysCard verticalType="none" DayCards={<React.Fragment>
+        <DayCard day={"1"} />
+        <DayCard day={"2"} />
+        <DayCard day={"3"} /></React.Fragment>} />
     </DayView>
   ))
   .add("DayCard", () => (

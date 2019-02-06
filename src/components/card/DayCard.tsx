@@ -8,6 +8,7 @@ interface IProps {
     style?: TouchableHighlightProps["style"];
     isActive?: boolean;
     day: string;
+    onPress: () => void;
 }
 
 const ActiveCSS = css`
@@ -43,11 +44,11 @@ const DayText = styled(GText).attrs<{ isActive?: boolean }>({})`
 `;
 
 class DayCard extends Component<IProps> {
-    render() {
-        const { style, isActive, day } = this.props;
+    public render() {
+        const { style, isActive, day, onPress } = this.props;
 
         return (
-            <Container style={style} isActive={isActive} activeOpacity={1}>
+            <Container style={style} isActive={isActive} activeOpacity={1} onPress={onPress}>
                 <DayText isActive={isActive}>{day}</DayText>
             </Container>
         );

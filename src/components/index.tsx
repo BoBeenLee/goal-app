@@ -1,5 +1,5 @@
 export { default as ContainerWithStatusBar } from "./ContainerWithStatusBar";
-export { default as GTopBar } from "./GTopBar";
+export * from "./topbar";
 export * from "./card";
 export * from "./text";
 export * from "./input";
