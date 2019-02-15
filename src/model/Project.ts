@@ -1,6 +1,12 @@
 import { date, readonly, field } from '@nozbe/watermelondb/decorators';
 import { Model } from '@nozbe/watermelondb';
 
+export type TemplateType = "OX";
+
+export interface ITemplateProps {
+    type: TemplateType;
+}
+
 export default class Project extends Model {
     static table = 'project';
 
