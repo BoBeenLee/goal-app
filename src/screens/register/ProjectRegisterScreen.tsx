@@ -15,6 +15,10 @@ interface IProps extends IInject {
     componentId: string;
 }
 
+interface IStates {
+    projectName: string;
+}
+
 const Container = styled(ContainerWithStatusBar)``;
 
 const Content = styled.View`
@@ -33,24 +37,44 @@ const NextButton = styled(GButton)`
 `;
 
 
-class ProjectRegisterScreen extends Component<IProps> {
+class ProjectRegisterScreen extends Component<IProps, IStates> {
+    constructor(props: IProps) {
+        super(props);
+        this.state = {
+            projectName: ""
+        };
+    }
+
     public render() {
+        const { projectName } = this.state;
         console.log(this.props.projects);
         return (
             <Container>
                 <Content>
                     <RegisterStepView totalStep={3} currentStep={1} />
                     <TitleView>작심삼십일의 목표를 설정해주세요</TitleView>
-                    <ProductNameInput />
+                    <ProductNameInput
+                        onChangeText={this.onProjectNameChangeText}
+                        value={projectName}
+                    />
                 </Content>
                 <NextButton type="default" onPress={this.next}>다음</NextButton>
             </Container>
         );
     }
 
+    private onProjectNameChangeText = (text: string) => {
+        this.setState({
+            projectName: text
+        });
+    }
+
     private next = () => {
+        const { projectName } = this.state;
         const { componentId } = this.props;
-        push(componentId, SCREEN_IDS.MotivationRegisterScreen);
+        push(componentId, SCREEN_IDS.MotivationRegisterScreen, {
+            projectName
+        });
     }
 }
 
