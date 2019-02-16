@@ -1,3 +1,4 @@
+import Images from "assets-image";
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 
@@ -11,7 +12,6 @@ interface IProps {
 
 const Container = styled(ContainerWithStatusBar)`
     flex: 1;
-    align-items: center;
 `;
 
 const Title = styled(GText).attrs({
@@ -20,6 +20,7 @@ const Title = styled(GText).attrs({
     font-size: 30px;
     letter-spacing: -0.6;
     padding-top: 104px;
+    padding-horizontal: 25px;
 `;
 
 const HighlightTitle = styled(GText).attrs({
@@ -31,9 +32,13 @@ const HighlightTitle = styled(GText).attrs({
 
 const CharacterView = styled.View`
     flex: 1;
+    padding-top: 45px;
 `;
 
-const CharacterImage = styled.View``;
+const CharacterImage = styled.Image`
+    width: 265px;
+    height: 316px;
+`;
 
 const StartButtonView = styled.View`
     width: 100%;
@@ -55,7 +60,7 @@ class StartScreen extends Component<IProps> {
                     <HighlightTitle>30일의 여정</HighlightTitle>을{"\n"}저와 함께 시작해볼까요?
                 </Title>
                 <CharacterView>
-                    <CharacterImage />
+                    <CharacterImage source={Images.start_yellow_character} />
                 </CharacterView>
                 <StartButtonView>
                     <StartButton type="cerulean" onPress={this.navigateRegister}>시작하기</StartButton>

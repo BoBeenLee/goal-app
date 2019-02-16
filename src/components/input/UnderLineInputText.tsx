@@ -11,7 +11,6 @@ interface IProps extends GInputTextProps {
 }
 
 const Container = styled.View`
-    width: 100%;
     padding: 5px 7px;
     border-bottom-width: 1px;
     border-bottom-color: ${colors.gunmetal};

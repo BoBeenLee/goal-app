@@ -6,7 +6,13 @@ const images = {
     check_box_active: require("./check_box_active.png"),
     btn_back_arrow: require("./btn_back_arrow.png"),
     btn_up_arrow: require("./btn_up_arrow.png"),
-    btn_down_arrow: require("./btn_down_arrow.png")
+    btn_down_arrow: require("./btn_down_arrow.png"),
+    select_number_1: require("./select_number_1.gif"),
+    select_number_2: require("./select_number_2.gif"),
+    select_number_3: require("./select_number_3.gif"),
+    start_yellow_character: require("./start_yellow_character.gif"),
+    project_red_character: require("./project_red_character.gif"),
+    motivate_blue_character: require("./motivate_blue_character.gif")
 };
 
 export default images;

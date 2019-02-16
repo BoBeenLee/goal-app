@@ -80,8 +80,8 @@ class AchieveCard extends Component<IProps> {
                         <AchievePercent>90<AchievePercentSign>%</AchievePercentSign></AchievePercent>
                     </AchievePercentView>
                     <ContentRightView>
-                        <AlarmButton type="default">알람</AlarmButton>
-                        <MidTermAbandonButton type="default">중도포기</MidTermAbandonButton>
+                        <AlarmButton type="cerulean">알람</AlarmButton>
+                        <MidTermAbandonButton type="cerulean">중도포기</MidTermAbandonButton>
                     </ContentRightView>
                 </Content>
             </Container>

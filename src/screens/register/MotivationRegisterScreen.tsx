@@ -20,7 +20,6 @@ const Container = styled(ContainerWithStatusBar)``;
 
 const Content = styled.View`
     flex: 1;
-    padding-horizontal: 26px;
 `;
 
 
@@ -29,11 +28,12 @@ const RegisterStepView = styled(RegisterStep)``;
 const Title = styled(GText).attrs({
     weightType: "light"
 })`
-    font-size: 30px;
+     font-size: 30px;
     color: ${colors.gunmetal};
     letter-spacing: -0.5;
-    margin-top: 33px;
-    margin-bottom: 35px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-horizontal: 26px;
 `;
 
 
@@ -42,20 +42,31 @@ const BackButton = styled(IconButton)`
     height: 18px;
     margin-top: 23px;
     margin-bottom: 18px;
+    margin-horizontal: 26px;
 `;
 
-const MotivationNameInput = styled(UnderLineInputText)`
+const MotivationNameInput = styled(UnderLineInputText).attrs({
+    containerStyle: {
+        marginLeft: 26,
+        marginRight: 26
+    }
+})`
     height: 40px;
 `;
 
 const CharacterView = styled.View`
     flex: 1;
+    align-items: flex-end;
+    padding-top: 20px;
 `;
 
-const CharacterImage = styled.View``;
-
+const CharacterImage = styled.Image`
+    width: 225px;
+    height: 262px;
+`;
 
 const NextButton = styled(GButton)`
+    margin-horizontal: 26px;
     margin-bottom: 19px;
 `;
 
@@ -82,7 +93,7 @@ class MotivationRegisterScreen extends Component<IProps, IStates> {
                         placeholderTextColor={colors.cloudyBlue}
                     />
                     <CharacterView>
-                        <CharacterImage />
+                        <CharacterImage source={Images.motivate_blue_character} />
                     </CharacterView>
                     <NextButton type="cerulean" onPress={this.next}>다음</NextButton>
                 </Content>

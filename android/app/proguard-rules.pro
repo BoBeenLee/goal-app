@@ -18,3 +18,8 @@
 
 -keep class io.invertase.firebase.** { *; }
 -dontwarn io.invertase.firebase.**
+
+
+-keep class com.facebook.imagepipeline.animated.factory.AnimatedFactoryImpl {
+  public AnimatedFactoryImpl(com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, com.facebook.imagepipeline.core.ExecutorSupplier);
+}
