@@ -1,16 +1,42 @@
-import React, { Component } from 'react';
-import { TextProperties } from 'react-native';
+import React, { SFC } from "react";
+import { StyleSheet, TextProperties } from "react-native";
 import styled from "styled-components/native";
 
-const Container = styled.Text``;
+export type WeightType = "bold" | "medium" | "regular" | "light";
 
-class GText extends Component<TextProperties> {
-    public render() {
-        const { children } = this.props;
-        return (
-            <Container {...this.props}>{children}</Container>
-        );
-    }
+interface IProps extends TextProperties {
+    weightType?: WeightType;
 }
+export type ICMTextProps = IProps;
+
+const styles = StyleSheet.create({
+    textStyle: {
+        includeFontPadding: false,
+        textAlignVertical: "center"
+    }
+});
+
+const WEIGHT_MAP = {
+    bold: "SpoqaHanSans-Bold",
+    light: "SpoqaHanSans-Light",
+    regular: "SpoqaHanSans-Regular"
+};
+
+const Text = styled.Text.attrs<IProps>({})`
+  font-family: ${({ weightType }) => WEIGHT_MAP[weightType!]};
+`;
+
+const GText: SFC<IProps> = ({ children, style, ...props }) => {
+    return (
+        <Text {...props} style={[styles.textStyle, style]}>
+            {children}
+        </Text>
+    );
+};
+
+GText.defaultProps = {
+    allowFontScaling: false,
+    weightType: "regular"
+};
 
 export default GText;

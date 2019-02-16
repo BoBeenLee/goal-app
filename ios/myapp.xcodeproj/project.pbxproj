@@ -29,6 +29,9 @@
 		1BAED4EBF0A4496CAC47CDC4 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39DAA50C93EB44AB988D7A8B /* Entypo.ttf */; };
 		1F0575C3EEC093740D3A54EC /* libPods-myappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 685769A8F8BDEC352244284C /* libPods-myappTests.a */; };
 		261157FC4AD54D7481D266BC /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8D1F3354A95472E8350A1A0 /* FontAwesome5_Brands.ttf */; };
+		270F32A62217B66E004EBE97 /* SpoqaHanSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 270F32A32217B66E004EBE97 /* SpoqaHanSans-Bold.ttf */; };
+		270F32A72217B66E004EBE97 /* SpoqaHanSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 270F32A42217B66E004EBE97 /* SpoqaHanSans-Light.ttf */; };
+		270F32A82217B66E004EBE97 /* SpoqaHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 270F32A52217B66E004EBE97 /* SpoqaHanSans-Regular.ttf */; };
 		2749DE4321DB4FF00087BBC9 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2749DE4221DB4FEF0087BBC9 /* Empty.swift */; };
 		276BEB2821A5970D00086EFA /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 276BEB2421A596ED00086EFA /* libReactNativeNavigation.a */; };
 		27B081EE21E111A10012030A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27B081C221E111A10012030A /* GoogleService-Info.plist */; };
@@ -489,6 +492,9 @@
 		14AE2CB84F68449BACE1445B /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		19E6BD1CDB964D729C5F1E48 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		1C1E296A1C16472B839B0477 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
+		270F32A32217B66E004EBE97 /* SpoqaHanSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SpoqaHanSans-Bold.ttf"; path = "../assets/fonts/SpoqaHanSans-Bold.ttf"; sourceTree = "<group>"; };
+		270F32A42217B66E004EBE97 /* SpoqaHanSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SpoqaHanSans-Light.ttf"; path = "../assets/fonts/SpoqaHanSans-Light.ttf"; sourceTree = "<group>"; };
+		270F32A52217B66E004EBE97 /* SpoqaHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SpoqaHanSans-Regular.ttf"; path = "../assets/fonts/SpoqaHanSans-Regular.ttf"; sourceTree = "<group>"; };
 		2749DE3A21DB4D230087BBC9 /* WatermelonDB.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WatermelonDB.xcodeproj; path = "../node_modules/@nozbe/watermelondb/native/ios/WatermelonDB.xcodeproj"; sourceTree = "<group>"; };
 		2749DE4121DB4FEF0087BBC9 /* myapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		2749DE4221DB4FEF0087BBC9 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
@@ -779,6 +785,9 @@
 		2A10B7838AB64F788659FD40 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				270F32A32217B66E004EBE97 /* SpoqaHanSans-Bold.ttf */,
+				270F32A42217B66E004EBE97 /* SpoqaHanSans-Light.ttf */,
+				270F32A52217B66E004EBE97 /* SpoqaHanSans-Regular.ttf */,
 				39DAA50C93EB44AB988D7A8B /* Entypo.ttf */,
 				14AE2CB84F68449BACE1445B /* EvilIcons.ttf */,
 				B89353BC610E41F8990D9DD6 /* Feather.ttf */,
@@ -1549,6 +1558,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				270F32A72217B66E004EBE97 /* SpoqaHanSans-Light.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				1BAED4EBF0A4496CAC47CDC4 /* Entypo.ttf in Resources */,
@@ -1560,12 +1570,14 @@
 				D1867A1082794954B86AF22C /* FontAwesome5_Solid.ttf in Resources */,
 				D0163ACEC3AA4CC7A4628BC7 /* Foundation.ttf in Resources */,
 				AAB3B7AC303147F58AC9666B /* Ionicons.ttf in Resources */,
+				270F32A62217B66E004EBE97 /* SpoqaHanSans-Bold.ttf in Resources */,
 				E1274929D08444979B5A2472 /* MaterialCommunityIcons.ttf in Resources */,
 				27B081EE21E111A10012030A /* GoogleService-Info.plist in Resources */,
 				60580AC0FE344E3B8DF40B6F /* MaterialIcons.ttf in Resources */,
 				7BD300844C364E688572EA86 /* Octicons.ttf in Resources */,
 				5FA22B85F33F4120B86CFDA6 /* SimpleLineIcons.ttf in Resources */,
 				05015F0F617D4F919769DB42 /* Zocial.ttf in Resources */,
+				270F32A82217B66E004EBE97 /* SpoqaHanSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
