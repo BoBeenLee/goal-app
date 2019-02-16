@@ -4,9 +4,11 @@ import _ from 'lodash';
 import { ViewProps } from 'react-native';
 
 import { GText } from '../text';
+import { colors } from '../../styles';
 
 interface IProps {
     style?: ViewProps["style"];
+    stepLabels: string[];
     totalStep: number;
     currentStep: number;
 }
@@ -33,11 +35,11 @@ const StepsView = styled.View`
 `;
 
 const StepView = styled.View.attrs<{ isActive: boolean }>({})`
-    width: 16px;
-    height: 16px;
+    flex: 1;
+    flex-direction: row;
+    height: 40px;
     border-radius: 8px;
-    background-color: ${({ isActive }) => isActive ? "#404040" : "#eee"} ;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 `;
 
@@ -51,17 +53,23 @@ const StepBarsView = styled.View`
 const ActiveStepBar = styled.View`
     flex-direction: row;
     height: 5px;
-    background-color: #404040;
+    background-color: ${colors.cerulean};
+    border-radius: 2.5px;
 `;
 
 const InActiveStepBar = styled.View`
     flex-direction: row;
     height: 5px;
-    background-color: #eee;
+    background-color: #a7afc832;
+    border-radius: 2.5px;
 `;
 
 
-const StepName = styled(GText)``;
+const StepName = styled(GText).attrs<{ isActive: boolean }>({})`
+    font-size: 12px;
+    letter-spacing: -0.7;
+    color: ${({ isActive }) => isActive ? colors.cerulean : colors.cloudyBlue};
+`;
 
 class RegisterStep extends Component<IProps, IStates> {
 
@@ -75,27 +83,27 @@ class RegisterStep extends Component<IProps, IStates> {
     }
 
     public render() {
-        const { style, totalStep, currentStep } = this.props;
+        const { style, totalStep, currentStep, stepLabels } = this.props;
         return (
             <ContainerOutterView style={style} >
                 <Container onLayout={this.onStepLayout}>
                     <StepBarsView>
                         <ActiveStepBar
                             style={{
-                                flex: (currentStep - 1)
+                                flex: (currentStep)
                             }}
                         />
                         <InActiveStepBar
                             style={{
-                                flex: (totalStep - 1) - (currentStep - 1)
+                                flex: (totalStep) - (currentStep)
                             }}
                         />
                     </StepBarsView>
                     <StepsView>
                         {_.times(totalStep, stepIndex => {
-                            const isActive = stepIndex <= (currentStep - 1);
+                            const isActive = stepIndex === (currentStep - 1);
                             return (<StepView key={`step${stepIndex}`} isActive={isActive} >
-                                <StepName>{stepIndex + 1}</StepName>
+                                <StepName isActive={isActive} >{stepLabels[stepIndex]}</StepName>
                             </StepView>);
                         })}
                     </StepsView>
