@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import styled from "styled-components/native";
 import { ViewProps } from 'react-native';
 
-import { Title, GText } from "../text";
+import { GText } from "../text";
 import { GButton } from '../button';
+import { colors } from '../../styles';
 
 interface IProps {
     style?: ViewProps["style"];
@@ -12,41 +13,24 @@ interface IProps {
 }
 
 const Container = styled.TouchableOpacity`
-    background-color: #fff;
+    background-color: ${colors.orangish};
     justify-content: space-between;
+    padding-top: 29px;
+    padding-bottom: 25px;
     padding-horizontal: 30px;
-    border-radius: 19px;
-    shadow-color: #330000;
-    shadow-offset: 0px 1px;
-    shadow-opacity: 0.4;
-    shadow-radius: 2;
+    border-radius: 7px;
 `;
 
-const Header = styled.View``;
-
-const AchieveTitle = styled(Title)`
+const AchieveTitle = styled(GText).attrs({})`
+    font-size: 26px;
+    line-height: 31px;
+    color: ${colors.white};
     padding-horizontal: 0;
 `;
 
-const Content = styled.View`
-    flex-direction: row;
-`;
-
-const AchievePercentView = styled.View``;
-
-const AchievePercentName = styled(GText)`
-    font-size: 12px;
-    color: #606060;
-`;
-
-const AchievePercent = styled(GText)`
-    font-size: 40px;
-    color: #606060;
-`;
-
-const AchievePercentSign = styled(GText)`
-    font-size: 16px;
-    color: #656565;
+const AchiveDate = styled(GText)`
+    font-size: 15px;
+    color: ${colors.sepia};
 `;
 
 const ContentRightView = styled.View`
@@ -56,16 +40,12 @@ const ContentRightView = styled.View`
     align-items: center;
 `;
 
-
-const CommonButtonStyled = styled(GButton).attrs({
-    textStyle: {
-        color: "#E0B8B8"
-    }
+const AchievePercent = styled(GText).attrs({
+    weightType: "kreonRegular"
 })`
-    background-color: transparent;
+    font-size: 34px;
+    color: ${colors.dark};
 `;
-const AlarmButton = styled(CommonButtonStyled)``;
-const MidTermAbandonButton = styled(CommonButtonStyled)``;
 
 class AchieveCard extends Component<IProps> {
     public render() {
@@ -73,17 +53,12 @@ class AchieveCard extends Component<IProps> {
         return (
             <Container style={style} onPress={onAchievePress}>
                 <AchieveTitle>{title}</AchieveTitle>
-                <Content>
-
-                    <AchievePercentView>
-                        <AchievePercentName>달성률</AchievePercentName>
-                        <AchievePercent>90<AchievePercentSign>%</AchievePercentSign></AchievePercent>
-                    </AchievePercentView>
-                    <ContentRightView>
-                        <AlarmButton type="cerulean">알람</AlarmButton>
-                        <MidTermAbandonButton type="cerulean">중도포기</MidTermAbandonButton>
-                    </ContentRightView>
-                </Content>
+                <AchiveDate>
+                    18.2.12~3.12
+                </AchiveDate>
+                <ContentRightView>
+                    <AchievePercent>90%</AchievePercent>
+                </ContentRightView>
             </Container>
         );
     }

@@ -11,7 +11,13 @@ const colors = {
     blueyGrey: "#959aa4",
     darkSkyBlue: "#2aacfc",
     blueyGreyTwo: "#8291b8",
-    orangePink: "#ff6c54"
+    orangePink: "#ff6c54",
+    orangish: "#ff783e",
+    sepia: "#a95430",
+    dark: "#202733",
+    charcoalGrey: "#262a30",
+    hazel: "#8c7a22",
+    wheat: "#ffde7b"
 };
 
 export default colors;

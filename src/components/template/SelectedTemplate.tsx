@@ -19,7 +19,7 @@ const OverlayView = styled.View`
     justify-content: center;
     align-items: center;
     background-color: #ff834e33;
-    border-width: 2px;
+    border-width: 3px;
     border-color: #ff834e;
     border-radius: 5px;
 `;

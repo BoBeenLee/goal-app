@@ -128,8 +128,8 @@ const SELECT_TEMPLATE_ITEM_STYLE_MAP = new Map<string, ViewProps["style"]>()
         backgroundColor: "#2aacfc4c"
     })
     .set("3", {
-        borderColor: "#ff834e",
-        backgroundColor: "#ff834e33"
+        borderColor: "#ffdf4d",
+        backgroundColor: "#ffdf4d4c"
     })
 
 class TemplateRegisterScreen extends Component<IProps, IStates> {

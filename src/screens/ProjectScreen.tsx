@@ -30,6 +30,7 @@ const Content = styled.View`
 const AchiveView = styled.View`
     flex-direction: row;
     align-items: center;
+    margin-bottom: 16px;
 `;
 
 const AchieveTitle = styled(GText).attrs({
@@ -37,6 +38,7 @@ const AchieveTitle = styled(GText).attrs({
 })`
     font-size: 18px;
     color: ${colors.gunmetal};
+    margin-right: 10px;
 `;
 
 const AchiveDayView = styled.View`
@@ -53,18 +55,26 @@ const AchiveDay = styled(GText).attrs({
 `;
 
 const AchieveCardView = styled(AchieveCard)`
-    height: 176px;
+    height: 190px;
+`;
+
+const AchieveHistoryTitle = styled(GText).attrs({
+    weightType: "bold"
+})`
+    font-size: 18px;
+    color: ${colors.gunmetal};
+    margin-right: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 `;
 
 const AchieveHistoriesList = styled.View`
     flex-direction: row;
 `;
 
-const AchieveHistoryTitle = styled(Title)``;
-
 const AchieveHistoryCardView = styled(AchieveHistoryCard)`
-    width: 150px;
-    height: 300px;
+    width: 200px;
+    margin-right: 15px;
 `;
 
 class ProjectScreen extends Component<IProps> {
@@ -81,7 +91,6 @@ class ProjectScreen extends Component<IProps> {
                             <AchiveDay>D-13</AchiveDay>
                         </AchiveDayView>
                     </AchiveView>
-
                     <AchieveCardView
                         title={`어플 완성하고
 런칭하기`}
@@ -89,6 +98,8 @@ class ProjectScreen extends Component<IProps> {
                     />
                     <AchieveHistoryTitle>지나간 목표</AchieveHistoryTitle>
                     <AchieveHistoriesList>
+                        <AchieveHistoryCardView title={`하루에 열장
+씩 책읽기`} />
                         <AchieveHistoryCardView title={`하루에 열장
 씩 책읽기`} />
                     </AchieveHistoriesList>
