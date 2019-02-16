@@ -7,7 +7,10 @@ import { colors } from '../../styles';
 import { DiaryTemplateInput, TimeTemplateInput, TableTemplateInput } from '../templateinput';
 
 
-const Container = styled.View``;
+const Container = styled.View`
+    padding-top: 20px;
+    padding-bottom: 31px;
+`;
 
 const Header = styled.View`
     flex-direction: row;

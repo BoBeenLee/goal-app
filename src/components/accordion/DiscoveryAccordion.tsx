@@ -7,8 +7,7 @@ import Accordion from 'react-native-collapsible/Accordion';
 import { ITemplateProps } from '../../model/Project';
 import { GText } from '../text';
 import { colors } from '../../styles';
-import { TodoTemplateInput } from "../templateinput";
-import { TodoDiscovery } from "../discovery";
+import { TodoDiscovery, DiaryDiscovery, OXDiscovery, TimeDiscovery } from "../discovery";
 
 interface IStates {
     activeSectionIndex: number[];
@@ -105,6 +104,21 @@ class DiscoveryAccordion extends Component<any, IStates> {
                 return (
                     <AccordionContent>
                         <TodoDiscovery />
+                    </AccordionContent>);
+            case "Diary":
+                return (
+                    <AccordionContent>
+                        <DiaryDiscovery />
+                    </AccordionContent>);
+            case "OX":
+                return (
+                    <AccordionContent>
+                        <OXDiscovery />
+                    </AccordionContent>);
+            case "Time":
+                return (
+                    <AccordionContent>
+                        <TimeDiscovery />
                     </AccordionContent>);
             default:
                 return (<AccordionContent>
