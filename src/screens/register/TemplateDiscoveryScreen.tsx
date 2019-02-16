@@ -2,7 +2,7 @@ import Images from 'assets-image';
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 
-import { ContainerWithStatusBar, IconButton, BackTopBar, GText } from '../../components';
+import { ContainerWithStatusBar, IconButton, BackTopBar, GText, DiscoveryAccordion } from '../../components';
 import { pop } from '../../utils/navigator';
 import { colors } from '../../styles';
 
@@ -32,6 +32,10 @@ const Description = styled(GText).attrs({
     padding-horizontal: 25px;
 `;
 
+const DiscoveryAccordionView = styled.View`
+    margin-top: 30px;
+`;
+
 
 class TemplateDiscoveryScreen extends Component<IProps> {
     public render() {
@@ -43,6 +47,9 @@ class TemplateDiscoveryScreen extends Component<IProps> {
                     <Description>
                         템플릿 활용이 어려우신가요?
                     </Description>
+                    <DiscoveryAccordionView>
+                        <DiscoveryAccordion />
+                    </DiscoveryAccordionView>
                 </ContentScrollView>
             </Container>
         );

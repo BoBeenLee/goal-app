@@ -9,3 +9,5 @@ export * from "./template";
 export * from "./step";
 export * from "./slider";
 export * from "./accordion";
+export * from "./discovery";
+export * from "./templateinput";

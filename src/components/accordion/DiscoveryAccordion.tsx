@@ -1,27 +1,26 @@
 import Images from "assets-image";
 import React, { Component } from 'react';
 import styled from "styled-components/native";
+import { TouchableOpacity } from "react-native";
 import Accordion from 'react-native-collapsible/Accordion';
 
 import { ITemplateProps } from '../../model/Project';
 import { GText } from '../text';
 import { colors } from '../../styles';
-import { TouchableOpacity } from "react-native";
+import { TodoTemplateInput } from "../templateinput";
+import { TodoDiscovery } from "../discovery";
 
 interface IStates {
-    activeSections: ISectionProps[];
-    containerWidth: number;
+    activeSectionIndex: number[];
 }
-
-const Container = styled.View`
-    width: 100%;
-`;
 
 const Header = styled.View`
     height: 51px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-horizontal: 25px;
+    background-color: ${colors.white};
 `;
 
 const Title = styled(GText).attrs({
@@ -37,8 +36,8 @@ const ArrowIcon = styled.Image`
 `;
 
 const AccordionContent = styled.View`
-    flex: 1;
     background-color: #f8f9fa;
+    padding-horizontal: 25px;
 `;
 
 const Text = styled.Text``;
@@ -70,56 +69,52 @@ class DiscoveryAccordion extends Component<any, IStates> {
     constructor(props: any) {
         super(props);
         this.state = {
-            containerWidth: 0,
-            activeSections: []
+            activeSectionIndex: []
         };
     }
 
     public render() {
-        const { containerWidth } = this.state;
         return (
-            <Container onLayout={this.onLayout}>
-                <Accordion
-                    containerStyle={{
-                        width: containerWidth
-                    }}
-                    sections={SECTIONS}
-                    touchableComponent={TouchableOpacity}
-                    activeSections={this.state.activeSections as any}
-                    renderHeader={this.renderHeader}
-                    renderContent={this.renderContent}
-                    onChange={this.updateSections}
-                />
-            </Container>
+            <Accordion
+                containerStyle={{
+                    width: 375
+                }}
+                sections={SECTIONS}
+                touchableComponent={TouchableOpacity}
+                activeSections={this.state.activeSectionIndex as any}
+                renderHeader={this.renderHeader}
+                renderContent={this.renderContent}
+                onChange={this.updateSections}
+            />
         );
     }
 
-    private renderHeader = section => {
+    private renderHeader = (section, index) => {
+        const isActive = this.state.activeSectionIndex.findIndex(sectionIndex => sectionIndex === index) !== -1;
         return (
             <Header>
                 <Title>{section.title}</Title>
-                <ArrowIcon source={Images.btn_down_arrow} />
+                <ArrowIcon source={isActive ? Images.btn_up_arrow : Images.btn_down_arrow} />
             </Header>
         );
     };
 
     private renderContent = section => {
-        return (
-            <AccordionContent>
-                <Text>{section.title}</Text>
-            </AccordionContent>
-        );
+        switch (section.type) {
+            case "TODO":
+                return (
+                    <AccordionContent>
+                        <TodoDiscovery />
+                    </AccordionContent>);
+            default:
+                return (<AccordionContent>
+                    <Text>{section.title}</Text>
+                </AccordionContent>);
+        }
     };
 
     private updateSections = activeSections => {
-        this.setState({ activeSections });
-    };
-
-    private onLayout = (event: any) => {
-        const { width } = event.nativeEvent.layout;
-        this.setState({
-            containerWidth: width
-        });
+        this.setState({ activeSectionIndex: activeSections });
     };
 }
 
