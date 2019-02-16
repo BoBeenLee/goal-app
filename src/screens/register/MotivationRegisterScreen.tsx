@@ -1,9 +1,11 @@
+import Images from 'assets-image';
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 
-import { GButton, Title, RegisterStep, ContainerWithStatusBar, GInputText } from "../../components";
-import { push } from '../../utils/navigator';
+import { GButton, RegisterStep, ContainerWithStatusBar, GInputText, IconButton, GText, UnderLineInputText } from "../../components";
+import { push, pop } from '../../utils/navigator';
 import { SCREEN_IDS } from '../constant';
+import { colors } from '../../styles';
 
 interface IProps {
     componentId: string;
@@ -16,19 +18,45 @@ interface IStates {
 
 const Container = styled(ContainerWithStatusBar)``;
 
-const RegisterStepView = styled(RegisterStep)``;
-
-const TitleView = styled(Title)``;
-
 const Content = styled.View`
     flex: 1;
+    padding-horizontal: 26px;
 `;
 
-const MotivationNameInput = styled(GInputText)`
+
+const RegisterStepView = styled(RegisterStep)``;
+
+const Title = styled(GText).attrs({
+    weightType: "light"
+})`
+    font-size: 30px;
+    color: ${colors.gunmetal};
+    letter-spacing: -0.5;
+    margin-top: 33px;
+    margin-bottom: 35px;
+`;
+
+
+const BackButton = styled(IconButton)`
+    width: 10px;
+    height: 18px;
+    margin-top: 23px;
+    margin-bottom: 18px;
+`;
+
+const MotivationNameInput = styled(UnderLineInputText)`
+    height: 40px;
+`;
+
+const CharacterView = styled.View`
     flex: 1;
 `;
 
+const CharacterImage = styled.View``;
+
+
 const NextButton = styled(GButton)`
+    margin-bottom: 19px;
 `;
 
 class MotivationRegisterScreen extends Component<IProps, IStates> {
@@ -43,13 +71,21 @@ class MotivationRegisterScreen extends Component<IProps, IStates> {
         return (
             <Container>
                 <Content>
-                    <RegisterStepView totalStep={3} currentStep={2} />
-                    <TitleView>작심삼십일의 동기를 설정해주세요</TitleView>
+                    <BackButton type="opacity" source={Images.btn_back} onPress={this.back} />
+                    <RegisterStepView currentStep={2} />
+                    <Title>당신의 다짐은 무엇인가요?</Title>
                     <MotivationNameInput
+                        name={"motivateText"}
+                        onChangeText={this.onMotivateChangeText}
                         value={motivateText}
-                        onChangeText={this.onMotivateChangeText} />
+                        placeholder={"다짐을 적어주세요"}
+                        placeholderTextColor={colors.cloudyBlue}
+                    />
+                    <CharacterView>
+                        <CharacterImage />
+                    </CharacterView>
+                    <NextButton type="cerulean" onPress={this.next}>다음</NextButton>
                 </Content>
-                <NextButton type="default" onPress={this.next}>다음</NextButton>
             </Container>
         );
     }
@@ -67,6 +103,11 @@ class MotivationRegisterScreen extends Component<IProps, IStates> {
             projectName,
             motivateText
         });
+    }
+
+    private back = () => {
+        const { componentId } = this.props;
+        pop(componentId);
     }
 }
 

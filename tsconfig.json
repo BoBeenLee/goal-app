@@ -23,6 +23,9 @@
     "paths": {
       "assets-json": [
         "assets/json"
+      ],
+      "assets-image": [
+        "assets/images"
       ]
     }
   },

@@ -27,7 +27,7 @@ interface IProps extends TextInputProps {
     onChangeFormikText?: (name: string, text: string) => void;
     onTextBlur?: (text: string) => void;
 }
-export type CMTextInputProps = IProps;
+export type GInputTextProps = IProps;
 
 interface IStates {
     currentStyle?: TextStyle | null;
@@ -36,7 +36,7 @@ interface IStates {
 class GInputText extends React.Component<IProps, IStates> {
     public static defaultProps: Partial<IProps> = {
         focusStyle: {
-            color: colors.black
+            color: colors.cerulean
         },
         weightType: "regular"
     };

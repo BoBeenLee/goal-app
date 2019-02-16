@@ -29,11 +29,11 @@ const HighlightTitle = styled(GText).attrs({
     letter-spacing: -0.6;
 `;
 
-const StartView = styled.View`
+const CharacterView = styled.View`
     flex: 1;
 `;
 
-const StartImage = styled.View``;
+const CharacterImage = styled.View``;
 
 const StartButtonView = styled.View`
     width: 100%;
@@ -54,9 +54,9 @@ class StartScreen extends Component<IProps> {
                 <Title>
                     <HighlightTitle>30일의 여정</HighlightTitle>을{"\n"}저와 함께 시작해볼까요?
                 </Title>
-                <StartView>
-                    <StartImage />
-                </StartView>
+                <CharacterView>
+                    <CharacterImage />
+                </CharacterView>
                 <StartButtonView>
                     <StartButton type="cerulean" onPress={this.navigateRegister}>시작하기</StartButton>
                 </StartButtonView>

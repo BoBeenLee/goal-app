@@ -6,10 +6,11 @@ import { ViewProps } from 'react-native';
 import { GText } from '../text';
 import { colors } from '../../styles';
 
+const LABELS = ["목표입력", "다짐입력", "탬플릿선택"];
+const TOTAL_STEP = 3;
+
 interface IProps {
     style?: ViewProps["style"];
-    stepLabels: string[];
-    totalStep: number;
     currentStep: number;
 }
 
@@ -18,9 +19,7 @@ interface IStates {
     height: number;
 }
 
-const ContainerOutterView = styled.View`
-    padding: 30px;
-`;
+const ContainerOutterView = styled.View``;
 
 const Container = styled.View`
     width: 100%;
@@ -83,7 +82,7 @@ class RegisterStep extends Component<IProps, IStates> {
     }
 
     public render() {
-        const { style, totalStep, currentStep, stepLabels } = this.props;
+        const { style, currentStep } = this.props;
         return (
             <ContainerOutterView style={style} >
                 <Container onLayout={this.onStepLayout}>
@@ -95,15 +94,15 @@ class RegisterStep extends Component<IProps, IStates> {
                         />
                         <InActiveStepBar
                             style={{
-                                flex: (totalStep) - (currentStep)
+                                flex: (TOTAL_STEP) - (currentStep)
                             }}
                         />
                     </StepBarsView>
                     <StepsView>
-                        {_.times(totalStep, stepIndex => {
+                        {_.times(TOTAL_STEP, stepIndex => {
                             const isActive = stepIndex === (currentStep - 1);
                             return (<StepView key={`step${stepIndex}`} isActive={isActive} >
-                                <StepName isActive={isActive} >{stepLabels[stepIndex]}</StepName>
+                                <StepName isActive={isActive} >{stepIndex < (currentStep - 1) ? "" : LABELS[stepIndex]}</StepName>
                             </StepView>);
                         })}
                     </StepsView>
