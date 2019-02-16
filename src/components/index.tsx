@@ -8,3 +8,4 @@ export * from "./button";
 export * from "./template";
 export * from "./step";
 export * from "./slider";
+export * from "./accordion";

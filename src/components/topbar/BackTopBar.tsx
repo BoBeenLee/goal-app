@@ -13,13 +13,14 @@ interface IProps {
 }
 
 const Container = styled(GTopBar)`
+    width: 100%;
+    height: 60px;
     border-bottom-width: 1px;
     border-bottom-color: ${colors.paleGrey};
 `;
 
 const HeaderLeftView = styled.View`
     flex: 1;
-    height: 60px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -27,7 +28,7 @@ const HeaderLeftView = styled.View`
 
 const HeaderBackIcon = styled(IconButton)`
     position: absolute;
-    top: 10px;
+    top: 22px;
     left: 24px;
     width: 23px;
     height: 18px;
@@ -36,7 +37,6 @@ const HeaderBackIcon = styled(IconButton)`
 const HeaderTitle = styled(GText).attrs({
     weightType: "bold"
 })`
-    flex: 1;
     font-size: 20px;
     color: ${colors.black};
 `;
