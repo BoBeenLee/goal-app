@@ -3,39 +3,44 @@ import styled from "styled-components/native";
 
 import { GText } from "../text";
 import { GButton } from '../button';
+import { colors } from '../../styles';
+import { TemplateContainer } from "./style";
 
-const Container = styled.View``;
+const Container = styled(TemplateContainer)``;
 
 const Header = styled.View`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 10px;
 `;
 
-const Title = styled(GText)`
-    font-size: 16px;
-    font-weight: bold;
+const Title = styled(GText).attrs({
+    weightType: "kreonBold"
+})`
+    font-size: 24px;
+    color: ${colors.gunmetal};
 `;
 
-const EditButton = styled(GButton)`
-    font-size: 16px;
-`;
 
 const Content = styled.View`
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    padding-bottom: 18px;
-    border-bottom-width: 1px;
-    border-bottom-color: #000;
 `;
 
-const OXTouchabledView = styled.TouchableOpacity``;
 
-const OXText = styled(GText)`
-    font-size: 50px;
-    font-weight: bold;
+const OTouchabledView = styled.TouchableOpacity`
+    margin-right: 40px;
+`;
+
+const XTouchabledView = styled.TouchableOpacity``;
+
+
+const OXText = styled(GText).attrs({
+    weightType: "kreonBold"
+})`
+    font-size: 60px;
+    color: ${colors.cloudyBlueTwo};
 `;
 
 class OXTemplate extends Component {
@@ -43,15 +48,15 @@ class OXTemplate extends Component {
         return (
             <Container>
                 <Header>
-                    <Title>체크하기</Title>
+                    <Title>OX</Title>
                 </Header>
                 <Content>
-                    <OXTouchabledView>
+                    <OTouchabledView>
                         <OXText>O</OXText>
-                    </OXTouchabledView>
-                    <OXTouchabledView>
+                    </OTouchabledView>
+                    <XTouchabledView>
                         <OXText>X</OXText>
-                    </OXTouchabledView>
+                    </XTouchabledView>
                 </Content>
             </Container>
         );

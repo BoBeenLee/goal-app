@@ -4,7 +4,8 @@ const colors = {
     gunmetal: "#414a59",
     cerulean: "#0073db",
     white: "#fff",
-    cloudyBlue: "#b9c1cd"
+    cloudyBlue: "#b9c1cd",
+    cloudyBlueTwo: "#bbbfcb"
 };
 
 export default colors;

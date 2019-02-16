@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
-
 import { storiesOf } from "@storybook/react-native";
+
 import { GText } from "../../src/components";
 
 const Container = styled.View`
