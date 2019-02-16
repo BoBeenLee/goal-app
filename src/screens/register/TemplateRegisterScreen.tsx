@@ -1,9 +1,8 @@
 import Images from 'assets-image';
-import Jsons from "assets-json";
 import _ from "lodash";
 import React, { Component } from 'react';
 import styled from "styled-components/native";
-import LottieView from 'lottie-react-native';
+import { ViewProps } from 'react-native';
 
 import { GButton, RegisterStep, ContainerWithStatusBar, OXTemplate, IconButton, GText, SelectedTemplate, TodoTemplate, DiaryTemplate, TimeTemplate, TableTemplate } from "../../components";
 import { ITemplateProps, TemplateType } from '../../model/Project';
@@ -79,6 +78,11 @@ const TemplateItemView = styled.TouchableOpacity`
     margin-bottom: 25px;
 `;
 
+const SelectedTemplateImage = styled.Image`
+    width: 44px;
+    height: 44px;
+`;
+
 const ContentScrollView = styled.ScrollView.attrs({
     contentContainerStyle: {
         paddingHorizontal: 26
@@ -114,6 +118,20 @@ const TEMPLATE_LIST: ITemplateItem[] = [
     }
 ];
 
+const SELECT_TEMPLATE_ITEM_STYLE_MAP = new Map<string, ViewProps["style"]>()
+    .set("1", {
+        borderColor: "#ff834e",
+        backgroundColor: "#ff834e33"
+    })
+    .set("2", {
+        borderColor: "#2aacfc",
+        backgroundColor: "#2aacfc4c"
+    })
+    .set("3", {
+        borderColor: "#ff834e",
+        backgroundColor: "#ff834e33"
+    })
+
 class TemplateRegisterScreen extends Component<IProps, IStates> {
     constructor(props: IProps) {
         super(props);
@@ -146,7 +164,7 @@ class TemplateRegisterScreen extends Component<IProps, IStates> {
                                 }
                                 return (
                                     <TemplateItemView key={type} onPress={_.partial(this.onSelected, type)}>
-                                        <SelectedTemplate SelectedComponent={this.renderSelectedNumber()}>
+                                        <SelectedTemplate overlayStyle={SELECT_TEMPLATE_ITEM_STYLE_MAP.get(`${selectedIndex + 1}`)} SelectedComponent={this.renderSelectedNumber(selectedIndex)}>
                                             <Component />
                                         </SelectedTemplate>
                                     </TemplateItemView>);
@@ -159,15 +177,9 @@ class TemplateRegisterScreen extends Component<IProps, IStates> {
         );
     }
 
-    private renderSelectedNumber = () => {
-        return (<LottieView
-            style={{
-                width: 100,
-                height: 100
-            }}
-            source={Jsons.selected_number1}
-            autoPlay={true}
-            loop={true}
+    private renderSelectedNumber = (selectedIndex: number) => {
+        return (<SelectedTemplateImage
+            source={Images[`select_number_${selectedIndex + 1}`]}
         />);
     }
 

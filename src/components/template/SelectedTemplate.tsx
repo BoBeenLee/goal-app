@@ -27,11 +27,11 @@ const OverlayView = styled.View`
 
 class SelectedTemplate extends Component<IProps> {
     public render() {
-        const { children, SelectedComponent } = this.props;
+        const { children, SelectedComponent, overlayStyle } = this.props;
         return (
             <Container>
                 {children}
-                <OverlayView>
+                <OverlayView style={overlayStyle}>
                     {SelectedComponent}
                 </OverlayView>
             </Container>
