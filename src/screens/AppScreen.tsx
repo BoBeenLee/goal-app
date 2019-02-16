@@ -26,12 +26,13 @@ class AppScreen extends Component<IProps> {
         <Text>Hello World</Text>
         <LottieView
           style={{
-            width: 100,
-            height: 100
+            width: 200,
+            height: 200
           }}
-          source={assetsJson.success}
+          source={assetsJson.selected_number1}
           autoPlay={true}
           loop={true}
+          duration={1000}
         />
       </Container>
     );
