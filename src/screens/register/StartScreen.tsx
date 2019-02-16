@@ -11,37 +11,55 @@ interface IProps {
 
 const Container = styled(ContainerWithStatusBar)`
     flex: 1;
-    justify-content: space-between;
+    align-items: center;
 `;
 
 const Title = styled(GText).attrs({
-    weightType: "regular"
+    weightType: "light"
 })`
-    font-size: 15px;
-    line-height: 12px;
-    letter-spacing: -0.31;
-    padding-top: 10px;
+    font-size: 30px;
+    letter-spacing: -0.6;
+    padding-top: 104px;
 `;
 
 const HighlightTitle = styled(GText).attrs({
-    weightType: "light"
+    weightType: "regular"
 })`
-    font-size: 15px;
-    line-height: 12px;
-    letter-spacing: -0.31;
+    font-size: 30px;
+    letter-spacing: -0.6;
+`;
+
+const StartView = styled.View`
+    flex: 1;
+`;
+
+const StartImage = styled.View``;
+
+const StartButtonView = styled.View`
+    width: 100%;
+    height: 60px;
+    padding-horizontal: 24px;
+    margin-bottom: 19px;
 `;
 
 const StartButton = styled(GButton)`
-    margin-bottom: 100px;
+    width: 100%;
+    height: 60px;
+    
 `;
 class StartScreen extends Component<IProps> {
     public render() {
         return (
             <Container>
                 <Title>
-                    <HighlightTitle>30일의 여정</HighlightTitle>을 저와 함께 시작해볼까요?
+                    <HighlightTitle>30일의 여정</HighlightTitle>을{"\n"}저와 함께 시작해볼까요?
                 </Title>
-                <StartButton type="default" onPress={this.navigateRegister}>시작하기</StartButton>
+                <StartView>
+                    <StartImage />
+                </StartView>
+                <StartButtonView>
+                    <StartButton type="cerulean" onPress={this.navigateRegister}>시작하기</StartButton>
+                </StartButtonView>
             </Container>
         );
     }

@@ -1,34 +1,68 @@
 import React, { Component } from "react";
 import { TextProps, TouchableOpacityProps } from "react-native";
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 
 import { GText } from "../text";
+import { colors } from "../../styles";
+
+export type ButtonType =
+  | "cerulean";
 
 interface IProps {
   style?: TouchableOpacityProps["style"];
   textStyle?: TextProps["style"];
-  type: "default" | "primary";
-  children: string;
-  onPress?: () => void;
+  type: ButtonType;
+  children: string | undefined;
+  onPress?: TouchableOpacityProps["onPress"];
 }
 
-const TouchabledContainer = styled.TouchableOpacity`
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-color: #eee;
-  border-radius: 10px;
-`;
+const BUTTON_STYLE_BY_TYPE = new Map<
+  ButtonType,
+  {
+    containerStyle: any;
+    textStyle: any;
+  }
+>()
+  .set("cerulean", {
+    containerStyle: css`
+      border-radius: 7px;
+      background-color: ${colors.cerulean};
+    `,
+    textStyle: css`
+      color: ${colors.white};
+    `
+  });
 
-const Container = styled(GText)``;
+const Container = styled.TouchableOpacity.attrs<{
+  type: ButtonType;
+}>({})`
+    height: 44px;
+    padding: 12px;
+    align-items: center;
+    justify-content: center;
+    ${({ type }) => BUTTON_STYLE_BY_TYPE.get(type)!.containerStyle};
+  `;
+
+const ButtonText = styled(GText).attrs<{
+  type: ButtonType;
+}>({
+  weightType: "bold"
+})`
+    font-size: 14px;
+    ${({ type }) => BUTTON_STYLE_BY_TYPE.get(type)!.textStyle};
+  `;
 
 class GButton extends Component<IProps> {
   public render() {
-    const { style, textStyle, children, onPress } = this.props;
+    const { style, type, onPress, children } = this.props;
     return (
-      <TouchabledContainer style={style} onPress={onPress}>
-        <Container style={textStyle}>{children}</Container>
-      </TouchabledContainer>
+      <Container
+        style={style}
+        type={type}
+        onPress={onPress}
+      >
+        <ButtonText type={type}>{children}</ButtonText>
+      </Container>
     );
   }
 }
