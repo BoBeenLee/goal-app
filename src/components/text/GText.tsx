@@ -2,7 +2,7 @@ import React, { SFC } from "react";
 import { StyleSheet, TextProperties } from "react-native";
 import styled from "styled-components/native";
 
-export type WeightType = "bold" | "medium" | "regular" | "light";
+export type WeightType = "bold" | "medium" | "regular" | "light" | "kreonBold" | "kreonRegular";
 
 interface IProps extends TextProperties {
     weightType?: WeightType;
@@ -19,7 +19,9 @@ const styles = StyleSheet.create({
 const WEIGHT_MAP = {
     bold: "SpoqaHanSans-Bold",
     light: "SpoqaHanSans-Light",
-    regular: "SpoqaHanSans-Regular"
+    regular: "SpoqaHanSans-Regular",
+    kreonBold: "Kreon-Bold",
+    kreonRegular: "Kreon-Regular"
 };
 
 const Text = styled.Text.attrs<IProps>({})`

@@ -71,6 +71,8 @@
 		<string>SpoqaHanSans-Bold.ttf</string>
 		<string>SpoqaHanSans-Light.ttf</string>
 		<string>SpoqaHanSans-Regular.ttf</string>
+		<string>Kreon-Regular.ttf</string>
+		<string>Kreon-Bold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

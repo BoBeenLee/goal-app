@@ -32,6 +32,8 @@
 		270F32A62217B66E004EBE97 /* SpoqaHanSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 270F32A32217B66E004EBE97 /* SpoqaHanSans-Bold.ttf */; };
 		270F32A72217B66E004EBE97 /* SpoqaHanSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 270F32A42217B66E004EBE97 /* SpoqaHanSans-Light.ttf */; };
 		270F32A82217B66E004EBE97 /* SpoqaHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 270F32A52217B66E004EBE97 /* SpoqaHanSans-Regular.ttf */; };
+		270F32F22217D817004EBE97 /* Kreon-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 270F32BE2217D817004EBE97 /* Kreon-Bold.ttf */; };
+		270F32F32217D817004EBE97 /* Kreon-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 270F32F12217D817004EBE97 /* Kreon-Regular.ttf */; };
 		2749DE4321DB4FF00087BBC9 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2749DE4221DB4FEF0087BBC9 /* Empty.swift */; };
 		276BEB2821A5970D00086EFA /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 276BEB2421A596ED00086EFA /* libReactNativeNavigation.a */; };
 		27B081EE21E111A10012030A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27B081C221E111A10012030A /* GoogleService-Info.plist */; };
@@ -495,6 +497,8 @@
 		270F32A32217B66E004EBE97 /* SpoqaHanSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SpoqaHanSans-Bold.ttf"; path = "../assets/fonts/SpoqaHanSans-Bold.ttf"; sourceTree = "<group>"; };
 		270F32A42217B66E004EBE97 /* SpoqaHanSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SpoqaHanSans-Light.ttf"; path = "../assets/fonts/SpoqaHanSans-Light.ttf"; sourceTree = "<group>"; };
 		270F32A52217B66E004EBE97 /* SpoqaHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SpoqaHanSans-Regular.ttf"; path = "../assets/fonts/SpoqaHanSans-Regular.ttf"; sourceTree = "<group>"; };
+		270F32BE2217D817004EBE97 /* Kreon-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kreon-Bold.ttf"; sourceTree = "<group>"; };
+		270F32F12217D817004EBE97 /* Kreon-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kreon-Regular.ttf"; sourceTree = "<group>"; };
 		2749DE3A21DB4D230087BBC9 /* WatermelonDB.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WatermelonDB.xcodeproj; path = "../node_modules/@nozbe/watermelondb/native/ios/WatermelonDB.xcodeproj"; sourceTree = "<group>"; };
 		2749DE4121DB4FEF0087BBC9 /* myapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		2749DE4221DB4FEF0087BBC9 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
@@ -785,6 +789,8 @@
 		2A10B7838AB64F788659FD40 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				270F32BE2217D817004EBE97 /* Kreon-Bold.ttf */,
+				270F32F12217D817004EBE97 /* Kreon-Regular.ttf */,
 				270F32A32217B66E004EBE97 /* SpoqaHanSans-Bold.ttf */,
 				270F32A42217B66E004EBE97 /* SpoqaHanSans-Light.ttf */,
 				270F32A52217B66E004EBE97 /* SpoqaHanSans-Regular.ttf */,
@@ -1558,10 +1564,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				270F32F22217D817004EBE97 /* Kreon-Bold.ttf in Resources */,
 				270F32A72217B66E004EBE97 /* SpoqaHanSans-Light.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				1BAED4EBF0A4496CAC47CDC4 /* Entypo.ttf in Resources */,
+				270F32F32217D817004EBE97 /* Kreon-Regular.ttf in Resources */,
 				9682B4D7957D4BF58A40C7CA /* EvilIcons.ttf in Resources */,
 				740BD12D7BC141ACBCE433BD /* Feather.ttf in Resources */,
 				FF581E39F38B4D2C947AA5CF /* FontAwesome.ttf in Resources */,

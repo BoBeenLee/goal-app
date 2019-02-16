@@ -6,3 +6,4 @@ export * from "./Slider.stories";
 export * from "./Step.stories";
 export * from "./Topbar.stories";
 export * from "./Input.stories";
+export * from "./Typography.stories";
