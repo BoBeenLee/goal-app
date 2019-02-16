@@ -9,7 +9,8 @@ const colors = {
     cloudyBlueTwo: "#bbbfcb",
     paleGrey: "#f1f2f6",
     blueyGrey: "#959aa4",
-    darkSkyBlue: "#2aacfc"
+    darkSkyBlue: "#2aacfc",
+    blueyGreyTwo: "#8291b8"
 };
 
 export default colors;

@@ -5,6 +5,7 @@ import styled from "styled-components/native";
 import { TemplateContainer } from "./style";
 import { GText } from '../text';
 import { colors } from '../../styles';
+import { ViewProps } from "react-native";
 
 interface ITableItem {
     label: string;
@@ -12,6 +13,7 @@ interface ITableItem {
 }
 
 interface IProps {
+    style?: ViewProps["style"];
     items: ITableItem[];
 }
 
@@ -34,10 +36,10 @@ const HighlightTableText = styled(TableText).attrs({
 
 class TableTemplate extends Component<IProps> {
     public render() {
-        const { items } = this.props;
+        const { style, items } = this.props;
 
         return (
-            <Container>
+            <Container style={style}>
                 {_.map(items, (item, index) => {
                     return (<Row key={`tableItem${index}`}>
                         <HighlightTableText>{item.label}</HighlightTableText>

@@ -5,8 +5,10 @@ import { Moment } from 'moment';
 import { TemplateContainer } from "./style";
 import { GText } from '../text';
 import { colors } from '../../styles';
+import { ViewProps } from 'react-native';
 
 interface IProps {
+    style?: ViewProps["style"];
     startTime: Moment;
     endTime: Moment;
 }
@@ -15,7 +17,7 @@ const Container = styled(TemplateContainer)``;
 
 const TimeText = styled(GText).attrs({})`
     font-size: 16px;
-    color: ${colors.cloudyBlueTwo};
+    color: ${colors.blueyGreyTwo};
 `;
 
 const HighlightTimeText = styled(TimeText).attrs({
@@ -26,10 +28,10 @@ const HighlightTimeText = styled(TimeText).attrs({
 
 class TimeTemplate extends Component<IProps> {
     public render() {
-        const { startTime, endTime } = this.props;
+        const { style, startTime, endTime } = this.props;
 
         return (
-            <Container>
+            <Container style={style}>
                 <TimeText>
                     <HighlightTimeText>START</HighlightTimeText>{" "}
                     {startTime.format("HH:mm a")}

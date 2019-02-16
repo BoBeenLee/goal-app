@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import styled from "styled-components/native";
+import moment from "moment";
 
 import { GText } from '../text';
 import { colors } from '../../styles';
-import { DiaryTemplateInput, OXTemplateInput } from '../templateinput';
+import { DiaryTemplateInput, TimeTemplateInput } from '../templateinput';
+
 
 const Container = styled.View``;
 
@@ -35,31 +37,29 @@ const Content = styled.View`
     padding-top: 8px;
 `;
 
-const OXTemplateInputView = styled(OXTemplateInput)`
+const TimeTemplateInputView = styled(TimeTemplateInput)`
     width: 325px;
     margin-bottom: 16px;
 `;
 
-class OXDiscovery extends Component {
+class TimeDiscovery extends Component {
     public render() {
         return (
             <Container>
                 <Header>
-                    <Title>OX</Title>
+                    <Title>Time</Title>
                     <DescriptionView>
                         <Description>
-                            했는지 안했는지만 깔끔하게 체크하고 싶을 때 이용해보세요.
+                            운동을 한 시간, 공부를 한 시간을 기록하고 싶을 때 ‘Time’을 활용해보세요.
                     </Description>
                     </DescriptionView>
                 </Header>
                 <Content>
-                    <OXTemplateInputView
-                        defaultValue="O"
-                    />
+                    <TimeTemplateInputView startTime={moment()} endTime={moment()} />
                 </Content>
             </Container>
         );
     }
 }
 
-export default OXDiscovery;
+export default TimeDiscovery;
