@@ -87,7 +87,6 @@ class ProjectRegisterScreen extends Component<IProps, IStates> {
 
     public render() {
         const { projectName } = this.state;
-        console.log(this.props.projects);
         return (
             <Container>
                 <Content>
@@ -104,7 +103,7 @@ class ProjectRegisterScreen extends Component<IProps, IStates> {
                     <CharacterView>
                         <CharacterImage source={Images.project_red_character} />
                     </CharacterView>
-                    <NextButton type="cerulean" onPress={this.next}>다음</NextButton>
+                    <NextButton type={this.isProjectNameLength ? "cerulean" : "disabled"} onPress={this.next}>다음</NextButton>
                 </Content>
             </Container>
         );
@@ -114,6 +113,10 @@ class ProjectRegisterScreen extends Component<IProps, IStates> {
         this.setState({
             projectName: text
         });
+    }
+
+    private get isProjectNameLength() {
+        return this.state.projectName.length > 0;
     }
 
     private next = () => {

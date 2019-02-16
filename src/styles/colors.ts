@@ -17,7 +17,12 @@ const colors = {
     dark: "#202733",
     charcoalGrey: "#262a30",
     hazel: "#8c7a22",
-    wheat: "#ffde7b"
+    wheat: "#ffde7b",
+    veryLightPink: "#e4e4e4",
+    brownGrey: "#acacac",
+    paleSkyBlue: "#c3e1ff",
+    ceruleanBlueTwo: "#007ef2",
+    twilightBlue: "#0c4274"
 };
 
 export default colors;

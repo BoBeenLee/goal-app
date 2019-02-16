@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 
-import { ContainerWithStatusBar, AchieveCard, Title, AchieveHistoryCard, GText } from '../components';
+import { ContainerWithStatusBar, AchieveCard, Title, AchieveHistoryCard, GText, DDay } from '../components';
 import { push } from '../utils/navigator';
 import { SCREEN_IDS } from './constant';
 import { colors } from '../styles';
+import { Picker, PickerIOS } from 'react-native';
 
 interface IProps {
     componentId: string;
@@ -41,18 +42,7 @@ const AchieveTitle = styled(GText).attrs({
     margin-right: 10px;
 `;
 
-const AchiveDayView = styled.View`
-    padding: 4px 8px;
-    background-color: ${colors.orangePink};
-    border-radius: 13px;
-`;
-
-const AchiveDay = styled(GText).attrs({
-    weightType: "bold"
-})`
-    font-size: 12px;
-    color: ${colors.white};
-`;
+const AchiveDDay = styled(DDay)``;
 
 const AchieveCardView = styled(AchieveCard)`
     height: 190px;
@@ -68,7 +58,9 @@ const AchieveHistoryTitle = styled(GText).attrs({
     margin-bottom: 20px;
 `;
 
-const AchieveHistoriesList = styled.View`
+const AchieveHistoriesList = styled.ScrollView.attrs({
+    horizontal: true
+})`
     flex-direction: row;
 `;
 
@@ -87,9 +79,7 @@ class ProjectScreen extends Component<IProps> {
                     </HeaderTitle>
                     <AchiveView>
                         <AchieveTitle>진행중 목표</AchieveTitle>
-                        <AchiveDayView>
-                            <AchiveDay>D-13</AchiveDay>
-                        </AchiveDayView>
+                        <AchiveDDay day="13" />
                     </AchiveView>
                     <AchieveCardView
                         title={`어플 완성하고

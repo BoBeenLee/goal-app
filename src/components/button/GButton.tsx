@@ -6,7 +6,7 @@ import { GText } from "../text";
 import { colors } from "../../styles";
 
 export type ButtonType =
-  | "cerulean";
+  | "cerulean" | "disabled";
 
 interface IProps {
   style?: TouchableOpacityProps["style"];
@@ -30,6 +30,14 @@ const BUTTON_STYLE_BY_TYPE = new Map<
     `,
     textStyle: css`
       color: ${colors.white};
+    `
+  }).set("disabled", {
+    containerStyle: css`
+      border-radius: 7px;
+      background-color: ${colors.veryLightPink};
+    `,
+    textStyle: css`
+      color: ${colors.brownGrey};
     `
   });
 
@@ -60,6 +68,7 @@ class GButton extends Component<IProps> {
         style={style}
         type={type}
         onPress={onPress}
+        disabled={type === "disabled"}
       >
         <ButtonText type={type}>{children}</ButtonText>
       </Container>

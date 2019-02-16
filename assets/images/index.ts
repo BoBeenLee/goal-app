@@ -10,9 +10,11 @@ const images = {
     select_number_1: require("./select_number_1.gif"),
     select_number_2: require("./select_number_2.gif"),
     select_number_3: require("./select_number_3.gif"),
+    btn_more: require("./btn_more.png"),
     start_yellow_character: require("./start_yellow_character.gif"),
     project_red_character: require("./project_red_character.gif"),
-    motivate_blue_character: require("./motivate_blue_character.gif")
+    motivate_blue_character: require("./motivate_blue_character.gif"),
+    btn_menu: require("./btn_menu.png")
 };
 
 export default images;
