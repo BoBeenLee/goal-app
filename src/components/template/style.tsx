@@ -12,5 +12,3 @@ export const TemplateContainer = styled.View`
     shadow-opacity: 0.8;
     shadow-radius: 7;
 `;
-
-

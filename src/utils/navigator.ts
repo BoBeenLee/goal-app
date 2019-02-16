@@ -28,7 +28,7 @@ const start = () => {
                 children: [
                     {
                         component: {
-                            name: SCREEN_IDS.StartScreen
+                            name: SCREEN_IDS.TemplateDiscoveryScreen
                         }
                     }
                 ]

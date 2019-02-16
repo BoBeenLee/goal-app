@@ -5,3 +5,4 @@ export { default as TodoTemplate } from "./TodoTemplate";
 export { default as DiaryTemplate } from "./DiaryTemplate";
 export { default as TimeTemplate } from "./TimeTemplate";
 export { default as TableTemplate } from "./TableTemplate";
+export { default as SelectedTemplate } from "./SelectedTemplate";

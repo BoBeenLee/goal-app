@@ -10,7 +10,8 @@ const SCREEN_IDS = {
   ProjectDayDetailScreen: "app.ProjectDayDetailScreen",
   CrashScreen: "app.CrashScreen",
   StartScreen: "app.StartScreen",
-  CompleteScreen: "app.CompleteScreen"
+  CompleteScreen: "app.CompleteScreen",
+  TemplateDiscoveryScreen: "app.TemplateDiscoveryScreen"
 };
 
 export { SCREEN_IDS };

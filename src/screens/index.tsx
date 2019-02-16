@@ -17,12 +17,12 @@ import CompleteScreen from "./register/CompleteScreen";
 import DynamicLinkScreen from "./DynamicLinkScreen";
 import ProjectDaysScreen from "./ProjectDaysScreen";
 import ProjectDayDetailScreen from "./ProjectDayDetailScreen";
+import TemplateDiscoveryScreen from "./register/TemplateDiscoveryScreen";
 
 interface IRegisterScreenProps {
   id: string;
   Component: any;
 }
-
 
 const REGISTER_SCREENS: IRegisterScreenProps[] = [
   {
@@ -72,6 +72,10 @@ const REGISTER_SCREENS: IRegisterScreenProps[] = [
   {
     id: SCREEN_IDS.DynamicLinkScreen,
     Component: DynamicLinkScreen
+  },
+  {
+    id: SCREEN_IDS.TemplateDiscoveryScreen,
+    Component: TemplateDiscoveryScreen
   }
 ]
 

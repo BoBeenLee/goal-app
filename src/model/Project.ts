@@ -1,7 +1,7 @@
 import { date, readonly, field } from '@nozbe/watermelondb/decorators';
 import { Model } from '@nozbe/watermelondb';
 
-export type TemplateType = "OX";
+export type TemplateType = "TODO" | "OX" | "Diary" | "Time" | "Photo" | "Table";
 
 export interface ITemplateProps {
     type: TemplateType;

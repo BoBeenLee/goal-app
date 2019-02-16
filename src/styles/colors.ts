@@ -3,9 +3,11 @@ const colors = {
     black: "#000000",
     gunmetal: "#414a59",
     cerulean: "#0073db",
+    ceruleanBlue: "#0070dd",
     white: "#fff",
     cloudyBlue: "#b9c1cd",
-    cloudyBlueTwo: "#bbbfcb"
+    cloudyBlueTwo: "#bbbfcb",
+    paleGrey: "#f1f2f6"
 };
 
 export default colors;
