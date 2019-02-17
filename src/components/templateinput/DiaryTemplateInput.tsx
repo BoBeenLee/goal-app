@@ -43,7 +43,7 @@ class DiaryTemplateInput extends Component<IProps, IStates> {
         }
     }
     public render() {
-        const { style, title } = this.props;
+        const { style, title, onBlur } = this.props;
         const { content } = this.state;
 
         return (
@@ -55,6 +55,7 @@ class DiaryTemplateInput extends Component<IProps, IStates> {
                     placeholder="오늘 하루의 일어난 기록을 작성하세요"
                     placeholderTextColor={colors.cloudyBlueTwo}
                     onChangeText={this.onChangeText}
+                    onTextBlur={onBlur}
                 />
             </Container>
         );
