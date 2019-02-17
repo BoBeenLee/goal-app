@@ -9,6 +9,7 @@ import { ViewProps } from "react-native";
 
 interface IProps {
     style?: ViewProps["style"];
+    isClose?: boolean;
     currentDay: number;
     dayStatusMap?: any;
     onPress: (index: number) => void;
@@ -64,12 +65,12 @@ const ROW_COUNT = 5;
 
 class ProjectDaysCard extends Component<IProps> {
     public render() {
-        const { style, currentDay, onPress } = this.props;
+        const { style, isClose, currentDay, onPress } = this.props;
         return (
             <Container style={style}>
                 <Header>
-                    <Title>{currentDay === 30 ? `30일 종료` : `${currentDay}일차`}</Title>
-                    <ProjectDDay day={`${currentDay}`} />
+                    <Title>{isClose ? `30일 종료` : `${currentDay}일차`}</Title>
+                    {isClose ? null : <ProjectDDay day={`${currentDay}`} />}
                 </Header>
                 <Content>
                     {_.map(DAYS_ROW_TYPE, (type, rowIndex) => {
@@ -79,7 +80,7 @@ class ProjectDaysCard extends Component<IProps> {
                                 type={type}
                                 status={this.dayCardStatus(rowIndex * ROW_COUNT + (index + 1))}
                                 day={currentIndex}
-                                onPress={_.partial(onPress, currentIndex)} />
+                                onPress={isClose ? _.identity : _.partial(onPress, currentIndex)} />
                         })}</Row>
                     })}
                 </Content>

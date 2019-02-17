@@ -115,6 +115,7 @@ class ProjectScreen extends Component<IProps> {
                                 startDate={transformStringToFormat(project.createdAt)}
                                 endDate={tranformDateToFormat(add30Days(moment(project.createdAt)))}
                                 percent={this.projectPercentageById(project.id)}
+                                onPress={_.partial(this.navigateHistoryProject, project.id)}
                             />)
                         })}
                     </AchieveHistoriesList>
@@ -171,6 +172,13 @@ class ProjectScreen extends Component<IProps> {
         const { componentId } = this.props;
         push(componentId, SCREEN_IDS.ProjectDaysScreen, {
             projectId: this.currentProject.id
+        });
+    }
+
+    private navigateHistoryProject = async (projectId: string) => {
+        const { componentId } = this.props;
+        push(componentId, SCREEN_IDS.ProjectDaysScreen, {
+            projectId
         });
     }
 }

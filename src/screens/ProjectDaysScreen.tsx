@@ -89,15 +89,20 @@ class ProjectDaysScreen extends Component<IProps> {
             <Container>
                 <StatusBar backgroundColor={colors.ceruleanBlueTwo} />
                 <Header>
-                    <TopBar HeaderComponent={<MenuButton type="opacity" source={Images.btn_menu} onPress={this.back} />} HeaderRightComponent={<DateText>{today()}</DateText>} />
+                    <TopBar HeaderComponent={<MenuButton type="opacity" source={Images.btn_menu} onPress={this.back} />} HeaderRightComponent={<DateText>{this.isClose ? "종료된 프로젝트" : today()}</DateText>} />
                     <Title>{currentProject.projectName}</Title>
                     <MotivateText>{currentProject.motivateText}</MotivateText>
                 </Header>
                 <Content>
-                    <ProjectDaysCardView currentDay={getDDay(currentProject.createdAt)} dayStatusMap={this.dayCardStatusMap} onPress={this.onPressDay} />
+                    <ProjectDaysCardView isClose={this.isClose} currentDay={getDDay(currentProject.createdAt)} dayStatusMap={this.dayCardStatusMap} onPress={this.onPressDay} />
                 </Content>
             </Container>
         );
+    }
+
+    private get isClose() {
+        const { currentProject } = this.props;
+        return currentProject.status === "DELETE" || currentProject.status === "DONE";
     }
 
     private get dayCardStatusMap() {

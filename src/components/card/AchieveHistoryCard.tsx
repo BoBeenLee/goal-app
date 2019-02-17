@@ -11,7 +11,10 @@ interface IProps {
     startDate: string;
     endDate: string;
     percent: number;
+    onPress?: () => void;
 }
+
+const ContainerTouchabledView = styled.TouchableOpacity``;
 
 const Container = styled.View`
     padding: 15px;
@@ -47,15 +50,17 @@ const AchievePercent = styled(GText)`
 
 class AchieveHistoryCard extends Component<IProps>{
     public render() {
-        const { style, startDate, endDate, percent, title } = this.props;
+        const { style, startDate, endDate, percent, title, onPress } = this.props;
         return (
-            <Container style={style}>
-                <Title>{title}</Title>
-                <Date>{`${startDate}~${endDate}`}</Date>
-                <ContentRightView>
-                    <AchievePercent>{percent}%</AchievePercent>
-                </ContentRightView>
-            </Container>
+            <ContainerTouchabledView onPress={onPress}>
+                <Container style={style}>
+                    <Title>{title}</Title>
+                    <Date>{`${startDate}~${endDate}`}</Date>
+                    <ContentRightView>
+                        <AchievePercent>{percent}%</AchievePercent>
+                    </ContentRightView>
+                </Container>
+            </ContainerTouchabledView>
         );
     }
 }

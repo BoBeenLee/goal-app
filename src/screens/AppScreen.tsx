@@ -1,10 +1,7 @@
-import assetsJson from "assets-json";
+import Images from "assets-image";
 import React, { Component } from "react";
-import { Navigation } from "react-native-navigation";
 import styled from "styled-components/native";
-import LottieView from 'lottie-react-native';
 
-import { pushTransition } from "./styles/animation";
 
 interface IProps {
   componentId: string;
@@ -15,7 +12,10 @@ const Container = styled.View`
   background-color: #fff;
 `;
 
-const NavigateButton = styled.Button``;
+const GifImage = styled.Image`
+  width: 100px;
+  height: 100px;
+`;
 
 const Text = styled.Text``;
 
@@ -24,16 +24,7 @@ class AppScreen extends Component<IProps> {
     return (
       <Container>
         <Text>Hello World</Text>
-        <LottieView
-          style={{
-            width: 200,
-            height: 200
-          }}
-          source={assetsJson.selected_number1}
-          autoPlay={true}
-          loop={true}
-          duration={1000}
-        />
+        <GifImage source={Images.select_number_1} />
       </Container>
     );
   }
