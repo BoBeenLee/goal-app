@@ -15,7 +15,8 @@ const images = {
     project_red_character: require("./project_red_character.gif"),
     motivate_blue_character: require("./motivate_blue_character.gif"),
     btn_menu: require("./btn_menu.png"),
-    btn_add_achieve: require("./btn_add_achieve.png")
+    btn_add_achieve: require("./btn_add_achieve.png"),
+    splash: require("./splash.png")
 };
 
 export default images;

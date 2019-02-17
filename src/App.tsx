@@ -6,6 +6,8 @@ import RootStore from "./stores/RootStore";
 import { start as startNavigator, navigateDynamicLink } from "./utils/navigator";
 import { setup } from "../ReactotronConfig";
 import { registerScreens } from "./screens";
+import database from "./model/schema";
+import { SCREEN_IDS } from "./screens/constant";
 
 const rootStore = RootStore.create();
 
@@ -20,15 +22,9 @@ async function start() {
   firebase.links().getInitialLink().then(url => {
     console.log("start", url);
   });
-  // if (url) {
-  //   Navigation.events().registerAppLaunchedListener(() => {
-  //     navigateDynamicLink();
-  //   });
-  // } else {
   Navigation.events().registerAppLaunchedListener(() => {
     startNavigator();
   });
-  // }
 }
 
 start();

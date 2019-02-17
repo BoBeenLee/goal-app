@@ -1,33 +1,60 @@
 import Images from "assets-image";
 import React, { Component } from "react";
 import styled from "styled-components/native";
+import { Q } from '@nozbe/watermelondb';
+import withObservables from '@nozbe/with-observables';
+
+import { push } from "../utils/navigator";
+import { SCREEN_IDS } from "./constant";
 
 
 interface IProps {
+  currentProjects: any;
   componentId: string;
 }
 
 const Container = styled.View`
   flex: 1;
-  background-color: #fff;
 `;
 
-const GifImage = styled.Image`
-  width: 100px;
-  height: 100px;
+const Splash = styled.Image`
+  flex: 1;
 `;
-
-const Text = styled.Text``;
 
 class AppScreen extends Component<IProps> {
+  public async componentDidMount() {
+    const { currentProjects } = this.props;
+    if (currentProjects.length > 0) {
+      this.naviateProject();
+      return;
+    }
+    this.naviateStart();
+  }
+
   public render() {
     return (
       <Container>
-        <Text>Hello World</Text>
-        <GifImage source={Images.select_number_1} />
+        <Splash source={Images.splash} />
       </Container>
     );
   }
+
+  private naviateProject = () => {
+    const { componentId } = this.props;
+    push(componentId, SCREEN_IDS.ProjectScreen);
+  }
+
+  private naviateStart = () => {
+    const { componentId } = this.props;
+    push(componentId, SCREEN_IDS.StartScreen);
+  }
 }
 
-export default AppScreen;
+const enhance = withObservables([], ({ database }) => ({
+  currentProjects: database.collections
+    .get('project')
+    .query(Q.where('status', "DOING"))
+    .observe(),
+}))
+
+export default enhance(AppScreen);
