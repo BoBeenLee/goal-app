@@ -43,6 +43,6 @@ const database = new Database({
     modelClasses: [Project, ProjectDay],
 });
 
-generate(database);
+// generate(database);
 
 export default database;

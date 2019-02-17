@@ -106,7 +106,7 @@ class ProjectScreen extends Component<IProps> {
                         /> : <AddAchieveCard onPress={this.navigateRegisterProject} />}
                     </AchieveCardView>
 
-                    <AchieveHistoryTitle>지나간 목표</AchieveHistoryTitle>
+                    <AchieveHistoryTitle>지나간 목표 {historyProjects.length}</AchieveHistoryTitle>
                     <AchieveHistoriesList>
                         {_.map(historyProjects, project => {
                             return (<AchieveHistoryCardView
@@ -160,7 +160,7 @@ class ProjectScreen extends Component<IProps> {
     }
 
     private settingAlaram = async () => {
-        // NOTHING
+        alert("준비중입니당");
     }
 
     private navigateRegisterProject = async () => {
