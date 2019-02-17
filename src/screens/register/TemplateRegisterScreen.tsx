@@ -195,7 +195,7 @@ class TemplateRegisterScreen extends Component<IProps, IStates> {
             });
             return;
         }
-        if (templates.length > SELECTED_TEMPLATE_MAX_COUNT) {
+        if (templates.length >= SELECTED_TEMPLATE_MAX_COUNT) {
             return;
         }
         this.setState({
@@ -217,6 +217,7 @@ class TemplateRegisterScreen extends Component<IProps, IStates> {
             const newProject = await projectCollection.create(project => {
                 project.projectName = projectName;
                 project.motivateText = motivateText;
+                project.status = "DOING";
                 project.templates = JSON.stringify(selectedTemplates);
             });
             console.log(newProject);

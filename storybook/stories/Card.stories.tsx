@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
-import { AchieveCard, AchieveHistoryCard, DayCard, PhraseCard, ProjectDaysCard } from "../../src/components";
+import { AchieveCard, AchieveHistoryCard, DayCard, PhraseCard, ProjectDaysCard, AddAchieveCard } from "../../src/components";
 
 const Container = styled.View`
   flex: 1;
@@ -72,4 +72,7 @@ storiesOf("Card", module)
     <DayBG>
       <ProjectDaysCard currentDay={13} onPress={action("onPress")} />
     </DayBG>
+  ))
+  .add("AddAchieveCard", () => (
+    <AddAchieveCard onPress={action("onPress")} />
   ));

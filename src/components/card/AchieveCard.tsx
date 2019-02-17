@@ -10,11 +10,14 @@ import { colors } from '../../styles';
 interface IProps {
     style?: ViewProps["style"];
     title: string;
+    startDate: string;
+    endDate: string;
     onAchievePress: () => void;
     onMorePress: () => void;
 }
 
 const Container = styled.TouchableOpacity`
+    flex: 1;
     background-color: ${colors.orangish};
     justify-content: space-between;
     padding-top: 29px;
@@ -64,14 +67,14 @@ const AchievePercent = styled(GText).attrs({
 
 class AchieveCard extends Component<IProps> {
     public render() {
-        const { style, title, onAchievePress, onMorePress } = this.props;
+        const { style, title, startDate, endDate, onAchievePress, onMorePress } = this.props;
         return (
             <Container style={style} onPress={onAchievePress}>
                 <Content>
                     <TitleView>
                         <AchieveTitle>{title}</AchieveTitle>
                         <AchiveDate>
-                            18.2.12~3.12
+                            {`${startDate}~${endDate}`}
                         </AchiveDate>
                     </TitleView>
                     <MoreButton type="opacity" source={Images.btn_more} onPress={onMorePress} />

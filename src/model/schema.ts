@@ -13,6 +13,8 @@ export const mySchema = appSchema({
                 { name: 'project_name', type: 'string' },
                 { name: 'templates_json', type: 'string', isOptional: true },
                 { name: 'motivate_text', type: 'string', isOptional: true },
+                { name: 'status', type: 'string' },
+                { name: 'closed_at', type: 'number', isOptional: true },
                 { name: 'created_at', type: 'number' },
                 { name: 'updated_at', type: 'number' }
             ]
@@ -23,6 +25,7 @@ export const mySchema = appSchema({
                 { name: 'project_id', type: 'string', isIndexed: true },
                 { name: 'day', type: 'string' },
                 { name: 'templates_json', type: 'string', isOptional: true },
+                { name: 'status', type: 'string' },
                 { name: 'created_at', type: 'number' }
             ]
         })

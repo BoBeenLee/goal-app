@@ -1,13 +1,21 @@
+import moment, { Moment } from "moment";
+import _ from "lodash";
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 import ActionSheet from 'react-native-actionsheet';
+import { Q } from '@nozbe/watermelondb';
+import withObservables from '@nozbe/with-observables';
 
-import { ContainerWithStatusBar, AchieveCard, Title, AchieveHistoryCard, GText, DDay } from '../components';
+import { ContainerWithStatusBar, AchieveCard, AchieveHistoryCard, GText, DDay, AddAchieveCard } from '../components';
 import { push } from '../utils/navigator';
 import { SCREEN_IDS } from './constant';
 import { colors } from '../styles';
+import { transformStringToFormat, tranformDateToFormat, add30Days, getDDay } from "../utils/date";
 
 interface IProps {
+    database: any;
+    currentProjects: any;
+    historyProjects: any;
     componentId: string;
 }
 
@@ -44,7 +52,7 @@ const AchieveTitle = styled(GText).attrs({
 
 const AchiveDDay = styled(DDay)``;
 
-const AchieveCardView = styled(AchieveCard)`
+const AchieveCardView = styled.View`
     height: 190px;
 `;
 
@@ -72,6 +80,10 @@ const AchieveHistoryCardView = styled(AchieveHistoryCard)`
 class ProjectScreen extends Component<IProps> {
     public ActionSheet: any;
     public render() {
+        const { currentProjects, historyProjects } = this.props;
+        console.log(currentProjects, historyProjects);
+        const currentProject = this.currentProject;
+
         return (
             <Container>
                 <Content>
@@ -80,20 +92,23 @@ class ProjectScreen extends Component<IProps> {
                     </HeaderTitle>
                     <AchiveView>
                         <AchieveTitle>진행중 목표</AchieveTitle>
-                        <AchiveDDay day="13" />
+                        {currentProject ? <AchiveDDay day={`${getDDay(currentProject.createdAt)}`} /> : null}
                     </AchiveView>
-                    <AchieveCardView
-                        title={`어플 완성하고
-런칭하기`}
-                        onAchievePress={this.navigateProjectDays}
-                        onMorePress={this.showActionSheetMore}
-                    />
+                    <AchieveCardView>
+                        {currentProject ? <AchieveCard
+                            title={currentProject.projectName}
+                            startDate={transformStringToFormat(currentProject.createdAt)}
+                            endDate={tranformDateToFormat(add30Days(moment(currentProject.createdAt)))}
+                            onAchievePress={this.navigateProjectDays}
+                            onMorePress={this.showActionSheetMore}
+                        /> : <AddAchieveCard onPress={this.navigateRegisterProject} />}
+                    </AchieveCardView>
+
                     <AchieveHistoryTitle>지나간 목표</AchieveHistoryTitle>
                     <AchieveHistoriesList>
-                        <AchieveHistoryCardView title={`하루에 열장
-씩 책읽기`} />
-                        <AchieveHistoryCardView title={`하루에 열장
-씩 책읽기`} />
+                        {_.map(historyProjects, project => {
+                            return (<AchieveHistoryCardView title={`하루에 열장씩 책읽기`} />)
+                        })}
                     </AchieveHistoriesList>
                 </Content>
                 <ActionSheet
@@ -119,12 +134,28 @@ class ProjectScreen extends Component<IProps> {
         }
     }
 
-    private deleteProject = () => {
-        alert("Delete");
+    private deleteProject = async () => {
+        const { database } = this.props;
+        const currentProject = this.currentProject!;
+        await database.action(async () => {
+            const projectCollection = database.collections.get('project')
+            const project = await projectCollection.find(currentProject.id)
+            await project.deleteProject();
+        })
+    }
+
+    private get currentProject(): any {
+        const { currentProjects } = this.props;
+        return _.first(currentProjects);
     }
 
     private settingAlaram = () => {
         alert("Setting Alarm");
+    }
+
+    private navigateRegisterProject = () => {
+        const { componentId } = this.props;
+        push(componentId, SCREEN_IDS.ProjectRegisterScreen);
     }
 
     private navigateProjectDays = () => {
@@ -133,4 +164,15 @@ class ProjectScreen extends Component<IProps> {
     }
 }
 
-export default ProjectScreen;
+const enhance = withObservables([], ({ database }) => ({
+    currentProjects: database.collections
+        .get('project')
+        .query(Q.where('status', "DOING"))
+        .observe(),
+    historyProjects: database.collections
+        .get('project')
+        .query(Q.where('status', Q.oneOf(['DONE', 'DELETE'])))
+        .observe()
+}))
+
+export default enhance(ProjectScreen);
