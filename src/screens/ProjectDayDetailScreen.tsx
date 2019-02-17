@@ -2,66 +2,66 @@ import Images from "assets-image";
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 
-import { ContainerWithStatusBar, GTopBar, GText, IconButton } from '../components';
+import { ContainerWithStatusBar, GTopBar, GText, IconButton, BackTopBar } from '../components';
 import { colors } from '../styles';
-import { getStatusBarHeight } from "../utils/device";
+import { pop } from "../utils/navigator";
 
 interface IProps {
     componentId: string;
     projectId: string;
+    day: number;
 }
 
-const Container = styled.View``;
+const Container = styled(ContainerWithStatusBar)``;
 
-const TopBar = styled(GTopBar)`
-    padding-top: 24px;
-    padding-bottom: 25px;
-    padding-horizontal: 25px;
+const BackTopBarView = styled(BackTopBar)`
+    border-bottom-width: 0px;
+    border-bottom-color: ${colors.paleGrey};
 `;
 
 const Header = styled.View`
-    height: 289px;
-    background-color: ${colors.ceruleanBlueTwo};
-    padding-top: ${getStatusBarHeight(false)};
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom-color: #f0f2f6;
+    border-bottom-width: 1;
+`;
+
+const DateView = styled.View`
+    padding-bottom: 12px;
+    border-bottom-color: ${colors.ceruleanBlueTwo};
+    border-bottom-width: 1px;
 `;
 
 const DateText = styled(GText)`
-    font-size: 14px;
-    color: ${colors.paleSkyBlue};
+    font-size: 15px;
+    letter-spacing: -0.32;
+    color: ${colors.ceruleanBlueTwo};
 `;
 
-const MenuButton = styled(IconButton).attrs({})`
-    width: 20px;
-    height: 20px;
-`;
-
-const Title = styled(GText).attrs({})`
-    font-size: 32px;
-    color: ${colors.white};
-    line-height: 38px;
-    margin-left: 25px;
-`;
-
-const MotivateText = styled(GText)`
-    font-size: 16px;
-    color: ${colors.twilightBlue};
-    line-height: 24px;
-    letter-spacing: -0.3;
-    margin-top: 10px;
-    margin-left: 25px;
+const Content = styled.View`
+    flex: 1;
+    background-color: #f9f9f9;
 `;
 
 class ProjectDayDetailScreen extends Component<IProps> {
     public render() {
         return (
             <Container>
+                <BackTopBarView title="탬플릿 둘러보기" onBackPress={this.back} />
                 <Header>
-                    <TopBar HeaderComponent={<MenuButton type="opacity" source={Images.btn_menu} />} HeaderRightComponent={<DateText>2월 4일 금요일</DateText>} />
-                    <Title>{`어플 완성하고\n런칭하기`}</Title>
-                    <MotivateText>런칭이 코앞! 꼭 올려보아요</MotivateText>
+                    <DateView>
+                        <DateText>2월 4일 월요일</DateText>
+                    </DateView>
                 </Header>
+                <Content />
             </Container>
         );
+    }
+
+    private back = () => {
+        const { componentId } = this.props;
+        pop(componentId);
     }
 }
 

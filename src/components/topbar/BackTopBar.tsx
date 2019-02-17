@@ -6,8 +6,10 @@ import GTopBar from './GTopBar';
 import { GText } from '../text';
 import { IconButton } from "../button";
 import { colors } from "../../styles";
+import { ViewProps } from "react-native";
 
 interface IProps {
+    style?: ViewProps["style"];
     title: string;
     onBackPress: () => void;
 }
@@ -43,8 +45,9 @@ const HeaderTitle = styled(GText).attrs({
 
 class BackTopBar extends Component<IProps> {
     public render() {
+        const { style } = this.props;
         return (
-            <Container HeaderComponent={this.renderHeaderComponent()} />
+            <Container style={style} HeaderComponent={this.renderHeaderComponent()} />
         );
     }
 

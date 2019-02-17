@@ -2,17 +2,20 @@ import Images from "assets-image";
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 
-import { ContainerWithStatusBar, GTopBar, GText, IconButton } from '../components';
+import { ContainerWithStatusBar, GTopBar, GText, IconButton, ProjectDaysCard } from '../components';
 import { colors } from '../styles';
 import { getStatusBarHeight } from "../utils/device";
-import { pop } from "../utils/navigator";
+import { pop, push } from "../utils/navigator";
+import { SCREEN_IDS } from "./constant";
 
 interface IProps {
     componentId: string;
     projectId: string;
 }
 
-const Container = styled.View``;
+const Container = styled.View`
+    flex: 1;
+`;
 
 const TopBar = styled(GTopBar)`
     padding-top: 24px;
@@ -52,6 +55,16 @@ const MotivateText = styled(GText)`
     margin-left: 25px;
 `;
 
+const Content = styled.View`
+    flex: 1;
+`;
+
+const ProjectDaysCardView = styled(ProjectDaysCard)`
+    margin-top: -67px;
+    margin-bottom: 20px;
+    margin-horizontal: 15px;
+`;
+
 class ProjectDaysScreen extends Component<IProps> {
     public render() {
         return (
@@ -61,8 +74,19 @@ class ProjectDaysScreen extends Component<IProps> {
                     <Title>{`어플 완성하고\n런칭하기`}</Title>
                     <MotivateText>런칭이 코앞! 꼭 올려보아요</MotivateText>
                 </Header>
+                <Content>
+                    <ProjectDaysCardView currentDay={13} onPress={this.onPressDay} />
+                </Content>
             </Container>
         );
+    }
+
+    private onPressDay = (index: number) => {
+        const { componentId, projectId } = this.props;
+        push(componentId, SCREEN_IDS.ProjectDayDetailScreen, {
+            projectId,
+            day: index
+        });
     }
 
     private back = () => {

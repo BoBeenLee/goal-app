@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
-import { AchieveCard, AchieveHistoryCard, DayCard, PhraseCard, DaysCard } from "../../src/components";
+import { AchieveCard, AchieveHistoryCard, DayCard, PhraseCard, ProjectDaysCard } from "../../src/components";
 
 const Container = styled.View`
   flex: 1;
@@ -14,11 +14,16 @@ const AchieveCardView = styled(AchieveCard)`
 `;
 
 const DayView = styled.View`
+  margin-top: 20px;
   flex: 1;
+  flex-direction: row;
+  justify-content: space-around;
 `;
 
-const ActiveDayView = styled(DayCard)`
-  margin-horizontal: 25px;
+const DayBG = styled.View`
+  flex:1;
+  padding: 20px;
+  background-color: #007ef2;
 `;
 
 storiesOf("Card", module)
@@ -36,38 +41,35 @@ storiesOf("Card", module)
 런칭하기`}
     />
   ))
-  .add("DaysCard", () => (
-    <DayView>
-      <DaysCard verticalType="left" DayCards={<React.Fragment>
-        <DayCard day={"1"} />
-        <DayCard day={"2"} />
-        <DayCard day={"3"} /></React.Fragment>} />
-      <DaysCard verticalType="right" DayCards={<React.Fragment>
-        <DayCard day={"1"} />
-        <DayCard day={"2"} />
-        <DayCard day={"3"} /></React.Fragment>} />
-      <DaysCard verticalType="none" DayCards={<React.Fragment>
-        <DayCard day={"1"} />
-        <DayCard day={"2"} />
-        <DayCard day={"3"} /></React.Fragment>} />
-    </DayView>
-  ))
   .add("DayCard", () => (
-    <DayView>
-      <DayCard
-        day="26"
-      />
-      <ActiveDayView
-        isActive={true}
-        day="27"
-      />
-      <DayCard
-        day="28"
-      />
-    </DayView>
+    <React.Fragment>
+      <DayView>
+        <DayCard type="circle" status="complete" day={"1"} onPress={action("onDay")} />
+        <DayCard type="circle" status="fail" day={"1"} onPress={action("onDay")} />
+        <DayCard type="circle" status="current" day={"1"} onPress={action("onDay")} />
+        <DayCard type="circle" status="ready" day={"1"} onPress={action("onDay")} />
+      </DayView>
+      <DayView>
+        <DayCard type="hexagon" status="complete" day={"1"} onPress={action("onDay")} />
+        <DayCard type="hexagon" status="fail" day={"1"} onPress={action("onDay")} />
+        <DayCard type="hexagon" status="current" day={"1"} onPress={action("onDay")} />
+        <DayCard type="hexagon" status="ready" day={"1"} onPress={action("onDay")} />
+      </DayView>
+      <DayView>
+        <DayCard type="square" status="complete" day={"1"} onPress={action("onDay")} />
+        <DayCard type="square" status="fail" day={"1"} onPress={action("onDay")} />
+        <DayCard type="square" status="current" day={"1"} onPress={action("onDay")} />
+        <DayCard type="square" status="ready" day={"1"} onPress={action("onDay")} />
+      </DayView>
+    </React.Fragment>
   ))
   .add("PhraseCard", () => (
     <PhraseCard
       title={"“내 어플이 사용되는 모습을 보고싶어”"}
     />
+  ))
+  .add("ProjectDaysCard", () => (
+    <DayBG>
+      <ProjectDaysCard currentDay={13} onPress={action("onPress")} />
+    </DayBG>
   ));
