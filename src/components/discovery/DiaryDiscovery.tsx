@@ -48,7 +48,6 @@ class DiaryDiscovery extends Component {
         return (
             <Container>
                 <Header>
-                    <Title>Diary</Title>
                     <DescriptionView>
                         <Description>
                             목표를 위해 한 일을 기록하거나 독후감, 관찰 기록 일지 등으로 다양하게 활용해보세요.

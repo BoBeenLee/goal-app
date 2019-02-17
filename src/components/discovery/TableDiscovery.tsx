@@ -50,7 +50,6 @@ class TableDiscovery extends Component {
         return (
             <Container>
                 <Header>
-                    <Title>Table</Title>
                     <DescriptionView>
                         <Description>
                             하루에 영어단어 5개씩 외우기, 돈 30000원 이상 쓰지 않기 등의 목표를 세우셨다면 Table은 어떠세요?

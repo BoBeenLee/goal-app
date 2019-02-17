@@ -48,7 +48,6 @@ class OXDiscovery extends Component {
         return (
             <Container>
                 <Header>
-                    <Title>OX</Title>
                     <DescriptionView>
                         <Description>
                             했는지 안했는지만 깔끔하게 체크하고 싶을 때 이용해보세요.

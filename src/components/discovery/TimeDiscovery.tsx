@@ -50,7 +50,6 @@ class TimeDiscovery extends Component {
         return (
             <Container>
                 <Header>
-                    <Title>Time</Title>
                     <DescriptionView>
                         <Description>
                             운동을 한 시간, 공부를 한 시간을 기록하고 싶을 때 ‘Time’을 활용해보세요.
