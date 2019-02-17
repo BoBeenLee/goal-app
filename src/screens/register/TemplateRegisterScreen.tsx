@@ -3,8 +3,6 @@ import _ from "lodash";
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 import { ViewProps } from 'react-native';
-import { Q } from '@nozbe/watermelondb';
-import withObservables from '@nozbe/with-observables';
 
 import { GButton, RegisterStep, ContainerWithStatusBar, OXTemplate, IconButton, GText, SelectedTemplate, TodoTemplate, DiaryTemplate, TimeTemplate, TableTemplate } from "../../components";
 import { ITemplateProps, TemplateType } from '../../model/Project';

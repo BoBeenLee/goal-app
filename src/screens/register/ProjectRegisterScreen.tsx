@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import styled from "styled-components/native";
 import { Q } from '@nozbe/watermelondb';
 import withObservables from '@nozbe/with-observables';
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import { GButton, RegisterStep, ContainerWithStatusBar, GText, IconButton, UnderLineInputText } from "../../components";
 import { push, pop } from '../../utils/navigator';
@@ -24,7 +25,7 @@ interface IStates {
 
 const Container = styled(ContainerWithStatusBar)``;
 
-const Content = styled.View`
+const Content = styled(KeyboardAwareScrollView)`
     flex: 1;
 `;
 
