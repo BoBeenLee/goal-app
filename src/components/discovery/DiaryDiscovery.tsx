@@ -15,14 +15,6 @@ const Header = styled.View`
     align-items: flex-end;
 `;
 
-const Title = styled(GText).attrs({
-    weightType: "kreonBold"
-})`
-    font-size: 24px;
-    color: ${colors.gunmetal};
-    margin-right: 30px;
-`;
-
 const DescriptionView = styled.View`
     flex: 1;
     align-items: center;
@@ -56,10 +48,10 @@ class DiaryDiscovery extends Component {
                 </Header>
                 <Content>
                     <DiaryTemplateInputView
-                        content="오늘은 할 일을 전부 끝냈다! 앞으로 남은 13일도 오늘처럼!!"
+                        defaultValue="오늘은 할 일을 전부 끝냈다! 앞으로 남은 13일도 오늘처럼!!"
                     />
                     <DiaryTemplateInputView
-                        content="‘빽넘버’를 읽고 여러 생각을 하게 되었다. 죽음의 날을 알게 되는 기분은 어떤 기분일까."
+                        defaultValue="‘빽넘버’를 읽고 여러 생각을 하게 되었다. 죽음의 날을 알게 되는 기분은 어떤 기분일까."
                     />
                 </Content>
             </Container>

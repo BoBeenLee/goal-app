@@ -3,6 +3,7 @@ import Images from "assets-image";
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 import { Q } from '@nozbe/watermelondb';
+import { StatusBar, Platform } from "react-native";
 import withObservables from '@nozbe/with-observables';
 
 import { GTopBar, GText, IconButton, ProjectDaysCard } from '../components';
@@ -25,7 +26,7 @@ const Container = styled.View`
 `;
 
 const TopBar = styled(GTopBar)`
-    padding-top: 24px;
+    padding-top: ${Platform.OS === "ios" ? 24 : 0}px;
     padding-bottom: 25px;
     padding-horizontal: 25px;
 `;
@@ -73,10 +74,20 @@ const ProjectDaysCardView = styled(ProjectDaysCard)`
 `;
 
 class ProjectDaysScreen extends Component<IProps> {
+    public static options() {
+        return {
+            statusBar: {
+                backgroundColor: colors.ceruleanBlueTwo,
+                drawBehind: true
+            }
+        };
+    }
+
     public render() {
         const { currentProject } = this.props;
         return (
             <Container>
+                <StatusBar backgroundColor={colors.ceruleanBlueTwo} />
                 <Header>
                     <TopBar HeaderComponent={<MenuButton type="opacity" source={Images.btn_menu} onPress={this.back} />} HeaderRightComponent={<DateText>{today()}</DateText>} />
                     <Title>{currentProject.projectName}</Title>

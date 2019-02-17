@@ -10,8 +10,10 @@ import { ViewProps } from 'react-native';
 type OXType = "O" | "X";
 
 interface IProps {
+    title?: string;
     style?: ViewProps["style"];
     defaultValue?: OXType;
+    onOXPress?: (value: OXType) => void;
 }
 
 interface IStates {
@@ -19,9 +21,21 @@ interface IStates {
 }
 
 const Container = styled(TemplateContainer)`
+    
+`;
+
+const Content = styled.View`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+`;
+
+const TemplateInputTitle = styled(GText).attrs({
+    weightType: "kreonBold"
+})`
+    font-size: 24px;
+    color: ${colors.gunmetal};
+    margin-bottom: 8px;
 `;
 
 
@@ -48,17 +62,20 @@ class OXTemplateInput extends Component<IProps, IStates> {
     }
 
     public render() {
-        const { style } = this.props;
+        const { style, title } = this.props;
         const { value } = this.state;
 
         return (
             <Container style={style}>
-                <OTouchabledView onPress={_.partial(this.onChangeValue, "O")}>
-                    <OXText isActive={"O" === value}>O</OXText>
-                </OTouchabledView>
-                <XTouchabledView onPress={_.partial(this.onChangeValue, "X")}>
-                    <OXText isActive={"X" === value}>X</OXText>
-                </XTouchabledView>
+                {title ? <TemplateInputTitle>{title}</TemplateInputTitle> : null}
+                <Content>
+                    <OTouchabledView onPress={_.partial(this.onChangeValue, "O")}>
+                        <OXText isActive={"O" === value}>O</OXText>
+                    </OTouchabledView>
+                    <XTouchabledView onPress={_.partial(this.onChangeValue, "X")}>
+                        <OXText isActive={"X" === value}>X</OXText>
+                    </XTouchabledView>
+                </Content>
             </Container>
         );
     }
@@ -66,6 +83,11 @@ class OXTemplateInput extends Component<IProps, IStates> {
     private onChangeValue = (value: OXType) => {
         this.setState({
             value
+        }, () => {
+            const { onOXPress } = this.props;
+            if (onOXPress) {
+                onOXPress(value);
+            }
         })
     };
 }

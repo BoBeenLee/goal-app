@@ -3,10 +3,11 @@ import Images from "assets-image";
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 
-import { GText } from '../text';
 import { colors } from '../../styles';
 import { TemplateContainer } from "./style";
 import { IconButton } from "../button";
+import { GInputText } from "../input";
+import { GText } from "../text";
 
 interface ITodoItem {
     label: string;
@@ -14,7 +15,10 @@ interface ITodoItem {
 }
 
 interface IProps {
-    defaultTodos: ITodoItem[]
+    title?: string;
+    defaultTodos: ITodoItem[];
+    onBlur?: (todos: ITodoItem[]) => void;
+    onToggle?: (todos: ITodoItem[]) => void;
 }
 
 interface IStates {
@@ -23,6 +27,13 @@ interface IStates {
 
 const Container = styled(TemplateContainer)``;
 
+const TemplateInputTitle = styled(GText).attrs({
+    weightType: "kreonBold"
+})`
+    font-size: 24px;
+    color: ${colors.gunmetal};
+    margin-bottom: 8px;
+`;
 
 const Content = styled.View``;
 
@@ -37,7 +48,7 @@ const CheckBox = styled(IconButton)`
     margin-right: 8px;
 `;
 
-const TodoText = styled(GText).attrs<{ isActive?: boolean }>({})`
+const TodoInputText = styled(GInputText).attrs<{ isActive?: boolean }>({})`
     font-size: 16px;
     color: ${({ isActive }) => isActive ? colors.cloudyBlueTwo : colors.gunmetal};
     margin-bottom: 3px;
@@ -58,20 +69,24 @@ class TodoTemplateInput extends Component<IProps, IStates> {
 
     public render() {
         const { todos } = this.state;
-
+        const { title } = this.props;
         return (
             <Container>
+                {title ? <TemplateInputTitle>{title}</TemplateInputTitle> : null}
                 <Content>
                     {_.map(todos, (todoItem, index) => {
                         return (
-                            <Row key={todoItem.label}>
+                            <Row key={`todoRow${index}`}>
                                 <CheckBox
                                     type="opacity"
                                     source={todoItem.isActive ? Images.check_box_active : Images.check_box_inactive}
                                     onPress={_.partial(this.onToggle, index)} />
-                                <TodoText isActive={todoItem.isActive}>
-                                    {todoItem.label}
-                                </TodoText>
+                                <TodoInputText
+                                    name={`todoInput${index}`}
+                                    isActive={todoItem.isActive}
+                                    defaultValue={todoItem.label}
+                                    onTextBlur={_.partial(this.onBlur, index)}
+                                />
                             </Row>
                         );
                     })}
@@ -94,7 +109,50 @@ class TodoTemplateInput extends Component<IProps, IStates> {
                     return todoItem;
                 })
             };
+        }, () => {
+            const { todos } = this.state;
+            const { onToggle } = this.props;
+
+            if (onToggle) {
+                onToggle(todos);
+            }
         })
+    }
+
+    private onBlur = (index: number, text: string) => {
+        const { todos: prevTodo } = this.state;
+        const resultTodos = _.map(prevTodo, (todo, todoIndex) => {
+            if (todoIndex !== index) {
+                return todo;
+            }
+            return {
+                ...todo,
+                label: text
+            };
+        });
+        if (index === prevTodo.length - 1 && !_.isEmpty(text)) {
+            this.setState({
+                todos: [...resultTodos, { label: "", isActive: false }]
+            }, this.afterBlur)
+
+            return;
+        } else if (index === prevTodo.length - 2 && _.isEmpty(text)) {
+            this.setState({
+                todos: _.slice(resultTodos, 0, prevTodo.length - 1)
+            }, this.afterBlur);
+            return;
+        }
+        this.setState({
+            todos: resultTodos
+        }, this.afterBlur);
+    };
+
+    private afterBlur = () => {
+        const { todos } = this.state;
+        const { onBlur } = this.props;
+        if (onBlur) {
+            onBlur(todos);
+        }
     }
 }
 

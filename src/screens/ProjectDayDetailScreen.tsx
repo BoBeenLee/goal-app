@@ -4,8 +4,9 @@ import React, { Component } from 'react';
 import styled from "styled-components/native";
 import { Q } from '@nozbe/watermelondb';
 import withObservables from '@nozbe/with-observables';
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-import { ContainerWithStatusBar, GText, BackTopBar } from '../components';
+import { ContainerWithStatusBar, GText, BackTopBar, OXTemplateInput, DiaryTemplateInput, TodoTemplateInput } from '../components';
 import { colors } from '../styles';
 import { pop } from "../utils/navigator";
 import { tranformDateToFormat } from "../utils/date";
@@ -45,13 +46,28 @@ const DateText = styled(GText)`
     color: ${colors.ceruleanBlueTwo};
 `;
 
-const Content = styled.View`
+const Content = styled(KeyboardAwareScrollView)`
     flex: 1;
+    padding: 25px;
     background-color: #f9f9f9;
+`;
+
+const TemplateInputView = styled.View`
+    margin-bottom: 25px;
+`;
+
+const TemplateInputTitle = styled(GText).attrs({
+    weightType: "kreonBold"
+})`
+    font-size: 24px;
+    color: ${colors.gunmetal};
 `;
 
 class ProjectDayDetailScreen extends Component<IProps> {
     public render() {
+        const { templates: templatesJSON } = this.currentProjectDay;
+        const templates = JSON.parse(templatesJSON);
+
         return (
             <Container>
                 <BackTopBarView title={`day ${this.currentProjectDay.day}`} onBackPress={this.back} />
@@ -60,9 +76,84 @@ class ProjectDayDetailScreen extends Component<IProps> {
                         <DateText>{this.dayText}</DateText>
                     </DateView>
                 </Header>
-                <Content />
+                <Content>
+                    {_.map(templates, (template, index) => {
+                        return <TemplateInputView key={`templateInput${index}`}>
+                            {this.renderByType(template, index)}</TemplateInputView>
+                    })}
+                </Content>
             </Container>
         );
+    }
+
+    private titleByType = (type) => {
+        switch (type) {
+            case "TODO":
+                return "To do list";
+            case "OX":
+                return "OX";
+            case "Diary":
+                return "Diary";
+            case "Time":
+                return "Time";
+            case "Table":
+                return "Table";
+            case "Photo":
+                return "Photo";
+        }
+    }
+
+    private renderByType = (template: any, index) => {
+        switch (template.type) {
+            case "TODO":
+                return <TodoTemplateInput
+                    title={this.titleByType(template.type)}
+                    defaultTodos={_.defaultTo(template.defaultTodos, [{ label: "", isActive: false }])}
+                    onBlur={_.partial(this.onTodoBlur, index)}
+                />;
+            case "OX":
+                return <OXTemplateInput
+                    title={this.titleByType(template.type)}
+                    defaultValue={_.defaultTo(template.defaultValue, "")}
+                    onOXPress={_.partial(this.onOXPress, index)}
+                />;
+            case "Diary":
+                return <DiaryTemplateInput
+                    title={this.titleByType(template.type)}
+                    defaultValue={_.defaultTo(template.defaultValue, "")}
+                    onBlur={_.partial(this.onDiaryBlurText, index)} />;
+            case "Time":
+                return <TemplateInputTitle>준비중입니당</TemplateInputTitle>;
+            case "Table":
+                return <TemplateInputTitle>준비중입니당</TemplateInputTitle>;
+            case "Photo":
+                return <TemplateInputTitle>준비중입니당</TemplateInputTitle>;
+        }
+    }
+
+    private onOXPress = async (index, value: string) => {
+        await this.currentProjectDay.updateTemplate(index, "defaultValue", value);
+        await this.doneStatus();
+    }
+
+    private onDiaryBlurText = async (index, text: string) => {
+        if (_.isEmpty(text)) {
+            return;
+        }
+        await this.currentProjectDay.updateTemplate(index, "defaultValue", text);
+        await this.doneStatus();
+    }
+
+    private onTodoBlur = async (templateIndex: number, todos) => {
+        if (_.isEmpty(todos)) {
+            return;
+        }
+        await this.currentProjectDay.updateTemplate(templateIndex, "defaultTodos", todos);
+        await this.doneStatus();
+    };
+
+    private doneStatus = async () => {
+        await this.currentProjectDay.done();
     }
 
     private get currentProjectDay(): any {

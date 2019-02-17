@@ -4,11 +4,7 @@ import moment from "moment";
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
-import { TodoTemplateInput, OXTemplateInput, TableTemplateInput, TimeTemplateInput } from "../../src/components";
-
-/**
- "영어 지문 5개 해석하기", "수학 23p까지 풀기", "학원 숙제 잊지 않기"
- */
+import { TodoTemplateInput, OXTemplateInput, TableTemplateInput, TimeTemplateInput, DiaryTemplateInput } from "../../src/components";
 
 storiesOf("TemplateInput", module)
     .add("TodoTemplateInput", () => <TodoTemplateInput defaultTodos={[
@@ -24,8 +20,9 @@ storiesOf("TemplateInput", module)
             label: "학원 숙제 잊지 않기",
             isActive: false
         }
-    ]} />)
-    .add("OXTemplateInput", () => <OXTemplateInput defaultValue="O" />)
+    ]} onToggle={action("onToggle")} onBlur={action("onBlur")} />)
+    .add("DiaryTemplateInput", () => <DiaryTemplateInput defaultValue="Hello" onBlur={action("onBlur")} />)
+    .add("OXTemplateInput", () => <OXTemplateInput defaultValue="O" onOXPress={action("oxPress")} />)
     .add("TimeTemplateInput", () => <TimeTemplateInput startTime={moment()} endTime={moment()} />)
     .add("TableTemplateInput", () => <TableTemplateInput items={[
         {

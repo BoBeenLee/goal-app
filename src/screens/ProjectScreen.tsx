@@ -149,13 +149,8 @@ class ProjectScreen extends Component<IProps> {
     }
 
     private deleteProject = async () => {
-        const { database } = this.props;
         const currentProject = this.currentProject!;
-        await database.action(async () => {
-            const projectCollection = database.collections.get('project')
-            const project = await projectCollection.find(currentProject.id)
-            await project.deleteProject();
-        })
+        await currentProject.deleteProject();
     }
 
     private get currentProject(): any {
