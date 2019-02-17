@@ -85,6 +85,8 @@ class TodoTemplateInput extends Component<IProps, IStates> {
                                     name={`todoInput${index}`}
                                     isActive={todoItem.isActive}
                                     defaultValue={todoItem.label}
+                                    placeholder="할 일 추가하기"
+                                    placeholderTextColor={colors.cloudyBlueTwo}
                                     onTextBlur={_.partial(this.onBlur, index)}
                                 />
                             </Row>
