@@ -14,6 +14,7 @@ import { transformStringToFormat, tranformDateToFormat, add30Days, getDDay } fro
 
 interface IProps {
     database: any;
+    doneProjectDay: any;
     currentProjects: any;
     historyProjects: any;
     componentId: string;
@@ -79,9 +80,9 @@ const AchieveHistoryCardView = styled(AchieveHistoryCard)`
 
 class ProjectScreen extends Component<IProps> {
     public ActionSheet: any;
+
     public render() {
-        const { currentProjects, historyProjects } = this.props;
-        console.log(currentProjects, historyProjects);
+        const { historyProjects } = this.props;
         const currentProject = this.currentProject;
 
         return (
@@ -99,6 +100,7 @@ class ProjectScreen extends Component<IProps> {
                             title={currentProject.projectName}
                             startDate={transformStringToFormat(currentProject.createdAt)}
                             endDate={tranformDateToFormat(add30Days(moment(currentProject.createdAt)))}
+                            percent={this.projectPercentageById(currentProject.id)}
                             onAchievePress={this.navigateProjectDays}
                             onMorePress={this.showActionSheetMore}
                         /> : <AddAchieveCard onPress={this.navigateRegisterProject} />}
@@ -107,7 +109,13 @@ class ProjectScreen extends Component<IProps> {
                     <AchieveHistoryTitle>지나간 목표</AchieveHistoryTitle>
                     <AchieveHistoriesList>
                         {_.map(historyProjects, project => {
-                            return (<AchieveHistoryCardView title={`하루에 열장씩 책읽기`} />)
+                            return (<AchieveHistoryCardView
+                                key={`history${project.id}`}
+                                title={project.projectName}
+                                startDate={transformStringToFormat(project.createdAt)}
+                                endDate={tranformDateToFormat(add30Days(moment(project.createdAt)))}
+                                percent={this.projectPercentageById(project.id)}
+                            />)
                         })}
                     </AchieveHistoriesList>
                 </Content>
@@ -120,6 +128,12 @@ class ProjectScreen extends Component<IProps> {
                 />
             </Container>
         );
+    }
+
+    private projectPercentageById = (projectId) => {
+        const { doneProjectDay } = this.props;
+        const doneDays = _.filter(doneProjectDay, projectDay => projectDay.project.id === projectId);
+        return Math.round((doneDays.length / 30) * 100);
     }
 
     private showActionSheetMore = () => {
@@ -149,18 +163,20 @@ class ProjectScreen extends Component<IProps> {
         return _.first(currentProjects);
     }
 
-    private settingAlaram = () => {
-        alert("Setting Alarm");
+    private settingAlaram = async () => {
+        // NOTHING
     }
 
-    private navigateRegisterProject = () => {
+    private navigateRegisterProject = async () => {
         const { componentId } = this.props;
         push(componentId, SCREEN_IDS.ProjectRegisterScreen);
     }
 
-    private navigateProjectDays = () => {
+    private navigateProjectDays = async () => {
         const { componentId } = this.props;
-        push(componentId, SCREEN_IDS.ProjectDaysScreen);
+        push(componentId, SCREEN_IDS.ProjectDaysScreen, {
+            projectId: this.currentProject.id
+        });
     }
 }
 
@@ -172,7 +188,11 @@ const enhance = withObservables([], ({ database }) => ({
     historyProjects: database.collections
         .get('project')
         .query(Q.where('status', Q.oneOf(['DONE', 'DELETE'])))
-        .observe()
+        .observe(),
+    doneProjectDay: database.collections
+        .get('project_day')
+        .query(Q.where('status', "DONE"))
+        .observe(),
 }))
 
 export default enhance(ProjectScreen);

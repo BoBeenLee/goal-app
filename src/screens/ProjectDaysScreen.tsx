@@ -1,14 +1,21 @@
+import _ from "lodash";
 import Images from "assets-image";
 import React, { Component } from 'react';
 import styled from "styled-components/native";
+import { Q } from '@nozbe/watermelondb';
+import withObservables from '@nozbe/with-observables';
 
-import { ContainerWithStatusBar, GTopBar, GText, IconButton, ProjectDaysCard } from '../components';
+import { GTopBar, GText, IconButton, ProjectDaysCard } from '../components';
 import { colors } from '../styles';
 import { getStatusBarHeight } from "../utils/device";
 import { pop, push } from "../utils/navigator";
 import { SCREEN_IDS } from "./constant";
+import { today, getDDay } from "../utils/date";
 
 interface IProps {
+    database: any;
+    currentProject: any;
+    currentProjectDays: any;
     componentId: string;
     projectId: string;
 }
@@ -67,22 +74,48 @@ const ProjectDaysCardView = styled(ProjectDaysCard)`
 
 class ProjectDaysScreen extends Component<IProps> {
     public render() {
+        const { currentProject } = this.props;
         return (
             <Container>
                 <Header>
-                    <TopBar HeaderComponent={<MenuButton type="opacity" source={Images.btn_menu} onPress={this.back} />} HeaderRightComponent={<DateText>2월 4일 금요일</DateText>} />
-                    <Title>{`어플 완성하고\n런칭하기`}</Title>
-                    <MotivateText>런칭이 코앞! 꼭 올려보아요</MotivateText>
+                    <TopBar HeaderComponent={<MenuButton type="opacity" source={Images.btn_menu} onPress={this.back} />} HeaderRightComponent={<DateText>{today()}</DateText>} />
+                    <Title>{currentProject.projectName}</Title>
+                    <MotivateText>{currentProject.motivateText}</MotivateText>
                 </Header>
                 <Content>
-                    <ProjectDaysCardView currentDay={13} onPress={this.onPressDay} />
+                    <ProjectDaysCardView currentDay={getDDay(currentProject.createdAt)} dayStatusMap={this.dayCardStatusMap} onPress={this.onPressDay} />
                 </Content>
             </Container>
         );
     }
 
-    private onPressDay = (index: number) => {
-        const { componentId, projectId } = this.props;
+    private get dayCardStatusMap() {
+        const { currentProjectDays } = this.props;
+        return _.reduce(currentProjectDays, (res, projectDay) => {
+            return {
+                ...res,
+                [projectDay.day]: projectDay.status
+            };
+        }, {});
+    }
+
+    private onPressDay = async (index: number) => {
+        const { componentId, currentProject, database, projectId } = this.props;
+        const projectDayCollection = database.collections.get('project_day')
+        const projectDays = await projectDayCollection
+            .query(
+                Q.where('project_id', projectId),
+                Q.where('day', `${index}`)).fetch();
+        if (projectDays.length === 0) {
+            await database.action(async () => {
+                const newProjectDay = await projectDayCollection.create(projectDay => {
+                    projectDay.day = `${index}`;
+                    projectDay.templates = currentProject.templates;
+                    projectDay.status = "DOING";
+                    projectDay.project.set(currentProject);
+                });
+            });
+        }
         push(componentId, SCREEN_IDS.ProjectDayDetailScreen, {
             projectId,
             day: index
@@ -95,4 +128,12 @@ class ProjectDaysScreen extends Component<IProps> {
     }
 }
 
-export default ProjectDaysScreen;
+const enhance = withObservables(["currentProject"], ({ database, projectId = "1" }) => {
+    return ({
+        currentProject: database.collections.get('project').findAndObserve(projectId),
+        currentProjectDays: database.collections.get('project_day').query(Q.where('project_id', projectId)).observe()
+    })
+})
+
+
+export default enhance(ProjectDaysScreen);

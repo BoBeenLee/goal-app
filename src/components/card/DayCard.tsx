@@ -17,25 +17,7 @@ interface IProps {
     onPress: () => void;
 }
 
-const ActiveCSS = css`
-    background-color: #787878;
-`;
-
-const InActiveCSS = css`
-    border-width: 1px;
-    border-color: #eee;
-`;
-
-
-const Container = styled.TouchableHighlight.attrs<{ isActive?: boolean }>({})`
-    width: 44px;
-    height: 44px;
-    border-radius: 32px;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    ${({ isActive }) => isActive ? ActiveCSS : InActiveCSS}
-`;
+const Container = styled.TouchableOpacity``;
 
 const DayText = styled(GText).attrs<{ isActive?: boolean }>({
     weightType: "kreonBold"
@@ -120,8 +102,12 @@ const ShapeColorMap = new Map<ShapeType, { backgroundColor: string, color: strin
 
 class DayCard extends Component<IProps> {
     public render() {
-        const { style, type, day, onPress } = this.props;
+        const { onPress } = this.props;
+        return <Container onPress={onPress}>{this.renderByType}</Container>
+    }
 
+    private get renderByType() {
+        const { type } = this.props;
         if (type === "hexagon") {
             return this.renderHexagon();
         } else if (type === "circle") {

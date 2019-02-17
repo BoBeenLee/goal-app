@@ -1,6 +1,6 @@
 import moment from "moment";
-import { action, date, readonly, field } from '@nozbe/watermelondb/decorators';
-import { Model } from '@nozbe/watermelondb';
+import { action, children, lazy, date, readonly, field } from '@nozbe/watermelondb/decorators';
+import { Model, Q } from '@nozbe/watermelondb';
 
 export type TemplateType = "TODO" | "OX" | "Diary" | "Time" | "Photo" | "Table";
 
@@ -12,16 +12,21 @@ export interface ITemplateProps {
 
 export default class Project extends Model {
     static table = 'project';
+    static associations = {
+        project_day: { type: 'has_many', foreignKey: 'project_id' }
+    }
 
     @field('project_name') projectName;
     @field('templates_json') templates;
     @field('motivate_text') motivateText;
     @field('status') status;
-    @field('closed_at') closedAt;
-    @readonly @date('created_at') createdAt;
+    @date('closed_at') closedAt;
+    @children('project_day') projectDays;
+
+    @date('created_at') createdAt;
     @readonly @date('updated_at') updatedAt;
 
-    @action async deleteProject() {
+    async deleteProject() {
         await (this as any).update(project => {
             project.status = "DELETE";
             project.closedAt = moment().valueOf();

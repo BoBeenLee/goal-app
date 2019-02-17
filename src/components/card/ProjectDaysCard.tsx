@@ -10,6 +10,7 @@ import { ViewProps } from "react-native";
 interface IProps {
     style?: ViewProps["style"];
     currentDay: number;
+    dayStatusMap?: any;
     onPress: (index: number) => void;
 }
 
@@ -67,20 +68,35 @@ class ProjectDaysCard extends Component<IProps> {
         return (
             <Container style={style}>
                 <Header>
-                    <Title>{currentDay === 30 ? `${currentDay}일차` : `30일 종료`}</Title>
+                    <Title>{currentDay === 30 ? `30일 종료` : `${currentDay}일차`}</Title>
                     <ProjectDDay day={`${currentDay}`} />
                 </Header>
                 <Content>
                     {_.map(DAYS_ROW_TYPE, (type, rowIndex) => {
                         return <Row key={`rowDayCard${rowIndex}`}>{_.times(ROW_COUNT, index => {
                             const currentIndex = `${rowIndex * ROW_COUNT + (index + 1)}`;
-                            return <DayCard key={`dayCard${currentIndex}`} type={type} status={"complete"} day={currentIndex} onPress={_.partial(onPress, currentIndex)} />
+                            return <DayCard key={`dayCard${currentIndex}`}
+                                type={type}
+                                status={this.dayCardStatus(rowIndex * ROW_COUNT + (index + 1))}
+                                day={currentIndex}
+                                onPress={_.partial(onPress, currentIndex)} />
                         })}</Row>
                     })}
                 </Content>
             </Container>
         );
     }
+
+    private dayCardStatus = (day: number) => {
+        const { currentDay, dayStatusMap } = this.props;
+        if (currentDay === day) {
+            return "current";
+        } else if (day < currentDay) {
+            const status = _.get(dayStatusMap, day, "DOING");
+            return status === "DOING" ? "fail" : "complete";
+        }
+        return "ready";
+    };
 }
 
 export default ProjectDaysCard;

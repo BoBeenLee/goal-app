@@ -173,11 +173,16 @@ class TemplateRegisterScreen extends Component<IProps, IStates> {
                                     </TemplateItemView>);
                             })}
                         </TemplateList>
-                        <NextButton type="cerulean" onPress={this.next}>다음</NextButton>
+                        <NextButton type={this.isValidate ? "cerulean" : "disabled"} onPress={this.next}>다음</NextButton>
                     </ContentScrollView>
                 </Content>
             </Container>
         );
+    }
+
+    private get isValidate() {
+        const { selectedTemplates } = this.state;
+        return selectedTemplates.length >= 1;
     }
 
     private renderSelectedNumber = (selectedIndex: number) => {

@@ -2,6 +2,7 @@ import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite'
 import { appSchema, Database, tableSchema } from '@nozbe/watermelondb';
 
 import Project from "./Project";
+import ProjectDay from './ProjectDay';
 import { generate } from './generate';
 
 export const mySchema = appSchema({
@@ -39,7 +40,7 @@ const adapter = new SQLiteAdapter({
 
 const database = new Database({
     adapter,
-    modelClasses: [Project],
+    modelClasses: [Project, ProjectDay],
 });
 
 generate(database);

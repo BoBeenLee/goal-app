@@ -70,7 +70,7 @@ storiesOf("Card", module)
   ))
   .add("ProjectDaysCard", () => (
     <DayBG>
-      <ProjectDaysCard currentDay={13} onPress={action("onPress")} />
+      <ProjectDaysCard today={13} onPress={action("onPress")} />
     </DayBG>
   ))
   .add("AddAchieveCard", () => (

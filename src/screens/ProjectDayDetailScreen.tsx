@@ -1,12 +1,18 @@
-import Images from "assets-image";
+import _ from "lodash";
+import moment from "moment";
 import React, { Component } from 'react';
 import styled from "styled-components/native";
+import { Q } from '@nozbe/watermelondb';
+import withObservables from '@nozbe/with-observables';
 
 import { ContainerWithStatusBar, GText, BackTopBar } from '../components';
 import { colors } from '../styles';
 import { pop } from "../utils/navigator";
+import { tranformDateToFormat } from "../utils/date";
 
 interface IProps {
+    currentProject: any;
+    currentProjectDays: any;
     componentId: string;
     projectId: string;
     day: number;
@@ -48,15 +54,26 @@ class ProjectDayDetailScreen extends Component<IProps> {
     public render() {
         return (
             <Container>
-                <BackTopBarView title="탬플릿 둘러보기" onBackPress={this.back} />
+                <BackTopBarView title={`day ${this.currentProjectDay.day}`} onBackPress={this.back} />
                 <Header>
                     <DateView>
-                        <DateText>2월 4일 월요일</DateText>
+                        <DateText>{this.dayText}</DateText>
                     </DateView>
                 </Header>
                 <Content />
             </Container>
         );
+    }
+
+    private get currentProjectDay(): any {
+        const { currentProjectDays } = this.props;
+        return _.first(currentProjectDays);
+    }
+
+    private get dayText() {
+        const { createdAt } = this.props.currentProject;
+        const { day } = this.currentProjectDay;
+        return tranformDateToFormat(moment(createdAt).add(day, "day"));
     }
 
     private back = () => {
@@ -65,4 +82,15 @@ class ProjectDayDetailScreen extends Component<IProps> {
     }
 }
 
-export default ProjectDayDetailScreen;
+const enhance = withObservables([], ({ database, projectId = "1", day = "1" }) => {
+    return ({
+        currentProject: database.collections.get('project').findAndObserve(projectId),
+        currentProjectDays: database.collections.get('project_day')
+            .query(
+                Q.where('project_id', projectId),
+                Q.where('day', `${day}`))
+            .observe(),
+    })
+})
+
+export default enhance(ProjectDayDetailScreen);

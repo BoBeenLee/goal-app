@@ -8,6 +8,9 @@ import { colors } from '../../styles';
 interface IProps {
     style?: ViewProps["style"];
     title: string;
+    startDate: string;
+    endDate: string;
+    percent: number;
 }
 
 const Container = styled.View`
@@ -44,13 +47,13 @@ const AchievePercent = styled(GText)`
 
 class AchieveHistoryCard extends Component<IProps>{
     public render() {
-        const { style, title } = this.props;
+        const { style, startDate, endDate, percent, title } = this.props;
         return (
             <Container style={style}>
                 <Title>{title}</Title>
-                <Date>18.2.12~3.12</Date>
+                <Date>{`${startDate}~${endDate}`}</Date>
                 <ContentRightView>
-                    <AchievePercent>90%</AchievePercent>
+                    <AchievePercent>{percent}%</AchievePercent>
                 </ContentRightView>
             </Container>
         );

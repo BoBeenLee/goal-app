@@ -12,6 +12,7 @@ interface IProps {
     title: string;
     startDate: string;
     endDate: string;
+    percent: number;
     onAchievePress: () => void;
     onMorePress: () => void;
 }
@@ -67,7 +68,7 @@ const AchievePercent = styled(GText).attrs({
 
 class AchieveCard extends Component<IProps> {
     public render() {
-        const { style, title, startDate, endDate, onAchievePress, onMorePress } = this.props;
+        const { style, title, startDate, endDate, percent, onAchievePress, onMorePress } = this.props;
         return (
             <Container style={style} onPress={onAchievePress}>
                 <Content>
@@ -80,7 +81,7 @@ class AchieveCard extends Component<IProps> {
                     <MoreButton type="opacity" source={Images.btn_more} onPress={onMorePress} />
                 </Content>
                 <ContentRightView>
-                    <AchievePercent>90%</AchievePercent>
+                    <AchievePercent>{percent}%</AchievePercent>
                 </ContentRightView>
             </Container>
         );
