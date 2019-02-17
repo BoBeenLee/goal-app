@@ -26,7 +26,7 @@ class CompleteScreen extends Component<IProps> {
 30일간 목표의
 형태를 만들어봐요`}</Title>
                 </Content>
-                <CompleteButton type="default" onPress={this.next}>시작하기</CompleteButton>
+                <CompleteButton type="disabled" onPress={this.next}>시작하기</CompleteButton>
             </Container>
         );
     }

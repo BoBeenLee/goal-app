@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import styled from "styled-components/native";
+import ActionSheet from 'react-native-actionsheet';
 
 import { ContainerWithStatusBar, AchieveCard, Title, AchieveHistoryCard, GText, DDay } from '../components';
 import { push } from '../utils/navigator';
 import { SCREEN_IDS } from './constant';
 import { colors } from '../styles';
-import { Picker, PickerIOS } from 'react-native';
 
 interface IProps {
     componentId: string;
@@ -70,6 +70,7 @@ const AchieveHistoryCardView = styled(AchieveHistoryCard)`
 `;
 
 class ProjectScreen extends Component<IProps> {
+    public ActionSheet: any;
     public render() {
         return (
             <Container>
@@ -85,6 +86,7 @@ class ProjectScreen extends Component<IProps> {
                         title={`어플 완성하고
 런칭하기`}
                         onAchievePress={this.navigateProjectDays}
+                        onMorePress={this.showActionSheetMore}
                     />
                     <AchieveHistoryTitle>지나간 목표</AchieveHistoryTitle>
                     <AchieveHistoriesList>
@@ -94,8 +96,35 @@ class ProjectScreen extends Component<IProps> {
 씩 책읽기`} />
                     </AchieveHistoriesList>
                 </Content>
+                <ActionSheet
+                    ref={o => this.ActionSheet = o}
+                    options={['알람 설정', '목표 삭제', 'Cancel']}
+                    cancelButtonIndex={2}
+                    destructiveButtonIndex={1}
+                    onPress={this.actionSheetMore}
+                />
             </Container>
         );
+    }
+
+    private showActionSheetMore = () => {
+        this.ActionSheet.show();
+    }
+
+    private actionSheetMore = (index: number) => {
+        if (index === 0) {
+            this.settingAlaram();
+        } else if (index === 1) {
+            this.deleteProject();
+        }
+    }
+
+    private deleteProject = () => {
+        alert("Delete");
+    }
+
+    private settingAlaram = () => {
+        alert("Setting Alarm");
     }
 
     private navigateProjectDays = () => {

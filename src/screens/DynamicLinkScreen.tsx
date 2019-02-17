@@ -12,7 +12,7 @@ class DynamicLinkScreen extends Component {
     public render() {
         return (
             <Container>
-                <LinkButton type="default" onPress={this.shareLink}>Share Link</LinkButton>
+                <LinkButton type="cerulean" onPress={this.shareLink}>Share Link</LinkButton>
             </Container>
         );
     }

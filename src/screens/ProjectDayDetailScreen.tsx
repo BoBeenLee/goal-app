@@ -2,7 +2,7 @@ import Images from "assets-image";
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 
-import { ContainerWithStatusBar, GTopBar, GText, IconButton, BackTopBar } from '../components';
+import { ContainerWithStatusBar, GText, BackTopBar } from '../components';
 import { colors } from '../styles';
 import { pop } from "../utils/navigator";
 

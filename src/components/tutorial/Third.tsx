@@ -34,7 +34,7 @@ class Third extends Component<IProps> {
         return (
             <Container>
                 <TitleView>완벽보단 완성, 작심삼십일</TitleView>
-                <StartButton type="default" onPress={navigateTo}>시작하기</StartButton>
+                <StartButton type="cerulean" onPress={navigateTo}>시작하기</StartButton>
             </Container>
         );
     }

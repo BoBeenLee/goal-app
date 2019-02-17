@@ -11,6 +11,7 @@ interface IProps {
     style?: ViewProps["style"];
     title: string;
     onAchievePress: () => void;
+    onMorePress: () => void;
 }
 
 const Container = styled.TouchableOpacity`
@@ -63,7 +64,7 @@ const AchievePercent = styled(GText).attrs({
 
 class AchieveCard extends Component<IProps> {
     public render() {
-        const { style, title, onAchievePress } = this.props;
+        const { style, title, onAchievePress, onMorePress } = this.props;
         return (
             <Container style={style} onPress={onAchievePress}>
                 <Content>
@@ -73,7 +74,7 @@ class AchieveCard extends Component<IProps> {
                             18.2.12~3.12
                         </AchiveDate>
                     </TitleView>
-                    <MoreButton type="opacity" source={Images.btn_more} />
+                    <MoreButton type="opacity" source={Images.btn_more} onPress={onMorePress} />
                 </Content>
                 <ContentRightView>
                     <AchievePercent>90%</AchievePercent>
