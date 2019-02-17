@@ -23,7 +23,9 @@ const Content = styled.View`
 `;
 
 
-const RegisterStepView = styled(RegisterStep)``;
+const RegisterStepView = styled(RegisterStep)`
+    margin-horizontal: 26px;
+`;
 
 const Title = styled(GText).attrs({
     weightType: "light"
@@ -95,7 +97,7 @@ class MotivationRegisterScreen extends Component<IProps, IStates> {
                     <CharacterView>
                         <CharacterImage source={Images.motivate_blue_character} />
                     </CharacterView>
-                    <NextButton type="cerulean" onPress={this.next}>다음</NextButton>
+                    <NextButton type={this.isMotivateTextLength ? "cerulean" : "disabled"} onPress={this.next}>다음</NextButton>
                 </Content>
             </Container>
         );
@@ -105,6 +107,10 @@ class MotivationRegisterScreen extends Component<IProps, IStates> {
         this.setState({
             motivateText: text
         });
+    }
+
+    private get isMotivateTextLength() {
+        return this.state.motivateText.length > 0;
     }
 
     private next = () => {

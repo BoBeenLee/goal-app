@@ -3,6 +3,8 @@ import _ from "lodash";
 import React, { Component } from 'react';
 import styled from "styled-components/native";
 import { ViewProps } from 'react-native';
+import { Q } from '@nozbe/watermelondb';
+import withObservables from '@nozbe/with-observables';
 
 import { GButton, RegisterStep, ContainerWithStatusBar, OXTemplate, IconButton, GText, SelectedTemplate, TodoTemplate, DiaryTemplate, TimeTemplate, TableTemplate } from "../../components";
 import { ITemplateProps, TemplateType } from '../../model/Project';
@@ -13,6 +15,7 @@ import { colors } from '../../styles';
 const SELECTED_TEMPLATE_MAX_COUNT = 3;
 
 interface IProps {
+    database: any;
     componentId: string;
     projectName: string;
     motivateText: string;
@@ -205,9 +208,20 @@ class TemplateRegisterScreen extends Component<IProps, IStates> {
         push(componentId, SCREEN_IDS.TemplateDiscoveryScreen);
     };
 
-    private next = () => {
-        const { componentId } = this.props;
-        push(componentId, SCREEN_IDS.CompleteScreen);
+    private next = async () => {
+        const { database, componentId, projectName, motivateText } = this.props;
+        const { selectedTemplates } = this.state;
+
+        await database.action(async () => {
+            const projectCollection = database.collections.get('project')
+            const newProject = await projectCollection.create(project => {
+                project.projectName = projectName;
+                project.motivateText = motivateText;
+                project.templates = JSON.stringify(selectedTemplates);
+            });
+            console.log(newProject);
+        });
+        push(componentId, SCREEN_IDS.ProjectScreen);
     }
 
     private back = () => {
@@ -216,4 +230,4 @@ class TemplateRegisterScreen extends Component<IProps, IStates> {
     }
 }
 
-export default TemplateRegisterScreen;
+export default (TemplateRegisterScreen);
