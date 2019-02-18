@@ -203,7 +203,7 @@ class ProjectDayDetailScreen extends Component<IProps> {
     private get dayText() {
         const { createdAt } = this.props.currentProject;
         const { day } = this.currentProjectDay;
-        return tranformDateToFormat(moment(createdAt).add(day, "day"));
+        return tranformDateToFormat(moment(createdAt).add(day - 1, "day"));
     }
 
     private back = () => {
