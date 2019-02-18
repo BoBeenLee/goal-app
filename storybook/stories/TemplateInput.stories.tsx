@@ -23,7 +23,7 @@ storiesOf("TemplateInput", module)
     ]} onToggle={action("onToggle")} onBlur={action("onBlur")} />)
     .add("DiaryTemplateInput", () => <DiaryTemplateInput defaultValue="Hello" onBlur={action("onBlur")} />)
     .add("OXTemplateInput", () => <OXTemplateInput defaultValue="O" onOXPress={action("oxPress")} />)
-    .add("TimeTemplateInput", () => <TimeTemplateInput startTime={moment()} endTime={moment()} />)
+    .add("TimeTemplateInput", () => <TimeTemplateInput startTime={"22:22pm"} endTime={"22:22pm"} />)
     .add("TableTemplateInput", () => <TableTemplateInput items={[
         {
             label: "apple",

@@ -11,6 +11,7 @@ interface IProps {
     style?: ViewProps["style"];
     isClose?: boolean;
     currentDay: number;
+    dday: number;
     dayStatusMap?: any;
     onPress: (index: number) => void;
 }
@@ -65,12 +66,12 @@ const ROW_COUNT = 5;
 
 class ProjectDaysCard extends Component<IProps> {
     public render() {
-        const { style, isClose, currentDay, onPress } = this.props;
+        const { style, isClose, currentDay, dday, onPress } = this.props;
         return (
             <Container style={style}>
                 <Header>
                     <Title>{isClose ? `30일 종료` : `${currentDay}일차`}</Title>
-                    {isClose ? null : <ProjectDDay day={`${currentDay}`} />}
+                    {isClose ? null : <ProjectDDay day={`${dday}`} />}
                 </Header>
                 <Content>
                     {_.map(DAYS_ROW_TYPE, (type, rowIndex) => {

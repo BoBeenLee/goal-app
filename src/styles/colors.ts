@@ -22,7 +22,19 @@ const colors = {
     brownGrey: "#acacac",
     paleSkyBlue: "#c3e1ff",
     ceruleanBlueTwo: "#007ef2",
-    twilightBlue: "#0c4274"
+    twilightBlue: "#0c4274",
+    maize: "#ffdf4d",
+    darkCream: "#ffe38e",
+    turquoise: "#03bba0",
+    prussianBlue: "#003c73",
+    shitBrown: "#756205",
+    bluegreen: "#007e6c",
+    coolBlue: "#468eba",
+    sky: "#7ccdff",
+    liliac: "#ce8bff",
+    deepLavender: "#8a55b1",
+    carolinaBlue: "#8bb1fe",
+    offBlue: "#5073b9"
 };
 
 export default colors;

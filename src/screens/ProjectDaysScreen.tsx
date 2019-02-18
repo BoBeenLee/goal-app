@@ -11,7 +11,7 @@ import { colors } from '../styles';
 import { getStatusBarHeight } from "../utils/device";
 import { pop, push } from "../utils/navigator";
 import { SCREEN_IDS } from "./constant";
-import { today, getDDay } from "../utils/date";
+import { today, getDDay, getDay } from "../utils/date";
 
 interface IProps {
     database: any;
@@ -94,7 +94,7 @@ class ProjectDaysScreen extends Component<IProps> {
                     <MotivateText>{currentProject.motivateText}</MotivateText>
                 </Header>
                 <Content>
-                    <ProjectDaysCardView isClose={this.isClose} currentDay={getDDay(currentProject.createdAt)} dayStatusMap={this.dayCardStatusMap} onPress={this.onPressDay} />
+                    <ProjectDaysCardView isClose={this.isClose} currentDay={getDay(currentProject.createdAt)} dday={getDDay(currentProject.createdAt)} dayStatusMap={this.dayCardStatusMap} onPress={this.onPressDay} />
                 </Content>
             </Container>
         );

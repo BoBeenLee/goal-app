@@ -16,7 +16,10 @@ const images = {
     motivate_blue_character: require("./motivate_blue_character.gif"),
     btn_menu: require("./btn_menu.png"),
     btn_add_achieve: require("./btn_add_achieve.png"),
-    splash: require("./splash.png")
+    splash: require("./splash.png"),
+    hexagon_fill: require("./hexagon_fill.png"),
+    hexagon_fail: require("./hexagon_fail.png"),
+    hexagon_ready: require("./hexagon_ready.png")
 };
 
 export default images;

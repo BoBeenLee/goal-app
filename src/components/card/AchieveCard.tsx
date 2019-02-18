@@ -10,6 +10,7 @@ import { colors } from '../../styles';
 interface IProps {
     style?: ViewProps["style"];
     title: string;
+    dateColor?: string;
     startDate: string;
     endDate: string;
     percent: number;
@@ -68,13 +69,13 @@ const AchievePercent = styled(GText).attrs({
 
 class AchieveCard extends Component<IProps> {
     public render() {
-        const { style, title, startDate, endDate, percent, onAchievePress, onMorePress } = this.props;
+        const { style, dateColor, title, startDate, endDate, percent, onAchievePress, onMorePress } = this.props;
         return (
             <Container style={style} onPress={onAchievePress}>
                 <Content>
                     <TitleView>
                         <AchieveTitle>{title}</AchieveTitle>
-                        <AchiveDate>
+                        <AchiveDate style={{ color: dateColor }}>
                             {`${startDate}~${endDate}`}
                         </AchiveDate>
                     </TitleView>

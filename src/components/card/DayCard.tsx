@@ -1,3 +1,4 @@
+import Images from "assets-image";
 import React, { Component } from 'react';
 import styled, { css } from "styled-components/native";
 import { TouchableHighlightProps, View } from 'react-native';
@@ -26,48 +27,21 @@ const DayText = styled(GText).attrs<{ isActive?: boolean }>({
 `;
 
 const HexagonView = styled.View`
-    width: 24px;
+    width: 44px;
     height: 44px;
-    margin-horizontal: 11px;
-`;
-
-const HexagonInner = styled.View`
-    flex: 1;
+    padding-left: 2px;
     justify-content: center;
     align-items: center;
-    background-color: red;
 `;
 
-
-const HexagonRight = styled.View`
+const HexagonImage = styled.Image`
     position: absolute;
-    right: -25px;
     top: 0px;
-    width: 0px;
-    height: 0px;
-    border-style: solid;
-    border-top-width: 22px;
-    border-top-color: transparent;
-    border-bottom-width: 22px;
-    border-bottom-color: transparent;
-    border-left-width: 25px;
-    border-left-color: red;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
 `;
 
-const HexagonLeft = styled.View`
-    position: absolute;
-    left: -25px;
-    top: 0px;
-    width: 0px;
-    height: 0px;
-    border-style: solid;
-    border-top-width: 22px;
-    border-top-color: transparent;
-    border-bottom-width: 22px;
-    border-bottom-color: transparent;
-    border-right-width: 25px;
-    border-right-color: red;
-`;
 
 const CircleView = styled.View`
     width: 44px;
@@ -117,22 +91,29 @@ class DayCard extends Component<IProps> {
     }
 
     private renderHexagon = () => {
-        const { day, type } = this.props;
-        const { backgroundColor } = ShapeColorMap.get(type)!
+        const { day, status } = this.props;
         return (
             <HexagonView>
-                <HexagonInner style={this.containerStyle}>
-                    <DayText style={this.textStyle}>{day}</DayText>
-                </HexagonInner>
-                <HexagonRight style={{ borderLeftColor: backgroundColor }} />
-                <HexagonLeft style={{ borderRightColor: backgroundColor }} />
+                <HexagonImage source={this.hexagonImageByStatus(status)} />
+                <DayText style={this.textStyle}>{day}</DayText>
             </HexagonView>
         );
     }
 
+    private hexagonImageByStatus = (status: StatusType) => {
+        switch (status) {
+            case "complete":
+            case "current":
+                return Images.hexagon_fill;
+            case "fail":
+                return Images.hexagon_fail;
+            case "ready":
+                return Images.hexagon_ready;
+        }
+    }
+
     private renderCircle = () => {
         const { day, type } = this.props;
-        const { backgroundColor, color } = ShapeColorMap.get(type)!
 
         return (<CircleView style={this.containerStyle}>
             <DayText style={this.textStyle}>{day}</DayText>
@@ -141,7 +122,6 @@ class DayCard extends Component<IProps> {
 
     private renderSqaure = () => {
         const { day, type } = this.props;
-        const { backgroundColor, color } = ShapeColorMap.get(type)!
 
         return (<SqaureView style={this.containerStyle}>
             <DayText style={this.textStyle}>{day}</DayText>

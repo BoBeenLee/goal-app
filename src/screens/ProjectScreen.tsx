@@ -11,6 +11,8 @@ import { push } from '../utils/navigator';
 import { SCREEN_IDS } from './constant';
 import { colors } from '../styles';
 import { transformStringToFormat, tranformDateToFormat, add30Days, getDDay } from "../utils/date";
+import { string } from "prop-types";
+import { number } from "mobx-state-tree/dist/internal";
 
 interface IProps {
     database: any;
@@ -75,8 +77,24 @@ const AchieveHistoriesList = styled.ScrollView.attrs({
 
 const AchieveHistoryCardView = styled(AchieveHistoryCard)`
     width: 200px;
+    height: 145px;
     margin-right: 15px;
 `;
+
+const RANDOM_ACHIEVE_COLORS: Array<{ dateColor: string, backgroundColor: string }> = [
+    { dateColor: colors.sepia, backgroundColor: colors.orangish },
+    { dateColor: colors.prussianBlue, backgroundColor: colors.cerulean },
+    { dateColor: colors.shitBrown, backgroundColor: colors.maize }
+];
+
+const RANDOM_HISTORY_COLORS: Array<{ dateColor: string, backgroundColor: string }> = [
+    { dateColor: colors.hazel, backgroundColor: colors.darkCream },
+    { dateColor: colors.bluegreen, backgroundColor: colors.turquoise },
+    { dateColor: colors.coolBlue, backgroundColor: colors.sky },
+    { dateColor: colors.deepLavender, backgroundColor: colors.liliac },
+    { dateColor: colors.offBlue, backgroundColor: colors.carolinaBlue }
+];
+
 
 class ProjectScreen extends Component<IProps> {
     public ActionSheet: any;
@@ -97,7 +115,9 @@ class ProjectScreen extends Component<IProps> {
                     </AchiveView>
                     <AchieveCardView>
                         {currentProject ? <AchieveCard
+                            style={{ backgroundColor: this.currentProjectColorData.backgroundColor }}
                             title={currentProject.projectName}
+                            dateColor={this.currentProjectColorData.dateColor}
                             startDate={transformStringToFormat(currentProject.createdAt)}
                             endDate={tranformDateToFormat(add30Days(moment(currentProject.createdAt)))}
                             percent={this.projectPercentageById(currentProject.id)}
@@ -108,10 +128,12 @@ class ProjectScreen extends Component<IProps> {
 
                     <AchieveHistoryTitle>지나간 목표 {historyProjects.length}</AchieveHistoryTitle>
                     <AchieveHistoriesList>
-                        {_.map(historyProjects, project => {
+                        {_.map(historyProjects, (project, index) => {
                             return (<AchieveHistoryCardView
+                                style={{ backgroundColor: this.historyProjectColorData(index).backgroundColor }}
                                 key={`history${project.id}`}
                                 title={project.projectName}
+                                dateColor={this.historyProjectColorData(index).dateColor}
                                 startDate={transformStringToFormat(project.createdAt)}
                                 endDate={tranformDateToFormat(add30Days(moment(project.createdAt)))}
                                 percent={this.projectPercentageById(project.id)}
@@ -152,6 +174,14 @@ class ProjectScreen extends Component<IProps> {
     private deleteProject = async () => {
         const currentProject = this.currentProject!;
         await currentProject.deleteProject();
+    }
+
+    private historyProjectColorData = (index) => {
+        return RANDOM_HISTORY_COLORS[index % RANDOM_HISTORY_COLORS.length];
+    }
+
+    private get currentProjectColorData() {
+        return RANDOM_ACHIEVE_COLORS[moment(this.currentProject.createdAt).valueOf() % RANDOM_ACHIEVE_COLORS.length];
     }
 
     private get currentProject(): any {

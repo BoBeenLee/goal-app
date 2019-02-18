@@ -6,7 +6,7 @@ import { Q } from '@nozbe/watermelondb';
 import withObservables from '@nozbe/with-observables';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-import { ContainerWithStatusBar, GText, BackTopBar, OXTemplateInput, DiaryTemplateInput, TodoTemplateInput } from '../components';
+import { ContainerWithStatusBar, GText, BackTopBar, OXTemplateInput, DiaryTemplateInput, TodoTemplateInput, TimeTemplateInput, TableTemplateInput } from '../components';
 import { colors } from '../styles';
 import { pop } from "../utils/navigator";
 import { tranformDateToFormat } from "../utils/date";
@@ -123,12 +123,51 @@ class ProjectDayDetailScreen extends Component<IProps> {
                     defaultValue={_.defaultTo(template.defaultValue, "")}
                     onBlur={_.partial(this.onDiaryBlurText, index)} />;
             case "Time":
-                return <TemplateInputTitle>준비중입니당</TemplateInputTitle>;
+                return <TimeTemplateInput
+                    startTime={_.defaultTo(template.startTime, "")}
+                    endTime={_.defaultTo(template.endTime, "")}
+                    onStartTimeBlur={_.partial(this.onStartTimeBlur, index)}
+                    onEndTimeBlur={_.partial(this.onEndTimeBlur, index)}
+                />;
             case "Table":
-                return <TemplateInputTitle>준비중입니당</TemplateInputTitle>;
+                return <TableTemplateInput
+                    items={_.defaultTo(template.items, [
+                        {
+                            label: "apple",
+                            value: "사과"
+                        },
+                        {
+                            label: "bear",
+                            value: "곰"
+                        },
+                        {
+                            label: "cap",
+                            value: "모자"
+                        }
+                    ])}
+                    onBlurItems={_.partial(this.onBlurItems, index)}
+                />;
             case "Photo":
                 return <TemplateInputTitle>준비중입니당</TemplateInputTitle>;
         }
+    }
+
+    private onBlurItems = async (index, items) => {
+        await this.currentProjectDay.updateTemplate(index, "items", items);
+    };
+
+    private onStartTimeBlur = async (index, text: string) => {
+        if (_.isEmpty(text)) {
+            return;
+        }
+        await this.currentProjectDay.updateTemplate(index, "startTime", text);
+    }
+
+    private onEndTimeBlur = async (index, text: string) => {
+        if (_.isEmpty(text)) {
+            return;
+        }
+        await this.currentProjectDay.updateTemplate(index, "endTime", text);
     }
 
     private onOXPress = async (index, value: string) => {
