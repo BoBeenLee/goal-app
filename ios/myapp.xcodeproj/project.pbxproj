@@ -36,6 +36,7 @@
 		270F32F32217D817004EBE97 /* Kreon-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 270F32F12217D817004EBE97 /* Kreon-Regular.ttf */; };
 		2749DE4321DB4FF00087BBC9 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2749DE4221DB4FEF0087BBC9 /* Empty.swift */; };
 		276BEB2821A5970D00086EFA /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 276BEB2421A596ED00086EFA /* libReactNativeNavigation.a */; };
+		277CE08522A67D6200196691 /* libReactNativeExceptionHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 277CE07E22A67D5800196691 /* libReactNativeExceptionHandler.a */; };
 		27B081EE21E111A10012030A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27B081C221E111A10012030A /* GoogleService-Info.plist */; };
 		27D8E0BB21E2111800433BBC /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D8E0B821E2111000433BBC /* libRNFirebase.a */; };
 		27DA9F6221F2CC1D000D56CA /* libWatermelonDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2749DE3F21DB4D240087BBC9 /* libWatermelonDB.a */; };
@@ -160,6 +161,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 7B49FEBB1E95090800DEB3EA;
 			remoteInfo = ReactNativeNavigationTests;
+		};
+		277CE07D22A67D5800196691 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 277CE04D22A67D5700196691 /* ReactNativeExceptionHandler.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = ReactNativeExceptionHandler;
 		};
 		27D8E0B721E2111000433BBC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -504,6 +512,7 @@
 		2749DE4221DB4FEF0087BBC9 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		274A3F812208691900FE734E /* myapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = myapp.entitlements; path = myapp/myapp.entitlements; sourceTree = "<group>"; };
 		276BEAF721A596ED00086EFA /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/lib/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
+		277CE04D22A67D5700196691 /* ReactNativeExceptionHandler.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeExceptionHandler.xcodeproj; path = "../node_modules/react-native-exception-handler/ios/ReactNativeExceptionHandler.xcodeproj"; sourceTree = "<group>"; };
 		27B081C221E111A10012030A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		27D8E08A21E2111000433BBC /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		27DA9FBD21F2D3DC000D56CA /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
@@ -591,6 +600,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				277CE08522A67D6200196691 /* libReactNativeExceptionHandler.a in Frameworks */,
 				2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */,
 				2D02E4C21E0B4AEC006451C7 /* libRCTAnimation.a in Frameworks */,
 				2D02E4C31E0B4AEC006451C7 /* libRCTImage-tvOS.a in Frameworks */,
@@ -750,6 +760,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		277CE04E22A67D5700196691 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				277CE07E22A67D5800196691 /* libReactNativeExceptionHandler.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		27D8E08B21E2111000433BBC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -879,6 +897,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				277CE04D22A67D5700196691 /* ReactNativeExceptionHandler.xcodeproj */,
 				27DB2BAD21F38ED2003F1B57 /* LottieReactNative.xcodeproj */,
 				27DB2B7021F38EB2003F1B57 /* Lottie.xcodeproj */,
 				27DA9FBD21F2D3DC000D56CA /* RCTVideo.xcodeproj */,
@@ -1162,6 +1181,10 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
+					ProductGroup = 277CE04E22A67D5700196691 /* Products */;
+					ProjectRef = 277CE04D22A67D5700196691 /* ReactNativeExceptionHandler.xcodeproj */;
+				},
+				{
 					ProductGroup = 3DEDE99F214FF14B00A5E8AC /* Products */;
 					ProjectRef = 8E8FF5396A204315BB56A3B7 /* ReactNativeLocalization.xcodeproj */;
 				},
@@ -1268,6 +1291,13 @@
 			fileType = wrapper.cfbundle;
 			path = ReactNativeNavigationTests.xctest;
 			remoteRef = 276BEB2521A596ED00086EFA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		277CE07E22A67D5800196691 /* libReactNativeExceptionHandler.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativeExceptionHandler.a;
+			remoteRef = 277CE07D22A67D5800196691 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		27D8E0B821E2111000433BBC /* libRNFirebase.a */ = {
@@ -1970,7 +2000,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (

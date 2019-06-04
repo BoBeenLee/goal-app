@@ -10,6 +10,7 @@ import com.babisoft.ReactNativeLocalization.ReactNativeLocalizationPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 
+import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
@@ -44,6 +45,7 @@ public class MainApplication extends NavigationApplication {
         // Add additional packages you require here
         // No need to add RnnPackage and MainReactPackage
         return Arrays.<ReactPackage>asList(
+                new ReactNativeExceptionHandlerPackage(),
                 new VectorIconsPackage(),
                 new OrientationPackage(),
                 new ReactNativeLocalizationPackage(),

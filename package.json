@@ -10,7 +10,10 @@
     "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "android:release": "REACT_ENV=production node node_modules/react-native/local-cli/cli.js run-android --variant=release && open ./android/app/build/outputs/apk",
     "test": "jest",
-    "build": "tsc"
+    "build": "tsc",
+    "androidrectotronconnect": "adb reverse tcp:9090 tcp:9090",
+    "xcode": "open ios/myapp.xcworkspace",
+    "androidstudio": "open -a /Applications/Android\\ Studio.app ./android"
   },
   "dependencies": {
     "@nozbe/watermelondb": "^0.10.0",
@@ -30,6 +33,7 @@
     "react-native": "0.57.8",
     "react-native-actionsheet": "^2.4.2",
     "react-native-collapsible": "^1.4.0",
+    "react-native-exception-handler": "^2.10.8",
     "react-native-firebase": "^5.1.1",
     "react-native-keyboard-aware-scroll-view": "^0.7.2",
     "react-native-localization": "^2.0.1",
