@@ -16,7 +16,7 @@
     "androidstudio": "open -a /Applications/Android\\ Studio.app ./android"
   },
   "dependencies": {
-    "@nozbe/watermelondb": "^0.10.0",
+    "@nozbe/watermelondb": "^0.15.1",
     "@nozbe/with-observables": "^1.0.2",
     "@types/lodash": "^4.14.118",
     "@types/react-native-snap-carousel": "^3.7.1",
